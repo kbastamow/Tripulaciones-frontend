@@ -5,6 +5,7 @@ import RegisterIsma from './pages/registerIsma/RegisterIsma';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './pages/login/Login';
+import Events from './pages/events/Events';
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registerIsma" element={<RegisterIsma />} />
-
+          <Route path="/events" element={<Events />} />
         </Routes>
       </BrowserRouter>
     </div>
