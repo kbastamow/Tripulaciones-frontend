@@ -1,20 +1,74 @@
 import React, { useState } from "react";
-import { EyeTwoTone, EyeInvisibleOutlined } from "@ant-design/icons";
-import { Button, Input, Space } from "antd";
-import Logo from "../../assets/logo.png";
+import { Input } from "antd";
+import LogoHorizontal from "../../assets/logo-horizontal.png";
+import IconoFlecha from "../../assets/icono-flecha.png";
+
+import "./RegisterIsma.scss";
+
+const onChange = (e) => {
+  console.log(e);
+};
 
 function RegisterIsma() {
-  const [passwordVisible, setPasswordVisible] = useState(false);
-
   return (
-    <div>
-      <img src={Logo} alt="" />
-      <h1>Risky People.</h1>
+    <div className="main-register">
+      <div className="img-logo">
+        <img src={LogoHorizontal} alt="" />
+      </div>
 
-      <Space direction="vertical">
-        <Input.Password className="inputPassword" placeholder="input password" />
-    </Space>
-      
+      <div className="title-register">
+        <div className="registro-text">
+            <img src={IconoFlecha} alt="" />
+            <h1>Registro</h1>
+        </div>
+        <p>Rellena los datos para darte de alta.</p>
+      </div>
+
+      <form className="register-form">
+        <div className="input-one">
+          <label>Nombre</label>
+          <Input
+            className="inputRegister"
+            placeholder="Nombre"
+            allowClear
+            onChange={onChange}
+          />
+        </div>
+
+        <div className="input-one">
+          <label>Apellidos</label>
+          <Input
+            className="inputRegister"
+            placeholder="Apellidos"
+            allowClear
+            onChange={onChange}
+          />
+        </div>
+
+        <div className="input-one">
+          <label>Email</label>
+          <Input
+            className="inputRegister"
+            placeholder="Apellido"
+            allowClear
+            onChange={onChange}
+          />
+        </div>
+
+        <div className="input-one">
+          <label>Contraseña</label>
+          <Input.Password className="inputPassword" placeholder="Contraseña" />
+        </div>
+
+        <div className="input-one">
+          <label>Repetir contraseña</label>
+          <Input.Password className="inputPassword" placeholder="Contraseña" />
+        </div>
+
+            <button type="submit">Crear cuenta</button>
+            <p>¿Ya tienes cuenta? <span>Inicia sesión</span></p>
+            
+      </form>
     </div>
   );
 }
