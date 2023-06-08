@@ -20,4 +20,12 @@ export const register = createAsyncThunk("auth/register", async (user) => {
     }
 });
 
+export const uploadProfile = createAsyncThunk("auth/uploadProfile", async (user) => {
+  try {
+      return await authService.uploadProfile(user);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
 export default authSlice.reducer;

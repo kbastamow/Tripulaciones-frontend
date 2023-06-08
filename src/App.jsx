@@ -2,6 +2,9 @@ import React from 'react'
 import './App.css'
 import Register from './pages/register/Register';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import UpdateProfile from './pages/updateProfile/updateProfile';
+
+
 
 function App() {
 
@@ -14,7 +17,6 @@ function App() {
       </BrowserRouter>
     </div>
   );
-
 }
 
 export default App
