@@ -3,7 +3,8 @@ import axios from "axios";
 const API_URL = "http://localhost:8080";
 
 const register = async (userData) => {
-  const res = await axios.post(API_URL + "/users/register", userData);   
+  const res = await axios.post(API_URL + "/users/register", userData); 
+  console.log(res.data)  
   return res.data;
 };
 

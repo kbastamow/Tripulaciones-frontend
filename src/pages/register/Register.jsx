@@ -20,7 +20,7 @@ const Register = () => {
     console.log('Success:', values);
     const myData = {...values, email: values.email + '@edem.es'}
     console.log(myData)
-    // dispatch(register(values))
+    dispatch(register(myData))
 
   };
 
@@ -103,8 +103,10 @@ const Register = () => {
             },
           ]}
         >
-        <Input/>
-        <span>@edem.es</span>
+        <div>
+    <Input />
+    <span>@edem.es</span>
+  </div>
         </Form.Item>
 
         <Form.Item
