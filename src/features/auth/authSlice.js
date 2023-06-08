@@ -20,9 +20,9 @@ export const register = createAsyncThunk("auth/register", async (user) => {
     }
 });
 
-export const uploadProfile = createAsyncThunk("auth/uploadProfile", async (user) => {
+export const updateProfile = createAsyncThunk("auth/updateProfile", async (user) => {
   try {
-      return await authService.uploadProfile(user);
+      return await authService.updateProfile(user);
   } catch (error) {
       console.error(error);
   }

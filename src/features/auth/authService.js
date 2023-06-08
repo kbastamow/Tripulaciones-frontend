@@ -8,7 +8,11 @@ const register = async (userData) => {
 };
 
 const updateProfile = async (userData) => {
-  const res = await axios.put(API_URL + "/users/uploadPerfile", userData)
+  //const token = JSON.parse(localStorage.getItem("token"));
+  //console.log('token', token);
+  const res = await axios.put(API_URL + "/users/updateProfile", userData)
+  console.log('data', res.data);
+  
 }
 
 const authService = {
