@@ -1,0 +1,31 @@
+@import "../../colors.scss";
+
+.home{
+    border-top: 11px solid $secondary !important;
+}
+
+.comunidad{
+    border-top: 11px solid $accent !important;
+}
+
+.community-container{
+    margin-left: 1rem;
+    margin-right: 1rem;
+        h2{
+            font-size: 15px;
+        }
+    .btns{
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        button{
+            background-color: transparent;
+            border: 1px solid $accent;
+            height: 32px;
+            font-size: 16px;
+            color: $accent;
+            width: 47%;
+        }
+    }
+}

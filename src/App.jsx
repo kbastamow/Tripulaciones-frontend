@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './pages/login/Login';
 import Events from './pages/events/Events';
 import { Home } from './pages/home/Home';
-import NavBar from './components/navBar/NavBar';
+import Community from './pages/community/Community';
 
 function App() {
 
@@ -20,7 +20,8 @@ function App() {
           <Route path="/registerIsma" element={<RegisterIsma />} />
           <Route path="/events" element={<Events />} />         
           <Route path="/" element={<Home />} />
-          <Route path="/navBar" element={<NavBar />} />
+          <Route path="/community" element={<Community />} />
+
 
 
         </Routes>
