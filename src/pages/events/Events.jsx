@@ -6,17 +6,11 @@ import { Button, Menu  } from 'antd';
 
 
 import "./Events.scss"
+import NavBar from '../../components/navBar/NavBar';
 
 
 const Events = () => {
 
-// const [current, setCurrent] = useState('recientes');
-// const onClick = (e) => {
-//     console.log('click ', e);
-//     setCurrent(e.key);
-// };
-
-    
 const dispatch = useDispatch()
 
 const {events} = useSelector((state) => state.events)
@@ -62,7 +56,7 @@ return (
 
 
         <EventCard></EventCard>
-        <EventList /> 
+        {/* <EventList />  */}
     </>
 );
 };
