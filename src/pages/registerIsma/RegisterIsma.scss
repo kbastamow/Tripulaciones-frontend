@@ -1,0 +1,112 @@
+@import "../../colors.scss";
+
+.main-register {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  .img-logo {
+      display: flex ;
+      justify-content: center;
+      margin-top: 2rem;
+    img {
+      height: 28px;
+      width: auto;
+      justify-content: center;
+    }
+  }
+  .title-register {
+    margin-bottom: 3rem;
+
+    .registro-text{
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        img{
+            height: 21px;
+            width: auto;
+            margin-top: 0.7rem;
+        }
+       
+    }
+
+    h1 {
+      size: 32px;
+      color: $secondary;
+      margin-bottom: 0;
+    }
+    p {
+      font-size: 16px;
+      color: $soft-brown;
+      margin-top: 0;
+    }
+  }
+}
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+
+  .input-one {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    
+  }
+  label {
+    font-size: 16px;
+    color: $hard-brown;
+  }
+
+  input {
+    background-color: transparent;
+    height: 34px;
+  }
+  input::placeholder {
+    font-size: 16px;
+  }
+  input:focus{
+    outline-color: $secondary; 
+  }
+  
+  .inputRegister {
+    background-color: transparent;
+    border-radius: 0;
+    border: 1px solid $soft-brown;
+  }
+  
+    .inputRegister:hover {
+      border-color: $secondary!important;
+      border-inline-end-width: 1px !important;
+    }
+  .inputPassword {
+    background-color: transparent;
+    border-radius: 0;
+    border: 1px solid $soft-brown;
+  }
+  .inputPassword:hover {
+    border-color: $secondary!important;
+    border-inline-end-width: 1px !important;
+  }
+  button{
+    border: 1px solid $accent;
+    height: 40px;
+    background-color: transparent;
+    font-size: 16px;
+    color: $accent;
+    margin-top: 3.2rem;
+    margin-bottom: 0;
+  }
+  p{
+      margin-top: 0px;
+      text-align: center;
+      color: $hard-brown;
+      span{
+          font-weight: 700;
+          color: $accent;
+          .link-register{
+            all: unset;
+            color:$accent;
+            font-weight: bold;
+        }
+      }
+  }
+}
