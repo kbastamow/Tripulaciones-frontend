@@ -5,6 +5,7 @@ import RegisterIsma from './pages/registerIsma/RegisterIsma';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './pages/login/Login';
+import { Home } from './pages/home/Home';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registerIsma" element={<RegisterIsma />} />
+          <Route path="/" element={<Home />} />
 
         </Routes>
       </BrowserRouter>
