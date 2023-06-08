@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Input } from "antd";
 import LogoHorizontal from "../../assets/logo-horizontal.png";
 import IconoFlecha from "../../assets/icono-flecha.png";
+import { Link } from "react-router-dom";
 
 import "./RegisterIsma.scss";
 
@@ -18,8 +19,8 @@ function RegisterIsma() {
 
       <div className="title-register">
         <div className="registro-text">
-            <img src={IconoFlecha} alt="" />
-            <h1>Registro</h1>
+          <img src={IconoFlecha} alt="" />
+          <h1>Registro</h1>
         </div>
         <p>Rellena los datos para darte de alta.</p>
       </div>
@@ -65,9 +66,15 @@ function RegisterIsma() {
           <Input.Password className="inputPassword" placeholder="Contraseña" />
         </div>
 
-            <button type="submit">Crear cuenta</button>
-            <p>¿Ya tienes cuenta? <span>Inicia sesión</span></p>
-            
+        <button type="submit">Crear cuenta</button>
+        <p>
+          ¿Ya tienes cuenta?{" "}
+          <span>
+            <Link className="link-register" to="/login">
+              Inicia sesión
+            </Link>
+          </span>
+        </p>
       </form>
     </div>
   );
