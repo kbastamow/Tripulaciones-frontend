@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAll } from "../../features/events/eventSlice"
+import EventCard from '../../components/eventCard/eventCard';
 
 const Events = () => {
 
@@ -34,6 +35,7 @@ const EventList = () => {
 return (
     <>
         <div>Events</div>
+        <EventCard></EventCard>
         <EventList />
     </>
 );
