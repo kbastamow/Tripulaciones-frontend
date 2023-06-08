@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Card } from 'antd';
 const { Meta } = Card;
 import { Button, Space, Divider } from 'antd';
 import "./Eventcard.scss"
+import { useSelector } from 'react-redux';
 
 
 const EventCard = () => {
-  return (
+
+const {events} = useSelector((state) => state.events)
+
+// useEffect(() => {
+
+// })
+
+return (
 
       <Card
       hoverable
