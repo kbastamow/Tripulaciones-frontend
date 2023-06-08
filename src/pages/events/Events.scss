@@ -1,11 +1,5 @@
 @import "../../colors.scss";
 
-%btn-blue {
-
-
-
-}
-
 .event-menu {
     width: 90%;
     display: flex;
@@ -20,10 +14,11 @@
 }
 
 
-
-
 .menu-btn {
+    color: $secondary;
     background-color: none;
     border: none;
-
+    margin: 0;
+    flex: 1;
+    text-align: center;
 }

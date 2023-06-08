@@ -1,9 +1,12 @@
 @import "../../colors.scss";
 
 .sticky-nav{
-    position: sticky;
+    z-index: 2;
+    position: fixed;
     bottom: 0;
-}
+    width: 100%;
+  }
+
 .navbar-container {
   background-color: $secondary;
   height: 90px;

@@ -5,7 +5,7 @@ import { BsHandbag } from "react-icons/bs";
 import { FiUsers } from "react-icons/fi";
 import { BsChat } from "react-icons/bs";
 
-function NavBar() {
+const NavBar = () => {
   return (
     <div className="sticky-nav">
         <div className="navbar-container">
