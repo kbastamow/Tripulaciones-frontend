@@ -40,4 +40,12 @@ export const login = createAsyncThunk("auth/login", async (user) => {
   }
 });
 
+export const updateProfile = createAsyncThunk("auth/updateProfile", async (user) => {
+  try {
+      return await authService.updateProfile(user);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
 export default authSlice.reducer;

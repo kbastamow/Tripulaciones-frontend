@@ -9,9 +9,16 @@ import Events from './pages/events/Events';
 import { Home } from './pages/home/Home';
 import Community from './pages/community/Community';
 import UserDetails from './pages/userDetails/UserDetails';
+import NavBar from './components/navBar/NavBar';
+import UpdateProfile from './pages/updateProfile/UpdateProfile';
+import EventOne from './pages/eventOne/eventOne';
+
+
+
 
 function App() {
 
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -23,13 +30,16 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/community" element={<Community />} />
           <Route path="/userDetails/:id" element={<UserDetails />} />
+          <Route path="/events" element={<Events />} /> 
+          <Route path="/events/:id" element={<EventOne />} />
+          <Route path="/navBar" element={<NavBar />} />
+          <Route path="/updateProfile" element={<UpdateProfile />} />
 
 
         </Routes>
       </BrowserRouter>
     </div>
   );
-
 }
 
 export default App

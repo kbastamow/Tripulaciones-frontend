@@ -16,10 +16,20 @@ const login = async(userData)=>{
  }
   return res.data
  }
- 
+
+const updateProfile = async (data) => {
+   const res = await axios.put(API_URL + "/users/updateProfile", data, {
+    headers: {
+      authorization: JSON.parse(localStorage.getItem("token")),
+      }
+  }); 
+  console.log(res.data)  
+  return res.data;
+};
 
 const authService = {
   register,
+  updateProfile,
   login
 };
 

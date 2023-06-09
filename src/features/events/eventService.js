@@ -13,8 +13,19 @@ const getAll = async() => {
     }
 }
 
+const getById = async(id) => {
+    try {
+        const res = await axios.get(API_URL + "/events/getById/" + id)
+        console.log(res.data)
+        return res.data
+    } catch(error) {
+        console.error(error)
+    }
+}
+
 const eventService = {
-   getAll
+   getAll,
+   getById
   };
   
   export default eventService;
