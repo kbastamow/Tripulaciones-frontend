@@ -16,12 +16,18 @@ import UpdateProfile from './pages/updateProfile/UpdateProfile';
 function App() {
 
   
-
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registerIsma" element={<RegisterIsma />} />
+          <Route path="/events" element={<Events />} />         
+          <Route path="/" element={<Home />} />
+          <Route path="/navBar" element={<NavBar />} />
+
+
         </Routes>
       </BrowserRouter>
     </div>
