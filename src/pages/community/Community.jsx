@@ -41,9 +41,11 @@ const Community = () => {
                 {user.name} {user.surname}
               </h4>
               <p>{user.program.translation}</p>
-              <Link to={`/userDetails/${user._id}`}>
-                <button>Contactar</button>
-              </Link>
+              <div className="link">
+                <Link to={`/userDetails/${user._id}`}>
+                  <button>Contactar</button>
+                </Link>
+              </div>
             </div>
           ))}
         </div>

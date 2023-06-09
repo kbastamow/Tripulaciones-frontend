@@ -71,15 +71,27 @@
           text-align: center;
           color: $soft-brown;
           font-weight: 100;
+          margin-right: 0.1rem;
+          margin-left: 0.1rem;
       }
-      button{
-          background-color: transparent;
+      .link{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           border: 1px solid $accent;
-          color: $accent;
-          font-size: 16px;
-          height: 32px;
-          width: 80%;
+      a{
+          
+          button{
+            background-color: transparent;
+           border: transparent;
+            color: $accent;
+            font-size: 16px;
+            height: 32px;
+            width: 80%;
+        }
       }
+    }
+      
       .user-icon{
           font-size: 65px;
           margin-bottom: 0;
