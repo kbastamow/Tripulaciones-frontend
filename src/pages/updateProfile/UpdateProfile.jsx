@@ -7,16 +7,13 @@ const UpdateProfile = () => {
 
    const [gender, setGender] = useState("") 
   const handleChange = (value) => {
-    console.log(`selected ${value}`);
     setGender(value)
   };
 
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
-    console.log(gender)
-    console.log("Success:", values);
- 
+   
     const myData = {
       age: values.edad,
       gender: gender,

@@ -29,6 +29,7 @@ function App() {
           <Route path="/events" element={<Events />} /> 
           <Route path="/events/:id" element={<EventOne />} />
           <Route path="/navBar" element={<NavBar />} />
+          <Route path="/updateProfile" element={<UpdateProfile />} />
 
 
         </Routes>
