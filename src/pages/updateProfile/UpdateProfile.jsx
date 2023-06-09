@@ -1,16 +1,21 @@
 import { Button, Checkbox, Form, Input, Select, Space } from "antd";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../../features/auth/authSlice";
+import { getAll } from "../../features/program/programSlice";
 
 const UpdateProfile = () => {
+  const dispatch = useDispatch();
+  
+  const {programs} = useSelector(state => state.program)
 
-   const [gender, setGender] = useState("") 
+  const [gender, setGender] = useState("") 
   const handleChange = (value) => {
     setGender(value)
   };
 
-  const dispatch = useDispatch();
+  
+
 
   const onFinish = (values) => {
    
@@ -24,6 +29,58 @@ const UpdateProfile = () => {
     console.log(myData);
     dispatch(updateProfile(myData));
   };
+
+
+useEffect(() => {
+  dispatch(getAll())
+}, [])
+
+
+
+
+{/* <span>Programa</span>
+          <Select
+            name="programa"
+            defaultValue="Femenino"
+            style={{
+              width: 120,
+            }}
+            onChange={handleChange}
+            options={[
+              {
+                value: "Masculino",
+                label: "Masculino",
+              },
+              {
+                value: "Femenino",
+                label: "Femenino",
+              },
+              {
+                value: "Otros",
+                label: "Otros",
+              },
+            ]}
+          />
+ */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // const onFinish = (e) => {
   //   e.preventDefault();

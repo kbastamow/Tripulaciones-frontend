@@ -17,14 +17,10 @@ const login = async(userData)=>{
   return res.data
  }
 
-const updateProfile = async () => {
-  const token = JSON.parse(localStorage.getItem("token"));
-  console.log('token',token);
-  
-  const res = await axios.put(API_URL + "/users/updateProfile", {
-    
+const updateProfile = async (data) => {
+   const res = await axios.put(API_URL + "/users/updateProfile", data, {
     headers: {
-      authorization: token,
+      authorization: JSON.parse(localStorage.getItem("token")),
       }
   }); 
   console.log(res.data)  
