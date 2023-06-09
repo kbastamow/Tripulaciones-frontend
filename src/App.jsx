@@ -8,6 +8,7 @@ import Login from './pages/login/Login';
 import Events from './pages/events/Events';
 import { Home } from './pages/home/Home';
 import Community from './pages/community/Community';
+import UserDetails from './pages/userDetails/UserDetails';
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
           <Route path="/events" element={<Events />} />         
           <Route path="/" element={<Home />} />
           <Route path="/community" element={<Community />} />
-
+          <Route path="/userDetails/:id" element={<UserDetails />} />
 
 
         </Routes>

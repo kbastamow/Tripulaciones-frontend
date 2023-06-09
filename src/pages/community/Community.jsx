@@ -4,6 +4,7 @@ import "./Community.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAll } from "../../features/users/userSlice";
 import { CgProfile } from "react-icons/cg";
+import { Link } from "react-router-dom";
 
 const Community = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const Community = () => {
 
         <div className="container-c-users">
           {users.slice(0, 4).map((user) => (
-            <div className="card-users-c" key={user.id}>
+            <div className="card-users-c" key={user._id}>
               {user.image ? (
                 <div className="img-container">
                   <img
@@ -40,7 +41,9 @@ const Community = () => {
                 {user.name} {user.surname}
               </h4>
               <p>{user.program.translation}</p>
-              <button>Contactar</button>
+              <Link to={`/userDetails/${user._id}`}>
+                <button>Contactar</button>
+              </Link>
             </div>
           ))}
         </div>
