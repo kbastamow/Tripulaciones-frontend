@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import "./Community.scss";
-import { useDispatch, useSelector } from 'react-redux'
-import { getAll } from "../../features/users/userSlice"
+import { useDispatch, useSelector } from "react-redux";
+import { getAll } from "../../features/users/userSlice";
 
 const Community = () => {
-
   const dispatch = useDispatch();
 
-  const users = useSelector((state) => state.users.users);
+  const { users } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getAll());
@@ -22,11 +21,11 @@ const Community = () => {
           <button>Mis grupos</button>
         </div>
         <h2>Gente que podrías conocer:</h2>
-        <ul>
-          {users.map((user) => (
-            <li key={user.id}>{user.name}</li>
+        
+          {users.slice(0, 4).map((user) => (
+            <p key={user.id}>{user.name}</p>
           ))}
-        </ul>
+        
       </div>
       <NavBar />
     </>
@@ -34,3 +33,5 @@ const Community = () => {
 };
 
 export default Community;
+
+
