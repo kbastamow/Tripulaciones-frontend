@@ -21,7 +21,6 @@ const Register = () => {
     const myData = {...values, email: values.email + '@edem.es'}
     console.log(myData)
     dispatch(register(myData))
-
   };
 
   // const onFinish = (e) => {

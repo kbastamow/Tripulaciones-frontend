@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Login from './pages/login/Login';
 import Events from './pages/events/Events';
 import { Home } from './pages/home/Home';
+import NavBar from './components/navBar/NavBar';
 import Header from './components/header/Header';
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
           <Route path="/registerIsma" element={<RegisterIsma />} />
           <Route path="/events" element={<Events />} />
           <Route path="/" element={<Home />} />
+          <Route path="/navBar" element={<NavBar />} />
+
+
         </Routes>
       </BrowserRouter>
     </div>

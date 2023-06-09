@@ -2,14 +2,66 @@
  
 
 :root {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  // font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  background-color: $beige;
+  background-color: $background;
+  
+}
+
+body{
+  margin: 0;
 }
 
 h1{
-  font-family: "assets/fonts/Spectral/Spectral-Regular.ttf";
+  font-family: 'Spectral', serif;;
 }
 
+h2 {
+ color: $hard-brown;
+ font-family: 'Spectral', serif;
+ font-size: 19px;
+ line-height: 24px;
+ padding: 0;
+ margin: 0;
+
+}
+
+//ANTBUTTON general
+.ant-button {
+  border-radius: 0;
+}
+
+
+
+//TODAS LAS CARDS DE ANTD -básico
+
+.ant-card {
+  border-radius: 0;
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+  background-color: $beige;
+}
+
+
+//Texto como en la vista eventos:
+.card-text-event {
+  color: $soft-brown;
+  font-size: 13px;
+  line-height: 105%;
+
+}
+
+
+
+.btn-leer {
+  color: $accent;
+  border: 1px solid $accent;
+  border-radius: 0;
+  background-color: transparent;
+  padding-right: 20%;
+  padding-left:20%;
+
+  
+}

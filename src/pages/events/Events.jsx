@@ -1,7 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAll } from "../../features/events/eventSlice"
 import EventCard from '../../components/eventCard/eventCard';
+import { Button, Menu  } from 'antd';
+
+
+import "./Events.scss"
+import NavBar from '../../components/navBar/NavBar';
+
 
 const Events = () => {
 
@@ -34,9 +40,23 @@ const EventList = () => {
 
 return (
     <>
-        <div>Events</div>
+
+
+        <div>Home</div>
+        {/* <div>
+        <Button className='ant-button'>Primary Button</Button>
+        <Button className='ant-button'>Default Button</Button>
+        <Button className='ant-button'>Dashed Button</Button>
+    </div> */}
+    <div className="event-menu">
+        <span className="menu-btn">Recientes</span>
+        <span  className="menu-btn">Eventos</span>
+        <span className="menu-btn">Noticias</span>
+        </div>
+
+
         <EventCard></EventCard>
-        <EventList />
+        {/* <EventList />  */}
     </>
 );
 };

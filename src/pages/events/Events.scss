@@ -3,26 +3,22 @@
 .event-menu {
     width: 90%;
     display: flex;
+   
     justify-content: space-around;
     height: 29px;
     margin: auto;
     border: 2px solid $secondary;
     justify-content: space-around;
-    padding:0;
+    padding:0; 
 
 }
 
-.blue-menu-btn {
+
+.menu-btn {
     color: $secondary;
     background-color: none;
     border: none;
     margin: 0;
     flex: 1;
     text-align: center;
-
-}
-
-.blue-menu-active {
-    background-color: $secondary;
-    color: $beige;
 }
