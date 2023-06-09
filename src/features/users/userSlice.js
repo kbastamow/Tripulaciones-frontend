@@ -3,7 +3,7 @@ import userService from "./userService";
 
 const initialState = {
   users: [],
-  user: null,
+  user: "",
 };
 
 export const getAll = createAsyncThunk("user/getAll", async () => {
