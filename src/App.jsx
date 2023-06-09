@@ -9,6 +9,7 @@ import Events from './pages/events/Events';
 import { Home } from './pages/home/Home';
 import NavBar from './components/navBar/NavBar';
 import UpdateProfile from './pages/updateProfile/UpdateProfile';
+import EventOne from './pages/eventOne/eventOne';
 
 
 
@@ -25,6 +26,8 @@ function App() {
           <Route path="/registerIsma" element={<RegisterIsma />} />
           <Route path="/events" element={<Events />} />         
           <Route path="/" element={<Home />} />
+          <Route path="/events" element={<Events />} /> 
+          <Route path="/events/:id" element={<EventOne />} />
           <Route path="/navBar" element={<NavBar />} />
 
 

@@ -38,7 +38,7 @@ return (
         </div>
 
         <Space wrap className='center-content-div'> 
-        <Link to={"/event/" + event._id} key={event._id}>
+        <Link to={"events/" + event._id} key={event._id}>
   
         <Button className="btn-leer">Leer más</Button>
         
