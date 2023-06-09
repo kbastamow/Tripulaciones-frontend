@@ -8,7 +8,7 @@ const token = JSON.parse(localStorage.getItem("token"));
 const initialState = {
   user: user ? user : null,
   token: token ? token : null
- 
+
 };
 
 export const authSlice = createSlice({
@@ -17,11 +17,17 @@ export const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-    .addCase(login.fulfilled, (state, action) => {
-    state.user = action.payload.user;
-    state.token = action.payload.token;
-    })
-    },
+      .addCase(login.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+      })
+
+      .addCase(logout.fulfilled, (state) => {
+        state.user = null;
+        state.token = null;
+      })
+
+  },
 });
 
 export const register = createAsyncThunk("auth/register", async (user) => {
@@ -39,5 +45,14 @@ export const login = createAsyncThunk("auth/login", async (user) => {
     console.error(error);
   }
 });
+
+export const logout = createAsyncThunk("auth/logout", async () => {
+  try {
+    return await authService.logout();
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 
 export default authSlice.reducer;

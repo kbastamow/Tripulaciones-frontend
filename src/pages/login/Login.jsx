@@ -78,10 +78,14 @@ const Login = () => {
             <h1>Risky People.</h1>
             {error && <div className="error">{error}</div>}
             <form onSubmit={onSubmit}>
-                <label className="email-label" htmlFor="email">Email</label>
+                <div className="label">
+                    <label className="email-label" htmlFor="email">Email</label>
                 <input type="email" name="email" value={email} placeholder="micorreo@edem.es" onChange={onChange} />
-                <label htmlFor="password">Contraseña</label>
+                </div>
+                <div className="label">
+                    <label htmlFor="password">Contraseña</label>
                 <input type="password" name="password" value={password} placeholder="Contraseña" onChange={onChange} />
+                </div>
                 <ReCAPTCHA
                     sitekey={sitekey}
                     onChange={onCaptchaChange}
