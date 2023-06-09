@@ -6,7 +6,6 @@ const initialState = {
     event:{}
 }
 
-
 export const eventSlice = createSlice({
     name: "event",
     initialState,
@@ -15,7 +14,9 @@ export const eventSlice = createSlice({
         builder
           .addCase(getAll.fulfilled, (state, action) => {
           state.events = action.payload
-           
+          })
+          .addCase(getById.fulfilled, (state, action) => {
+            state.event = action.payload
           })
       },
     
@@ -29,5 +30,14 @@ export const getAll = createAsyncThunk("event/getAll", async() => {
         console.error(error)
     }
 })
+
+export const getById = createAsyncThunk("event/getById", async(id) => {
+    try {
+        return await eventService.getById(id)
+    } catch (error) {
+        console.error(error) 
+    }
+})
+
 
 export default eventSlice.reducer
