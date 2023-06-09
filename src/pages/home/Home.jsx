@@ -25,6 +25,7 @@ useEffect(() => {
     <span  className="blue-menu-btn">Eventos</span>
     <span className="blue-menu-btn">Noticias</span>
     </div>
+    <EventCard></EventCard>
 </>
   )
 }
