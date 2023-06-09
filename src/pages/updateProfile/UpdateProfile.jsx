@@ -9,88 +9,35 @@ const UpdateProfile = () => {
   
   const {programs} = useSelector(state => state.program)
 
-  const [gender, setGender] = useState("") 
+  const [gender, setGender] = useState("Femenino") 
+  const [programId, setProgramId] = useState("")
   const handleChange = (value) => {
     setGender(value)
   };
 
-  
+  const handleProgramChange = (value) => {
+    setProgramId(value)
+    console.log(programId)
+  };
 
+  useEffect(() => {
+    dispatch(getAll())
+  }, [])
 
   const onFinish = (values) => {
    
     const myData = {
       age: values.edad,
       gender: gender,
-      program: values.programa,
+      program: programId,
       year: values.curso,
       bio: values.biografia,
     };
     console.log(myData);
-    dispatch(updateProfile(myData));
+    // dispatch(updateProfile(myData));
   };
 
 
-useEffect(() => {
-  dispatch(getAll())
-}, [])
-
-
-
-
-{/* <span>Programa</span>
-          <Select
-            name="programa"
-            defaultValue="Femenino"
-            style={{
-              width: 120,
-            }}
-            onChange={handleChange}
-            options={[
-              {
-                value: "Masculino",
-                label: "Masculino",
-              },
-              {
-                value: "Femenino",
-                label: "Femenino",
-              },
-              {
-                value: "Otros",
-                label: "Otros",
-              },
-            ]}
-          />
- */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // const onFinish = (e) => {
-  //   e.preventDefault();
-  //   dispatch(register(user))
-  // const myData = {...values, email: values.email + '@edem.es'}
-  // console.log(myData)
-  // };
-  //   const onFinishFailed = (errorInfo) => {
-  //     console.log('Failed:', errorInfo);
-  //   };
 
   return (
     <div>
@@ -153,18 +100,18 @@ useEffect(() => {
         </Space>
         <br />
         <br />
-        <Form.Item
-          label="Programa"
-          name="programa"
-          rules={[
-            {
-              required: true,
-              message: "Por favor, introduce tu programa!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+ <span>Programa</span>
+          <Select
+            name="programa"
+            style={{
+              width: 120,
+            }}
+            onChange={handleProgramChange}
+            options={programs.length > 0 ? programs.map((program) => ({
+              value: program._id,
+              label: program.name
+            })) : []}
+              />
 
         <Form.Item
           label="Curso"
