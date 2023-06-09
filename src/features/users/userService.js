@@ -13,8 +13,14 @@ const getAll = async() => {
     }
 }
 
+const getById = async (_id) => {
+    const res = await axios.get(API_URL + "/users/getById/" + _id);
+    return res.data;
+  };
+
 const userService = {
-    getAll
+    getAll,
+    getById
    };
    
    export default userService;
