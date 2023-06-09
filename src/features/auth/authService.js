@@ -8,8 +8,15 @@ const register = async (userData) => {
   return res.data;
 };
 
+const updateProfile = async (userData) => {
+  const res = await axios.put(API_URL + "/users/updateProfile", userData); 
+  console.log(res.data)  
+  return res.data;
+};
+
 const authService = {
   register,
+  updateProfile
 };
 
 export default authService;
