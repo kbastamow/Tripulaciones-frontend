@@ -1,22 +1,27 @@
-import { Button, Checkbox, Form, Input, Select, Space } from "antd";
+import { Button, Radio,InputNumber, Form, Input, Select, Space } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../../features/auth/authSlice";
 import { getAll } from "../../features/program/programSlice";
+import Arrow from "../../components/arrow/Arrow";
+const { TextArea } = Input;
+import "./UpdateProfile.scss"
 
 const UpdateProfile = () => {
   const dispatch = useDispatch();
   
   const {programs} = useSelector(state => state.program)
 
-  const [gender, setGender] = useState("Femenino") 
   const [programId, setProgramId] = useState("")
-  const handleChange = (value) => {
-    setGender(value)
-  };
-
+  const [yearInput, setYearInput] = useState("")
+ 
   const handleProgramChange = (value) => {
     setProgramId(value)
+    console.log(programId)
+  };
+
+  const handleYearChange = (value) => {
+    setYearInput(value)
     console.log(programId)
   };
 
@@ -25,23 +30,21 @@ const UpdateProfile = () => {
   }, [])
 
   const onFinish = (values) => {
-   
-    const myData = {
-      age: values.edad,
-      gender: gender,
-      program: programId,
-      year: values.curso,
-      bio: values.biografia,
+    const myData = {...values, program: programId, year: yearInput
     };
-    console.log(myData);
-    // dispatch(updateProfile(myData));
+      
+    const filteredValues = Object.fromEntries(  //Filtra valores que no se han entrado
+    Object.entries(myData).filter(([key, value]) => value !== undefined 
+    && value !== "")
+    );
+    console.log(filteredValues); 
+    dispatch(updateProfile(filteredValues)); //Así no pasamos valores vaciós a la base de datos
   };
 
-
-
   return (
-    <div>
-      <h1>Update Profile</h1>
+    <div className="edit-profile-container">
+      <div  className="blue-title"><Arrow/>Editar perfil</div>
+     <div className="flex-column-container"></div>
       <Form
         name="basic"
         labelCol={{
@@ -59,84 +62,73 @@ const UpdateProfile = () => {
         onFinish={onFinish}
         autoComplete="off"
       >
-        <Form.Item
-          label="Edad"
-          name="edad"
-          rules={[
-            {
-              required: true,
-              message: "Por favor, introduce tu edad!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-
+       
         <Space wrap>
-          <span>Género</span>
-          <Select
-            name="genero"
-            defaultValue="Femenino"
-            style={{
-              width: 120,
-            }}
-            onChange={handleChange}
-            //onFinish={onFinish}
-            options={[
-              {
-                value: "Masculino",
-                label: "Masculino",
-              },
-              {
-                value: "Femenino",
-                label: "Femenino",
-              },
-              {
-                value: "Otros",
-                label: "Otros",
-              },
-            ]}
-          />
+    
         </Space>
         <br />
         <br />
- <span>Programa</span>
-          <Select
-            name="programa"
-            style={{
-              width: 120,
-            }}
-            onChange={handleProgramChange}
-            options={programs.length > 0 ? programs.map((program) => ({
-              value: program._id,
-              label: program.name
-            })) : []}
-              />
+        <p>Estudios</p>
+ <Select
+              placeholder="Elige una opción"
+              name="program"
+              style={{
+                width: 350,
+              }}
+              onChange={handleProgramChange}
+              options={programs.length > 0 ? programs.map((program) => ({
+                value: program._id,
+                label: program.name
+              })) : []}
+                />
+        
+   
+ <div className="center-content-div">
+ <div>
+ <p>Curso</p>
 
-        <Form.Item
-          label="Curso"
-          name="curso"
-          rules={[
-            {
-              required: true,
-              message: "Por favor, introduce tu curso!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+            <Select
+       
+              label="Curso"
+              placeholder="Elige una opción"
+              name="program"
+              style={{
+                width: 200,
+              }}
+              onChange={handleYearChange}
+              options={[
+                {
+                  value: "1",
+                  label: "Primero",
+                },
+                {
+                  value: "2",
+                  label: "Segundo",
+                },
+                {
+                  value: "3",
+                  label: "Tercero",
+                },
+                {
+                  value: "3",
+                  label: "Cuarto",
+                },
+              ]}
+                />
 
-        <Form.Item
-          label="Biografia"
-          name="biografia"
-          rules={[
-            {
-              required: true,
-              message: "Por favor, introduce tu biografía!",
-            },
-          ]}
-        >
-          <Input />
+</div>
+          <div>
+          <p>Edad</p>
+            <Form.Item name="age" min={17} max={99}>
+            <InputNumber />
+                    </Form.Item>
+          </div>
+
+ </div>
+ <p>Biografía</p>
+
+        <Form.Item name="bio">
+          <TextArea rows={4} />
         </Form.Item>
 
         <Form.Item
@@ -145,10 +137,11 @@ const UpdateProfile = () => {
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
+        
         </Form.Item>
+        <Button className="btn-guardar" htmlType="submit">
+           Guardar
+          </Button>
       </Form>
     </div>
   );
