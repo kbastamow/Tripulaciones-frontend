@@ -16,12 +16,14 @@ export const eventSlice = createSlice({
           state.events = action.payload
           })
           .addCase(getById.fulfilled, (state, action) => {
+            // state.event = action.payload
+          })
+          .addCase(joinEvent.fulfilled, (state, action) => {
             state.event = action.payload
           })
       },
     
 })
-
 
 export const getAll = createAsyncThunk("event/getAll", async() => {
     try {
@@ -39,5 +41,12 @@ export const getById = createAsyncThunk("event/getById", async(id) => {
     }
 })
 
+export const joinEvent = createAsyncThunk("event/joinEvent", async(eventId) => {
+    try {
+        return await eventService.joinEvent(eventId)
+    } catch (error) {
+        console.error(error) 
+    }
+})
 
 export default eventSlice.reducer
