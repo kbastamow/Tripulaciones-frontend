@@ -1,209 +1,136 @@
 import React, { useState } from "react";
+import LogoHorizontal from "../../assets/logo-horizontal.png";
+import IconoFlecha from "../../assets/icono-flecha.png";
+import { Link } from "react-router-dom";
+
+import "./Register.scss";
+import { Input } from "antd";
 import { useDispatch } from "react-redux";
 import { register } from "../../features/auth/authSlice";
-import { Button, Checkbox, Form, Input } from 'antd';
 
 const Register = () => {
 
-  const [formData, setFormData] = useState({
-    name: "",
-    surname: "",
-    email: "",
-    password: "",
-  });
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const { name, surname, email, password } = formData;
+  const [formData, setFormData] = useState({
+
+    name:'',
+    surname:'',
+    email:'',
+    password:'',
+    confirmPassword:''
+    
+  })
+
+  const {name,surname,email,password,confirmPassword} = formData
 
   const dispatch = useDispatch()
 
-  const onFinish = (values) => {
-    console.log('Success:', values);
-    const myData = {...values, email: values.email + '@edem.es'}
-    console.log(myData)
-    dispatch(register(myData))
+  const onChange = (e)=>{
+    setFormData((prevState)=> ({
+    ...prevState,
+    [e.target.name]:e.target.value,
+    }))
+  }
+    
+  const onSubmit = (e) => {
+    e.preventDefault()
+    if (password !== confirmPassword) {
+      setErrorMessage("Las contraseñas no coinciden");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@edem\.es$/;
+    const validEmail = emailRegex.test(email);
+
+    if (!validEmail) {
+      setErrorMessage("Tiene que ingresar un email que termine en @edem.es");
+      return;
+    }
+
+    setErrorMessage(""); // Limpiar el mensaje de error si no hay error
+
+    console.log("formData", formData);
+    dispatch(register(formData))
   };
-
-  // const onFinish = (e) => {
-  //   e.preventDefault();
-  //   dispatch(register(user))
-    // const myData = {...values, email: values.email + '@edem.es'}
-    // console.log(myData)
-  // };
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
-
-  // const onChange = (e) => {
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     [e.target.name]: e.target.value,
-  //   }));
-  // };
-
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  //   dispatch(register())
-  // };
-
-  return (
-    <div>
-      <h1>Register</h1>
-      <Form
-        name="basic"
-        labelCol={{
-          span: 8,
-        }}
-        wrapperCol={{
-          span: 16,
-        }}
-        style={{
-          maxWidth: 600,
-        }}
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        <Form.Item
-          label="Name"
-          name="name"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your name!',
-            },
-          ]}
-        >
-        <Input/>
-        </Form.Item>
-
-        <Form.Item
-          label="Surname"
-          name="surname"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your surname!',
-            },
-          ]}
-        >
-        <Input/>
-        </Form.Item>
   
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your email!',
-            },
-          ]}
-        >
-        <div>
-    <Input />
-    <span>@edem.es</span>
-  </div>
-        </Form.Item>
 
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your password!',
-            },
-          ]}
-        >
-        <Input.Password/>
-        </Form.Item>
+    
+  return (
+    <div className="main-register">
+      <div className="img-logo">
+        <img src={LogoHorizontal} alt="" />
+      </div>
 
-      <Form.Item
-        name="remember"
-        valuePropName="checked"
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item>
+      <div className="title-register">
+        <div className="registro-text">
+          <img src={IconoFlecha} alt="" />
+          <h1>Registro</h1>
+        </div>
+        <p>Rellena los datos para darte de alta.</p>
+      </div>
 
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        <Button type="primary" htmlType="submit">
-          Submit
-      </Button>
-    </Form.Item>
-  </Form>
-      {/* <Form onSubmit={onSubmit}
-      name="basic"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
-      style={{ maxWidth: 600 }}
-      initialValues={{ remember: true }}
-      autoComplete="off"
-    >
-      <Form.Item
-        label="Name"
-        name="name"
-        value={name}
-        onChange={onChange}
-        rules={[{ required: true, message: 'Please input your name!' }]}
-      >
-      
-        <Input />
-      </Form.Item>
+      <form onSubmit={onSubmit} className="register-form">
+        <div className="input-one">
+          <label>Nombre</label>
+          <input
+            className="inputRegister"
+            name="name"
+            placeholder="Nombre"
+            value={name}
+            onChange={onChange}
+          />
+        </div>
 
-      <Form.Item
-        label="Surname"
-        name="surname"
-        value={surname}
-        onChange={onChange}
-        rules={[{ required: true, message: 'Please input your surname!' }]}
-      >
-          <Input />
-      </Form.Item>
+        <div className="input-one">
+          <label>Apellidos</label>
+          <input
+            className="inputRegister"
+            name="surname"
+            placeholder="Apellidos"
+            allowClear
+            value={surname}
+            onChange={onChange}
+          />
+        </div>
 
-      <Form.Item
-        label="Email"
-        name="email"
-        value={email}
-        onChange={onChange}
-        rules={[{ required: true, message: 'Please input your email!' }]}
-      >
-          <Input />
-      </Form.Item>
+        <div className="input-one">
+          <label>Email</label>
+          <input
+            className="inputRegister"
+            placeholder="Email"
+            name="email"
+            allowClear
+            value={email}
+            onChange={onChange}
+          />
+        </div>
 
-      <Form.Item
-        label="Password"
-        name="password"
-        value={password}
-        onChange={onChange}
-        rules={[{ required: true, message: 'Please input your password!' }]}
-      >
-        <Input.Password />
-      </Form.Item>
+        <div className="input-one">
+          <label>Contraseña</label>
+          <Input.Password className="inputPassword" type="password" name="password"
+          value={password} placeholder="Contraseña" onChange={onChange}/>
+        </div>
 
-      <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item>
+        <div className="input-one">
+          <label>Repetir contraseña</label>
+          <Input.Password className="inputPassword" type="password" name="confirmPassword" value={confirmPassword}placeholder="Contraseña" onChange={onChange}/>
+        </div>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit" onSubmit={onSubmit}>
-          Submit
-        </Button>
-      </Form.Item>
-    </Form> */}
-  </div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+        <button type="submit">Crear cuenta</button>
+        <p>
+          ¿Ya tienes cuenta?{" "}
+          <span>
+            <Link className="link-register" to="/login">
+              Inicia sesión
+            </Link>
+          </span>
+        </p>
+      </form>
+    </div>
   );
-};
+}
 
 export default Register;
