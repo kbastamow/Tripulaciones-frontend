@@ -38,7 +38,7 @@
         }
     }
     .home{
-        border-top: 11px solid $accent;
+        border-top: 11px solid $secondary;
     }
     .empresas{
         border-top: 11px solid $secondary;
@@ -52,3 +52,7 @@
     
   }
 }
+
+.active {
+    border-top: 11px solid $accent !important;
+  }
