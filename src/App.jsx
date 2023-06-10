@@ -9,6 +9,8 @@ import RegisterIsma from './pages/registerIsma/RegisterIsma';
 import Login from './pages/login/Login';
 import Events from './pages/events/Events';
 import { Home } from './pages/home/Home';
+import Community from './pages/community/Community';
+import UserDetails from './pages/userDetails/UserDetails';
 import NavBar from './components/navBar/NavBar';
 import Header from './components/header/Header';
 import UpdateProfile from './pages/updateProfile/UpdateProfile';
@@ -34,6 +36,8 @@ function App() {
           <Route path="/registerIsma" element={<RegisterIsma />} />
           <Route path="/events" element={<Events />} />
           <Route path="/" element={<Home />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/userDetails/:id" element={<UserDetails />} />
           <Route path="/events" element={<Events />} /> 
           <Route path="/events/:id" element={<EventOne />} />
           <Route path="/navBar" element={<NavBar />} />
