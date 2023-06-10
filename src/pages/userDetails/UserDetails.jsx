@@ -37,7 +37,10 @@ const UserDetails = () => {
 
   return (
     <div>
-      <Arrow />
+      <div className="contacto-text">
+          <Arrow />
+          <h1>Contacto</h1>
+        </div>
 
       <div className="user-details">
         <img src={Banner} alt="" />
@@ -58,7 +61,12 @@ const UserDetails = () => {
             )}
             <p className="year">{getOrdinal(user.year)} curso</p>
           </div>
+          
         </div>
+        <div>
+              <button>Conectar</button>
+              <button>Enviar mensaje</button>
+          </div>
         <div className="bio">
           <p className="title">Bio:</p>
           <p className="content">{user.bio}</p>
