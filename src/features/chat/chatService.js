@@ -8,7 +8,7 @@ const create = async (chatData) => {
   return res.data;
 };
 
-const authService = {
+const chatService = {
     create,
    
   };
