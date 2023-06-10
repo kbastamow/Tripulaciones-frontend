@@ -29,11 +29,22 @@ h2 {
 
 }
 
-//ANTBUTTON general
-.ant-button {
-  border-radius: 0;
+p {
+  font-family: 'Atkinson Hyperlegible', sans-serif;
 }
 
+
+//TEXTO: 
+
+.blue-title {
+  font-family: 'Spectral', serif;
+ font-style: normal;
+ font-weight: 800;
+ font-size: 19px;
+ color: $secondary;
+ margin-top:auto;
+ margin-bottom: auto;
+}
 
 
 //TODAS LAS CARDS DE ANTD -básico
@@ -42,6 +53,7 @@ h2 {
   border-radius: 0;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
   background-color: $beige;
+
 }
 
 
@@ -54,7 +66,7 @@ h2 {
 }
 
 
-
+//BUTTONS
 .btn-leer {
   color: $accent;
   border: 1px solid $accent;
@@ -63,5 +75,56 @@ h2 {
   padding-right: 20%;
   padding-left:20%;
 
+  .btn-leer:not(:disabled):hover {
+    /* Prevent color change on hover */
+    background-color: inherit;
+    border-color: inherit;
+    color: inherit;
+  }
+
+}
+
+
+.btn-guardar {
+  color: $accent;
+  padding: 4px 15px;
+  width: 100%;
+  border: 1px solid $accent;
+  border-radius: 0;
+  background-color: transparent;
+  margin: auto;
+  text-align: center;
   
+
+  .btn-guardar:not(:disabled):hover {
+    /* Prevent color change on hover */
+    background-color: transparent;
+    border-color: $accent;
+    color: $accent;
+  }
+
+
+}
+
+
+//ANTBUTTON general
+.ant-button-default {
+  border-radius: 0;
+  background-color: inherit;
+  border-color: inherit;
+  color: inherit;
+}
+
+
+
+
+
+.center-content-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-column-container {
+  display:flex;
+  flex-direction: column;
 }

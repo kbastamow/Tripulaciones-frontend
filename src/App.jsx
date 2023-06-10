@@ -9,10 +9,16 @@ import Events from './pages/events/Events';
 import { Home } from './pages/home/Home';
 import NavBar from './components/navBar/NavBar';
 import Header from './components/header/Header';
+import UpdateProfile from './pages/updateProfile/UpdateProfile';
+import EventOne from './pages/eventOne/eventOne';
+
+
+
 
 function App() {
   // const { pathname } = useLocation();
 
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -24,14 +30,16 @@ function App() {
           <Route path="/registerIsma" element={<RegisterIsma />} />
           <Route path="/events" element={<Events />} />
           <Route path="/" element={<Home />} />
+          <Route path="/events" element={<Events />} /> 
+          <Route path="/events/:id" element={<EventOne />} />
           <Route path="/navBar" element={<NavBar />} />
+          <Route path="/updateProfile" element={<UpdateProfile />} />
 
 
         </Routes>
       </BrowserRouter>
     </div>
   );
-
 }
 
 export default App

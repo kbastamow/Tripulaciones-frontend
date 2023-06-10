@@ -55,4 +55,12 @@ export const logout = createAsyncThunk("auth/logout", async () => {
 });
 
 
+export const updateProfile = createAsyncThunk("auth/updateProfile", async (user) => {
+  try {
+      return await authService.updateProfile(user);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
 export default authSlice.reducer;

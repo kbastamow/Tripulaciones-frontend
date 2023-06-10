@@ -20,7 +20,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { email, password } = formData;
   const dispatch = useDispatch();
-  // const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY
+  //const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY
 
   const onChange = (e) => {
     setFormData((prevState) => ({
