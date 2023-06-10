@@ -1,9 +1,11 @@
 import React from 'react'
 import './App.scss'
+import { useSelector } from "react-redux";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+
 import Register from './pages/register/Register';
 import RegisterIsma from './pages/registerIsma/RegisterIsma';
-
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Login from './pages/login/Login';
 import Events from './pages/events/Events';
 import { Home } from './pages/home/Home';
@@ -15,15 +17,17 @@ import EventOne from './pages/eventOne/eventOne';
 
 
 
+
 function App() {
-  // const { pathname } = useLocation();
+  const { token } = useSelector((state) => state.auth)
 
   
   return (
     <div className="App">
       <BrowserRouter>
-      <Header />
-        {/* {pathname !== '/login' && pathname !== '/registerIsma' && <Header />} */}
+      <div>
+        {token ? <Header /> : <></>}
+        </div>
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
@@ -37,6 +41,9 @@ function App() {
 
 
         </Routes>
+        <div>
+        {token ? <NavBar /> : <></>}
+        </div>
       </BrowserRouter>
     </div>
   );

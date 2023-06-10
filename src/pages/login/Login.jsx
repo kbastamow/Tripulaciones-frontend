@@ -71,7 +71,7 @@ const Login = () => {
 
   return (
     <div className="principal-container-login">
-      <img src={Logo} alt="" />
+      <img src={Logo} alt="Marina de empresas" />
       <h1>Risky People.</h1>
       <form onSubmit={onSubmit}>
         <div>
