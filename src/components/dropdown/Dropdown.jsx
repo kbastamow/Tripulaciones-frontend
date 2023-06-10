@@ -23,29 +23,24 @@ const Dropdown = () => {
 
 
   const onLogout = (e) => {
-      e.preventDefault();
-      dispatch(logout())
-      setTimeout(() => {
-          navigate('/login')
-      }, 1000)
+    e.preventDefault();
+    dispatch(logout())
+    setTimeout(() => {
+      navigate('/login')
+    }, 1000)
 
   };
-
   const dropdownOptions = ['Option 1', 'Option 2', 'Option 3', <span onClick={onLogout}>Logout</span>];
-
+  const userData = JSON.parse(localStorage.getItem('user'));
   return (
     <div className="dropdown-container">
-      <button className="dropdown-button" onClick={handleDropdownClick}>
-        {isOpen ? 'Close' : 'Open'} Dropdown
-      </button>
+      <button className='user-img' onClick={handleDropdownClick}><img src={`http://localhost:8080/images/user/${userData.image}`} alt="User" /></button>
       {isOpen && (
         <div className="dropdown-options">
           {dropdownOptions.map((option) => (
             <div
               key={option}
-              className={`dropdown-option ${
-                selectedOption === option && 'selected'
-              }`}
+              className={`dropdown-option ${selectedOption === option && 'selected' }`}
               onClick={() => handleOptionClick(option)}
             >
               {option}
