@@ -16,6 +16,7 @@ import Header from './components/header/Header';
 import UpdateProfile from './pages/updateProfile/UpdateProfile';
 import EventOne from './pages/eventOne/eventOne';
 import Chat from './pages/chat/Chat';
+import UserProfile from './pages/userProfile/UserProfile';
 
 
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="/community" element={<Community />} />
           <Route path="/userDetails/:id" element={<UserDetails />} />
           <Route path="/chat/:id" element={<Chat />} />
+          <Route path="/userProfile/:id" element={<UserProfile />} />
           <Route path="/events" element={<Events />} /> 
           <Route path="/events/:id" element={<EventOne />} />
           <Route path="/navBar" element={<NavBar />} />
