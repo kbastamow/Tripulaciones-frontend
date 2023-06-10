@@ -19,11 +19,15 @@ const {event} = useSelector(state => state.events)
 
 
 const dispatch = useDispatch();
+console.log("component mounting")
+console.log(id)
+
 useEffect(() => {
   dispatch(getById(id));
-}, []);
+}, [dispatch, id]);
 
-const attendEvent = () => {
+const attendEvent = (e) => {
+  e.preventDefault();
   console.log(event._id)
   dispatch(joinEvent(event._id))
 }

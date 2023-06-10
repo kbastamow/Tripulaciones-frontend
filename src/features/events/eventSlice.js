@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import eventService from "./eventService";
 
+
 const initialState = {
     events: [],
     event:{}
@@ -19,7 +20,11 @@ export const eventSlice = createSlice({
             state.event = action.payload
           })
           .addCase(joinEvent.fulfilled, (state, action) => {
-            state.event = action.payload
+            if (action.payload) {
+            state.event = action.payload  //IMPORTANT! OTHERWISE STATE UPDATES
+            } else {
+                state.event = state.event
+            }
           })
       },
     
@@ -35,6 +40,7 @@ export const getAll = createAsyncThunk("event/getAll", async() => {
 
 export const getById = createAsyncThunk("event/getById", async(id) => {
     try {
+        console.log("getbyId")
         return await eventService.getById(id)
     } catch (error) {
         console.error(error) 
@@ -45,8 +51,13 @@ export const joinEvent = createAsyncThunk("event/joinEvent", async(eventId) => {
     try {
         return await eventService.joinEvent(eventId)
     } catch (error) {
-        console.error(error) 
-    }
+        const message = error.response.data.errors[0].message;
+        return thunkAPI.rejectWithValue(message);
+      }
+  
+        
+ 
+        
 })
 
 export default eventSlice.reducer
