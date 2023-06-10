@@ -39,8 +39,13 @@ if (!event) {
 
   return (
     <>
-    <Arrow></Arrow>
-    <div className="flex-column-container">
+
+<div className="contacto-text">
+        <Arrow />
+        <h1>Evento</h1>
+      </div>
+
+    <div className="eventone-content">
     <div className="eventone-img">
     <img src={event ? (imagePath + event.image) : logo} alt="" />
 
@@ -58,13 +63,6 @@ if (!event) {
     <div><SlLocationPin/> Edem escuela de empresarios</div>
 
     </div>
-    <div className="eventone-buttons">
-    <Button className="btn-eventone" onClick={attendEvent}>Asistiré</Button>
-    <Button className="btn-eventone" >Registrarse</Button>
-    <span>...</span>
-    </div>
-    <div className="eventone-categories">
-
     <div className="categories">
       
       {event.categoryIds?.map(category => (
@@ -73,6 +71,14 @@ if (!event) {
      ))}
      </div>
     
+    <div className="eventone-buttons">
+    <Button className="btn-eventone" onClick={attendEvent}>Asistiré</Button>
+    <Button className="btn-eventone" >Registrarse</Button>
+    <span>...</span>
+    </div>
+    <div className="eventone-categories">
+
+  
     </div>
     <div className="eventone-description">
       <div className="eventone-title">Descripción del evento:</div>
