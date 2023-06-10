@@ -1,2 +1,23 @@
 @import "../../colors.scss";
 
+
+
+
+.eventone-title {
+    color: $hard-brown;
+    font-size: 14px;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-weight: 700;
+}
+
+.eventone-details {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin: 2% 0;
+}
+
+.eventone-buttons {
+  display: flex;
+  justify-content: space-between;
+}

@@ -3,7 +3,7 @@ import "./Home.scss"
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAll } from "../../features/events/eventSlice"
-import EventCard from '../../components/eventCard/eventCard';
+import EventCard from '../../components/eventCard/EventCard';
 import { Button, Menu  } from 'antd';
 
 export const Home = () => {
@@ -21,8 +21,8 @@ useEffect(() => {
     <>
     <div>Home</div>
     <div className="event-menu">
-    <span className="blue-menu-btn blue-menu-active">Recientes</span>
-    <span  className="blue-menu-btn">Eventos</span>
+    <span className="blue-menu-btn">Recientes</span>
+    <span  className="blue-menu-btn blue-menu-active">Eventos</span>
     <span className="blue-menu-btn">Noticias</span>
     </div>
     <EventCard></EventCard>

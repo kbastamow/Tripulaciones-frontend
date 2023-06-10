@@ -79,7 +79,23 @@ p {
   padding-right: 20%;
   padding-left:20%;
 
-  .btn-leer:not(:disabled):hover {
+  .btn-leer:not(:disabled):hover { //NO FUNCIONA
+    /* Prevent color change on hover */
+    background-color: inherit;
+    border-color: inherit;
+    color: inherit;
+  }
+
+}
+
+//BUTTONS
+.btn-eventone {
+  color: $accent;
+  border: 1px solid $accent;
+  border-radius: 0;
+  background-color: transparent;
+
+  .btn-eventone:active {
     /* Prevent color change on hover */
     background-color: inherit;
     border-color: inherit;
@@ -126,9 +142,22 @@ p {
 .center-content-div {
   display: flex;
   justify-content: space-between;
+
+   .one-item {
+    justify-content: center;
+   }
 }
 
 .flex-column-container {
   display:flex;
   flex-direction: column;
+}
+
+.grey-tag {
+  color: $hard-brown;
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  border-radius: 10px;
+  border: 1px solid $soft-brown;
+  background-color: transparent;
+
 }
