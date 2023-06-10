@@ -64,10 +64,10 @@ const UserDetails = () => {
           </div>
         </div>
         <div className="btns">
-          <Link to={`/userDetails/${user._id}`}>
+          <Link to={`/chat/${user._id}`}>
             <button>Contactar</button>
           </Link>
-          <Link to={`/userDetails/${user._id}`}>
+          <Link to={`/chat/${user._id}`}>
             <button>Enviar mensaje</button>
           </Link>
         </div>
