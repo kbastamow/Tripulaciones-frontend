@@ -14,7 +14,7 @@ import UserDetails from './pages/userDetails/UserDetails';
 import NavBar from './components/navBar/NavBar';
 import Header from './components/header/Header';
 import UpdateProfile from './pages/updateProfile/UpdateProfile';
-import EventOne from './pages/eventOne/eventOne';
+import EventOne from './pages/eventOne/EventOne';
 import Chat from './pages/chat/Chat';
 import UserProfile from './pages/userProfile/UserProfile';
 

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import Arrow from "../../components/arrow/Arrow";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getById } from "../../features/events/eventSlice";
+import { getById, joinEvent } from "../../features/events/eventSlice";
 import logo from "../../assets/logo.png"
 import { Button, Tag } from "antd";
 import {AiOutlineCalendar} from "react-icons/ai"
@@ -23,6 +23,11 @@ useEffect(() => {
   dispatch(getById(id));
 }, []);
 
+const attendEvent = () => {
+  console.log(event._id)
+  dispatch(joinEvent(event._id))
+}
+
 
 if (!event) {
   return <></>
@@ -32,8 +37,6 @@ if (!event) {
     <>
     <Arrow></Arrow>
     <div className="flex-column-container">
-    
-    <div>eventOne</div>
     <div className="eventone-img">
     <img src={event ? (imagePath + event.image) : logo} alt="" />
 
@@ -46,23 +49,26 @@ if (!event) {
    
     <div><AiOutlineCalendar/><DateTimeConverter datetime={event.date}/></div>
 
-    <div><BiGroup/>{event.userids?.length || 0} asistentes</div>
+    <div><BiGroup/>{event.userIds?.length || 0} asistentes</div>
    
     <div><SlLocationPin/> Edem escuela de empresarios</div>
 
     </div>
     <div className="eventone-buttons">
-    <Button className="btn-eventone">Asistiré</Button>
-    <Button className="btn-eventone">Registrarse</Button>
+    <Button className="btn-eventone" onClick={attendEvent}>Asistiré</Button>
+    <Button className="btn-eventone" >Registrarse</Button>
     <span>...</span>
     </div>
     <div className="eventone-categories">
+
+    <div className="categories">
+      
       {event.categoryIds?.map(category => (
-        <Tag  className="grey-tag">{category.name}</Tag>
+        <p>{category.name}</p> 
+        
      ))}
+     </div>
     
-
-
     </div>
     <div className="eventone-description">
       <div className="eventone-title">Descripción del evento:</div>
