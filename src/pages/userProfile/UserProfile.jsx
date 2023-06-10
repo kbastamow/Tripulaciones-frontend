@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getById } from "../../features/users/userSlice";
 import { logout } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
@@ -45,13 +45,20 @@ const UserProfile = () => {
         setTimeout(() => {
             navigate('/login')
         }, 2000)
+
     }
+
+
+
+
+  
+
 
     return (
         <div>
             <div className="contacto-text">
                 <Arrow />
-                <h1>Contacto</h1>
+                <h1>Perfil</h1>
             </div>
 
             <div className="user-details">
@@ -93,7 +100,7 @@ const UserProfile = () => {
                     <div className="events">
                         {user &&
                             user.eventIds &&
-                            user.eventIds.map((event) => <p><FiCalendar/>{event.title}<span className="span-ver">Ver</span></p>)}
+                            user.eventIds.map((event) => <p><FiCalendar/>{event.title}<span className="span-ver"> <Link className="link-event" to= {`/events/${event._id}`}>Ver</Link></span></p>)}
                     </div>
                 </div>
             </div>
