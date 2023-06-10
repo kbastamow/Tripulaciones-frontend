@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getById } from "../../features/users/userSlice";
 import { logout } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
