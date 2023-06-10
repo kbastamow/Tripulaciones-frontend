@@ -1,13 +1,5 @@
 @import "../../colors.scss";
 
-.home {
-  border-top: 11px solid $secondary !important;
-}
-
-.comunidad {
-  border-top: 11px solid $accent !important;
-}
-
 .community-container {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -21,7 +13,7 @@
     color: $accent;
     text-align: center;
   } 
-  .btns {
+  .btn-con {
     margin-top: 2rem;
     display: flex;
     justify-content: space-between;
@@ -33,6 +25,7 @@
       font-size: 16px;
       color: $accent;
       width: 47%;
+      text-align: center;
     }
   }
   .container-c-users {
@@ -80,10 +73,12 @@
           align-items: center;
           border: 1px solid $accent;
       a{
-          
+          text-decoration: none !important;
+          padding-right: 1rem;
+          padding-left: 1rem;
           button{
             background-color: transparent;
-           border: transparent;
+            border: transparent;
             color: $accent;
             font-size: 16px;
             height: 32px;

@@ -18,7 +18,7 @@ const Community = () => {
   return (
     <>
       <div className="community-container">
-        <div className="btns">
+        <div className="btn-con">
           <button>Mis contactos</button>
           <button>Mis grupos</button>
         </div>
