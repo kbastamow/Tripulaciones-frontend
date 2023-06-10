@@ -15,6 +15,7 @@ import NavBar from './components/navBar/NavBar';
 import Header from './components/header/Header';
 import UpdateProfile from './pages/updateProfile/UpdateProfile';
 import EventOne from './pages/eventOne/eventOne';
+import UserProfile from './pages/userProfile/UserProfile';
 
 
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/community" element={<Community />} />
           <Route path="/userDetails/:id" element={<UserDetails />} />
+          <Route path="/userProfile/:id" element={<UserProfile />} />
           <Route path="/events" element={<Events />} /> 
           <Route path="/events/:id" element={<EventOne />} />
           <Route path="/navBar" element={<NavBar />} />

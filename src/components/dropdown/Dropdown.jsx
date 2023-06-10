@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./Dropdown.scss"
 import { logout } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, /* useSelector */} from "react-redux";
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +34,7 @@ const Dropdown = () => {
   const userData = JSON.parse(localStorage.getItem('user'));
   return (
     <div className="dropdown-container">
-      <button className='user-img' onClick={handleDropdownClick}><img src={`http://localhost:8080/images/user/${userData.image}`} alt="User" /></button>
+    <button className='user-img' onClick={handleDropdownClick}><img src={`http://localhost:8080/images/user/${userData.image}`} alt="User" /></button>
       {isOpen && (
         <div className="dropdown-options">
           {dropdownOptions.map((option) => (
