@@ -1,24 +1,30 @@
 
-.eventcard-general {
-    // width: 90%;
-    // height: 50%;
+.eventcard-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
-    padding-top: 2%;
+.eventcard-general {
+    width: 90%;
+    box-shadow: none;
     border-radius: 0;
-    margin: 2% 4%;
+    margin: 3% 2%;
     display: flex;
     flex-direction: column;
     align-items:center;
 
     img {
-        height: 180px;
+
+        width: 100%;
         object-fit: cover;
-        margin: 2%;
-        border-radius: 0;
+        filter: sepia(1);
+        border-radius: 0px 0px 50% 50% !important;
+        background-size: cover;
       }
 }
 
-
-.round-img-container {
-  border-radius: 0 0 10px 10px;
+.center-button-div {
+  display: flex;
+  justify-content: center;
 }
