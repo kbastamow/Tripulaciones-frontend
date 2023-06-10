@@ -37,8 +37,6 @@ if (!event) {
     <>
     <Arrow></Arrow>
     <div className="flex-column-container">
-    
-    <div>eventOne</div>
     <div className="eventone-img">
     <img src={event ? (imagePath + event.image) : logo} alt="" />
 
@@ -51,7 +49,7 @@ if (!event) {
    
     <div><AiOutlineCalendar/><DateTimeConverter datetime={event.date}/></div>
 
-    <div><BiGroup/>{event.userids?.length || 0} asistentes</div>
+    <div><BiGroup/>{event.userIds?.length || 0} asistentes</div>
    
     <div><SlLocationPin/> Edem escuela de empresarios</div>
 
@@ -62,9 +60,14 @@ if (!event) {
     <span>...</span>
     </div>
     <div className="eventone-categories">
+
+    <div className="categories">
+      
       {event.categoryIds?.map(category => (
-        <Tag  className="grey-tag">{category.name}</Tag>
+        <p>{category.name}</p> 
+        
      ))}
+     </div>
     
     </div>
     <div className="eventone-description">

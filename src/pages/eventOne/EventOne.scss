@@ -21,3 +21,19 @@
   display: flex;
   justify-content: space-between;
 }
+//FROM ISMA - PUT IN INDEX!!!
+.categories{
+  margin-top: 1rem;
+  display: flex;
+  text-align: justify;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  p{
+    border: 1px solid $soft-brown;
+    border-radius: 20px;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    color: $soft-brown;
+    font-size: 13px;
+  }
+}

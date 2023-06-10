@@ -16,7 +16,7 @@ export const eventSlice = createSlice({
           state.events = action.payload
           })
           .addCase(getById.fulfilled, (state, action) => {
-            // state.event = action.payload
+            state.event = action.payload
           })
           .addCase(joinEvent.fulfilled, (state, action) => {
             state.event = action.payload
