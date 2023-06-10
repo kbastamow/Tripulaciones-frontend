@@ -30,6 +30,12 @@
       padding: 0.2rem 1rem;
       color: $accent;
       text-decoration: none;
+      button{
+        background-color: transparent;
+        border: none;
+        color: $accent;
+        font-size: 14px;
+      }
     }
   }
   img{

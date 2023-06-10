@@ -49,9 +49,7 @@ function App() {
 
 
         </Routes>
-        <div>
-        {token ? <NavBar /> : <></>}
-        </div>
+        
       </BrowserRouter>
     </div>
   );
