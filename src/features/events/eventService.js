@@ -25,19 +25,14 @@ const getById = async(id) => {
 
 const joinEvent = async(eventId) => {
     const token = JSON.parse(localStorage.getItem("token"));
-    try {
         const res = await axios.put(API_URL + "/events/joinEvent/" + eventId, {}, {
             headers: {
                 'Authorization': token,
               }
             })
-            console.log(res.data)
-            return res.data.event
-    } catch (error) {
-        console.error(error)
-        
-    }
-}
+            return res.data
+        };
+
 
 const eventService = {
    getAll,

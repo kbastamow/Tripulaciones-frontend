@@ -5,22 +5,20 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getById, joinEvent } from "../../features/events/eventSlice";
 import logo from "../../assets/logo.png"
-import { Button, Tag } from "antd";
+import { Button, Modal, Tag } from "antd";
 import {AiOutlineCalendar} from "react-icons/ai"
 import {BiGroup} from "react-icons/bi"
 import DateTimeConverter from "../../components/dateTimeConverter/DateTimeConverter";
 import {SlLocationPin} from "react-icons/sl"
+import EventModal from "../../components/modal/EventModal";
 
 const imagePath = "http://localhost:8080/images/event/"
 
 const EventOne = () => {
 const { id } = useParams();
-const {event} = useSelector(state => state.events)
-
+const {event, message, isError, isSuccess} = useSelector(state => state.events)
 
 const dispatch = useDispatch();
-console.log("component mounting")
-console.log(id)
 
 useEffect(() => {
   dispatch(getById(id));
@@ -31,6 +29,21 @@ const attendEvent = (e) => {
   console.log(event._id)
   dispatch(joinEvent(event._id))
 }
+
+// useEffect(() => {
+//   if (isSuccess) {
+//     notification.success({
+//       message: "Success",
+//       description: message,
+//     });
+//   }
+//   if (isError) {
+//     notification.error({ message: "Error", description: message });
+//   }
+//   dispatch(reset())
+// }, [isSuccess, isError, message]);
+
+
 
 
 if (!event) {
@@ -88,6 +101,9 @@ if (!event) {
 
 
     </div>
+
+  <EventModal></EventModal>
+   
   </>
   )
 }
