@@ -87,7 +87,8 @@ const UserProfile = () => {
                     <div className="bio-container-icon">
                         <p className="title">Bio:</p>
                         <Link to='/updateProfile/'><FiPlusCircle className="plus-icon" /></Link>
-                    </div>          <p className="content">{user.bio}</p>
+                    </div>          
+                    <p className="content">{user.bio}</p>
                 </div>
                 <div className="bio">
                     <p className="title">Intereses:</p>
