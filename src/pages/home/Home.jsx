@@ -22,7 +22,7 @@ useEffect(() => {
 
   return (
     <>
-    <div className="event-sticky">
+    <div className="sticky">
       <Header/>
       <div className="event-menu">
       <span className="blue-menu-btn">Recientes</span>
