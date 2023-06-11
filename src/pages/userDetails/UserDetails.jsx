@@ -6,6 +6,8 @@ import Arrow from "../../components/arrow/Arrow";
 import Banner from "../../assets/edem-banner.png";
 import "./UserDetails.scss";
 import { Link } from "react-router-dom";
+import { FiCalendar } from "react-icons/fi";
+
 
 const UserDetails = () => {
   const { id } = useParams();
@@ -35,6 +37,14 @@ const UserDetails = () => {
 
     return `${number}th`;
   }
+
+  function mostrarParrafo(parrafo, numCaracteres) {
+    if (parrafo.length <= numCaracteres) {
+        return parrafo;
+    } else {
+        return parrafo.substring(0, numCaracteres) + "...";
+    }
+}
 
   return (
     <div>
@@ -80,7 +90,25 @@ const UserDetails = () => {
           <div className="categories">
             {user &&
               user.categoryIds &&
-              user.categoryIds.map((category) => <p>{category.name}</p>)}
+              user.categoryIds.map((category) => <p key={category._id}>{category.name}</p>)}
+          </div>
+        </div>
+        <div className="bio">
+          <p className="title">Próximos eventos:</p>
+          <div className="events">
+            {user &&
+              user.eventIds &&
+              user.eventIds.map((event) => (
+                <div key={event._id}>
+                  <p>
+                    <span className="icon">
+                      <FiCalendar />
+                    </span>
+                    {mostrarParrafo(event.title, 30)}
+                    <span className="span-ver"><Link className="link-event" to={`/events/${event._id}`}>Ver</Link></span>
+                  </p>
+                </div>
+              ))}
           </div>
         </div>
       </div>

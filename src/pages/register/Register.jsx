@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LogoHorizontal from "../../assets/logo-horizontal.png";
 import { Link } from "react-router-dom";
 import Arrow from "../../components/arrow/Arrow";
@@ -62,7 +62,14 @@ const Register = () => {
     dispatch(register(formData))
   };
   
-
+  useEffect(() => {
+    if (errorMessage) {
+      const timeout = setTimeout(() => {
+        setErrorMessage("");
+      }, 2000);
+      return () => clearTimeout(timeout);
+    }
+  }, [errorMessage]);
     
   return (
     <div className="main-register">
