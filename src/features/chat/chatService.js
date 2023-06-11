@@ -19,10 +19,23 @@ const findOrCreate = async (otherId) => {
   return res.data;
 };
 
+const getChatById = async (chatId) => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  console.log(chatId)
+  const res = await axios.get(API_URL + "/chats/getChatId/" + chatId, {
+    headers: {
+        'Authorization': token,
+      }
+    });
+  return res.data;
+};
+
+
 
 const chatService = {
     create,
-    findOrCreate
+    findOrCreate,
+    getChatById
   };
   
   export default chatService;

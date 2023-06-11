@@ -1,62 +1,59 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getById } from "../../features/users/userSlice";
-import { create, addSocketMessage } from "../../features/chat/chatSlice";
+// import { getById } from "../../features/users/userSlice";
+import {  addSocketMessage, getChatById
+ } from "../../features/chat/chatSlice";
 import { receiveMessage, sendMessage } from '../../actions/messageActions';
-
-
 
 //SOCKET CLIENT
 import io from 'socket.io-client';
 
 const ChatKat = () => {
-    const { id } = useParams();
-
-
   const dispatch = useDispatch();
+  const you = (JSON.parse(localStorage.getItem("user")))
+  const { id } = useParams();
+  // const { user } = useSelector((state) => state.user);
 
-  const { user } = useSelector((state) => state.user);
-  
   const {chat, socketMessages} = useSelector((state) => state.chat)
-
-
-
-  useEffect(() => {
-    dispatch(getById(id));
-  }, []);
-
   const [message, setMessage] = useState("");
-  const userId = JSON.parse(localStorage.getItem("user"));
+  const [inputMessage, setInputMessage] = useState('');
+  const [socket, setSocket] = useState(null);
+  
+
+
+
+console.log(chat)
+
+  // const userId = JSON.parse(localStorage.getItem("user"));
 
   const handleInputChange = (event) => {
     setMessage(event.target.value);
   };
 
   const handleSendMessage = () => {
-    const chatData = {
-      users: [user._id, userId._id],
-      messages: [
-        {
-          sender: user._id,
-          content: message,
-        },
-      ],
-    };
+    console.log("not important")
+    // const chatData = {
+    //   users: [user._id, userId._id],
+    //   messages: [
+    //     {
+    //       sender: user._id,
+    //       content: message,
+    //     },
+    //   ],
+    // };
   
-    dispatch(create(chatData));
+    // dispatch(create(chatData));
   };
   
-  
 //SOCKET
-
 // const socket = io.connect('http://localhost:8080');
 // const messages = useSelector((state) => state.chat.messages);
 
-const [inputMessage, setInputMessage] = useState('');
-const [socket, setSocket] = useState(null);
+
 
 useEffect(() => {
+  dispatch(getChatById(id));
    // Set up socket.io connection
    const newSocket = io.connect('http://localhost:8080');
    setSocket(newSocket);
@@ -72,12 +69,12 @@ useEffect(() => {
    };
  }, []);
 
-
 const socketSendMessage = () => {
   // Dispatch the send message action
   const messageData = {
     content: inputMessage,
-    sender: user.name,
+    sender: you.name,
+    senderName: you.name,
     timestamp: new Date().toISOString(), // Convert to ISO 8601 string or reducers doesn't accept
   };
   socket.emit('message', messageData);
@@ -86,9 +83,16 @@ const socketSendMessage = () => {
   setInputMessage('');
 };
 
+
+
+if (!chat) {
+  console.log("no hay chat")
+  return <></>
+}
+
   return (
     <div>
-    {user.name}
+   Chat entre {chat.users[1].name} y {chat.users[0].name}
 <br />
 <div>
       <div>
@@ -96,7 +100,7 @@ const socketSendMessage = () => {
          socketMessages.map((message, index) => (
          <>
            <div key={index}>
-            <span>{message.sender} {message.timestamp}</span>
+            <span>{message.senderName} {message.timestamp}</span>
           <p >{message.content}</p>
           </div>
           </>
