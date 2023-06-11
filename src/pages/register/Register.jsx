@@ -35,6 +35,17 @@ const Register = () => {
     
   const onSubmit = (e) => {
     e.preventDefault()
+
+    if (!name) {
+      setErrorMessage("Por favor, introduce tu nombre");
+      return;
+    }
+
+    if (!surname) {
+      setErrorMessage("Por favor, introduce tu apellido");
+      return;
+    }
+
     if (password !== confirmPassword) {
       setErrorMessage("Las contraseñas no coinciden");
       return;
