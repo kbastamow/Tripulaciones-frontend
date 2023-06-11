@@ -28,9 +28,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <div>
+      {/* <div>
         {token ? <Header /> : <></>}
-        </div>
+        </div> */}
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />

@@ -1,5 +1,7 @@
 @import "../../colors.scss";
 
+
+
 .event-menu {
     width: 90%;
     display: flex;
@@ -7,8 +9,10 @@
     height: 29px;
     margin: auto;
     border: 2px solid $secondary;
-    justify-content: space-around;
+    align-items: center;
     padding:0;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 
 }
 
@@ -19,7 +23,8 @@
     margin: 0;
     flex: 1;
     text-align: center;
-
+padding-top: 3px;
+padding-bottom: 3px;
 }
 
 .blue-menu-active {
@@ -28,10 +33,3 @@
 }
 
 
-.home{
-    border-top: 11px solid $accent !important;
-}
-
-.comunidad{
-    border-top: 11px solid $secondary !important;
-}

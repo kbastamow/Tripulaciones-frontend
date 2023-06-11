@@ -6,6 +6,8 @@ import { getAll } from "../../features/events/eventSlice"
 
 import { Button, Menu  } from 'antd';
 import EventCard from "../../components/eventCard/eventCard";
+import NavBar from "../../components/navBar/NavBar";
+import Header from "../../components/header/Header";
 
 export const Home = () => {
       
@@ -20,13 +22,16 @@ useEffect(() => {
 
   return (
     <>
-    <div>Home</div>
-    <div className="event-menu">
-    <span className="blue-menu-btn">Recientes</span>
-    <span  className="blue-menu-btn blue-menu-active">Eventos</span>
-    <span className="blue-menu-btn">Noticias</span>
+    <div className="sticky">
+      <Header/>
+      <div className="event-menu">
+      <span className="blue-menu-btn">Recientes</span>
+      <span  className="blue-menu-btn blue-menu-active">Eventos</span>
+      <span className="blue-menu-btn">Noticias</span>
+      </div>
     </div>
     <EventCard></EventCard>
+    <NavBar/>
 </>
   )
 }

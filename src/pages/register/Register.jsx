@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LogoHorizontal from "../../assets/logo-horizontal.png";
-import IconoFlecha from "../../assets/icono-flecha.png";
 import { Link, useNavigate } from "react-router-dom";
-
+import Arrow from "../../components/arrow/Arrow";
 import "./Register.scss";
 import { Input } from "antd";
 import { useDispatch } from "react-redux";
@@ -91,7 +90,7 @@ const Register = () => {
 
       <div className="title-register">
         <div className="registro-text">
-          <img src={IconoFlecha} alt="" />
+          <Arrow/>
           <h1>Registro</h1>
         </div>
         <p>Rellena los datos para darte de alta.</p>
