@@ -21,14 +21,11 @@ const ChatInstant = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [socket, setSocket] = useState(null);
   
-  console.log(chat)
-
   const handleInputChange = (event) => {
     setMessage(event.target.value);
   };
 
 useEffect(() => {
-    console.log("this is id", id)
   dispatch(getChatById(id));
    // Set up socket.io connection
    const newSocket = io.connect('http://localhost:8080');
@@ -78,7 +75,10 @@ if (!chat) {
          <>
            <div key={index}>
            <div className="msg-time"><DateTimeConverter datetime = {message.timestamp}/> mensaje de {message.senderName}</div>
-          <span className="msg-container">{message.content}</span>
+<div className="flex-div">
+      
+          <span className={message.sender === you._id ? "my-msg-container" : "msg-container"}>{message.content}</span>
+          </div>
           </div>
           </>
         )))
