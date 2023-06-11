@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-// import { getById } from "../../features/users/userSlice";
-import {  addSocketMessage, getChatById
- } from "../../features/chat/chatSlice";
+import {  addSocketMessage, getChatById } from "../../features/chat/chatSlice";
 import { receiveMessage, sendMessage } from '../../actions/messageActions';
+import "./ChatInstant.scss"
 
 //SOCKET CLIENT
 import io from 'socket.io-client';
+import DateTimeConverter from "../../components/dateTimeConverter/DateTimeConverter";
+import { BiMicrophone, BiPlusCircle } from "react-icons/bi";
 
-const ChatKat = () => {
+
+
+const ChatInstant = () => {
   const dispatch = useDispatch();
   const you = (JSON.parse(localStorage.getItem("user")))
-  const { id } = useParams();
-  // const { user } = useSelector((state) => state.user);
-
+  const { id } = useParams()
   const {chat, socketMessages} = useSelector((state) => state.chat)
   const [message, setMessage] = useState("");
   const [inputMessage, setInputMessage] = useState('');
@@ -26,21 +27,6 @@ const ChatKat = () => {
     setMessage(event.target.value);
   };
 
-  const handleSendMessage = () => {
-    console.log("not important")
-    // const chatData = {
-    //   users: [user._id, userId._id],
-    //   messages: [
-    //     {
-    //       sender: user._id,
-    //       content: message,
-    //     },
-    //   ],
-    // };
-  
-    // dispatch(create(chatData));
-  };
-  
 useEffect(() => {
     console.log("this is id", id)
   dispatch(getChatById(id));
@@ -60,6 +46,7 @@ useEffect(() => {
  }, []);
 
 const socketSendMessage = () => {
+  if (inputMessage === "") return
   // Dispatch the send message action
   const messageData = {
     _id: chat._id,
@@ -80,37 +67,41 @@ if (!chat) {
 }
 
   return (
-    <div>
+    <>
    
     {chat.userIds[0].name ? <>Chat entre {chat.userIds[1].name} y {chat.userIds[0].name}</> : <></>}
 <br />
-<div>
+<div className="msgwindow-div">
       <div>
         {(socketMessages.length < 1) ? <></> : (
          socketMessages.map((message, index) => (
          <>
            <div key={index}>
-            <span>{message.senderName} {message.timestamp}</span>
-          <p >{message.content}</p>
+           <div className="msg-time"><DateTimeConverter datetime = {message.timestamp}/> mensaje de {message.senderName}</div>
+          <span className="msg-container">{message.content}</span>
           </div>
           </>
         )))
     }
       </div>
+      </div>
+      <hr />
+      <div className="chatinput-div">
+      
+      <BiPlusCircle/>
       <input
         type="text"
+        placeholder="Aaa"
         value={inputMessage}
         onChange={(e) => setInputMessage(e.target.value)}
       />
-      <button onClick={socketSendMessage}>Send</button>
-    </div>
-<input type="text" value={message} onChange={handleInputChange} />
-    <button type="submit" onClick={handleSendMessage}>
-      Enviar
-    </button> 
-    </div>
+      <button onClick={socketSendMessage}>Enviar</button>
+      <BiMicrophone/>
+      </div>
+    
+    </>
     
   )
 }
 
-export default ChatKat
+export default ChatInstant

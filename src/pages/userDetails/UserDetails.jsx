@@ -31,7 +31,7 @@ console.log("chat in userDetail", chat)
   if (chatIsSuccess) {
     console.log(chatIsSuccess)
     setTimeout(() => {
-    navigate("/chat/kat/" + chat._id)
+    navigate("/chat/instant/" + chat._id)
     }, 1000);
   }
  }, [chatIsSuccess])
