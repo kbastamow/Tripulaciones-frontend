@@ -70,8 +70,8 @@ export const getById = createAsyncThunk("event/getById", async(id) => {
 
 export const joinEvent = createAsyncThunk("event/joinEvent", async(eventId, thunkAPI) => {
     try {
-        const res =  await eventService.joinEvent(eventId)
-        console.log(res)
+        return await eventService.joinEvent(eventId)
+      
     } catch (error) {
         console.log("In Slice,", error)
         console.log("In Slice,", error.response.data)
