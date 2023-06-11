@@ -107,7 +107,7 @@ const UserProfile = () => {
                         <FiCalendar />
                     </span>
                     {mostrarParrafo(event.title, 30)}
-                    <span className="span-ver">Ver</span>
+                    <span className="span-ver"><Link className="link-event" to= {`/events/${event._id}`}>Ver</Link></span>
                   </p>
                 </div>
               ))}
