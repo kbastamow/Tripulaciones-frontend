@@ -1,18 +1,44 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getById } from "../../features/users/userSlice";
 import Arrow from "../../components/arrow/Arrow";
 import Banner from "../../assets/edem-banner.png";
 import "./UserDetails.scss";
 import { Link } from "react-router-dom";
+import {findOrCreate} from "../../features/chat/chatSlice"
+import {resetChat} from "../../features/chat/chatSlice"
 
 const UserDetails = () => {
   const { id } = useParams();
 
+  const navigate = useNavigate()
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.user);
+  const { chat, chatIsSuccess } = useSelector((state => state.chat))
+  dispatch(resetChat())
+ 
+
+
+ const handleCreateChat = (e) => {
+  e.preventDefault()
+  console.log(user._id)
+  console.log(id)
+
+  dispatch(findOrCreate(user._id))
+ }
+
+ useEffect(() => {
+  console.log(chatIsSuccess)
+  if (chatIsSuccess) {
+    console.log(chatIsSuccess)
+    setTimeout(() => {
+    navigate("/chat/kat/" + chat._id)
+    }, 500);
+  }
+ }, [chatIsSuccess])
+
 
   useEffect(() => {
     dispatch(getById(id));
@@ -70,9 +96,9 @@ const UserDetails = () => {
           <Link to={`/chat/${user._id}`}>
             <button>Enviar mensaje</button>
           </Link>
-          <Link to={`/chat/kat/${user._id}`}>
-            <button>ABRIR PRUEBA KAT</button>
-          </Link>
+          {/* <Link to={`/chat/kat/${user._id}`}> */}
+            <button onClick={handleCreateChat}>ABRIR PRUEBA KAT</button>
+          {/* </Link> */}
         </div>
         <div className="bio">
           <p className="title">Bio:</p>
