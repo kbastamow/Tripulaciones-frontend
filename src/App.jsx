@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 import Register from './pages/register/Register';
-import RegisterIsma from './pages/registerIsma/RegisterIsma';
 import Login from './pages/login/Login';
 import Events from './pages/events/Events';
 import { Home } from './pages/home/Home';
@@ -29,13 +28,12 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <div>
+      {/* <div>
         {token ? <Header /> : <></>}
-        </div>
+        </div> */}
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/registerIsma" element={<RegisterIsma />} />
           <Route path="/events" element={<Events />} />
           <Route path="/" element={<Home />} />
           <Route path="/community" element={<Community />} />

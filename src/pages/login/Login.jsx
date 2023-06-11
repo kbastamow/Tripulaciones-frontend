@@ -79,7 +79,7 @@ const Login = () => {
             Email
           </label>
           <input
-            type="email"
+            type="text"
             name="email"
             value={email}
             placeholder="micorreo@edem.es"
@@ -88,6 +88,7 @@ const Login = () => {
         </div>
         <div>
           <label htmlFor="password">Contraseña</label>
+          
           <input
             type="password"
             name="password"

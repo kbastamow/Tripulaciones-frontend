@@ -1,5 +1,11 @@
 @import "../../colors.scss";
 
+.event-sticky{
+    position: sticky;
+    top: 0;
+    z-index: 4;
+}
+
 .event-menu {
     width: 90%;
     display: flex;

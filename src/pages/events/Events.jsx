@@ -6,7 +6,6 @@ import { Button, Menu  } from 'antd';
 
 
 import "./Events.scss"
-import NavBar from '../../components/navBar/NavBar';
 
 
 const Events = () => {
@@ -48,9 +47,8 @@ return (
         <span  className="menu-btn">Eventos</span>
         <span className="menu-btn">Noticias</span>
         </div>
-
-
         <EventCard></EventCard>
+        
     </>
 );
 };
