@@ -9,7 +9,7 @@ const create = async (chatData) => {
 };
 
 const findOrCreate = async (otherId) => {
-  console.log(otherId)
+  console.log("findOrCreate", otherId)
   const token = JSON.parse(localStorage.getItem("token"));
   const res = await axios.post(API_URL + "/chats/findOrCreate", { otherId }, {
     headers: {

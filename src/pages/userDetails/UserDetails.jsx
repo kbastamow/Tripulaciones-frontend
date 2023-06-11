@@ -11,7 +11,6 @@ import {resetChat} from "../../features/chat/chatSlice"
 
 const UserDetails = () => {
   const { id } = useParams();
-
   const navigate = useNavigate()
   const dispatch = useDispatch();
 
@@ -20,13 +19,11 @@ const UserDetails = () => {
   dispatch(resetChat())
  
 
-
+console.log("chat in userDetail", chat)
  const handleCreateChat = (e) => {
   e.preventDefault()
-  console.log(user._id)
-  console.log(id)
-
-  dispatch(findOrCreate(user._id))
+  console.log("Going to create chat")
+  dispatch(findOrCreate(id))
  }
 
  useEffect(() => {
@@ -35,10 +32,9 @@ const UserDetails = () => {
     console.log(chatIsSuccess)
     setTimeout(() => {
     navigate("/chat/kat/" + chat._id)
-    }, 500);
+    }, 1000);
   }
  }, [chatIsSuccess])
-
 
   useEffect(() => {
     dispatch(getById(id));

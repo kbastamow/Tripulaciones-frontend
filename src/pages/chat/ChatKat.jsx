@@ -20,12 +20,7 @@ const ChatKat = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [socket, setSocket] = useState(null);
   
-
-
-
-console.log(chat)
-
-  // const userId = JSON.parse(localStorage.getItem("user"));
+  console.log(chat)
 
   const handleInputChange = (event) => {
     setMessage(event.target.value);
@@ -46,13 +41,8 @@ console.log(chat)
     // dispatch(create(chatData));
   };
   
-//SOCKET
-// const socket = io.connect('http://localhost:8080');
-// const messages = useSelector((state) => state.chat.messages);
-
-
-
 useEffect(() => {
+    console.log("this is id", id)
   dispatch(getChatById(id));
    // Set up socket.io connection
    const newSocket = io.connect('http://localhost:8080');
@@ -72,8 +62,9 @@ useEffect(() => {
 const socketSendMessage = () => {
   // Dispatch the send message action
   const messageData = {
+    _id: chat._id,
     content: inputMessage,
-    sender: you.name,
+    sender: you._id,
     senderName: you.name,
     timestamp: new Date().toISOString(), // Convert to ISO 8601 string or reducers doesn't accept
   };
@@ -83,8 +74,6 @@ const socketSendMessage = () => {
   setInputMessage('');
 };
 
-
-
 if (!chat) {
   console.log("no hay chat")
   return <></>
@@ -92,7 +81,8 @@ if (!chat) {
 
   return (
     <div>
-   Chat entre {chat.users[1].name} y {chat.users[0].name}
+   
+    {chat.userIds[0].name ? <>Chat entre {chat.userIds[1].name} y {chat.userIds[0].name}</> : <></>}
 <br />
 <div>
       <div>

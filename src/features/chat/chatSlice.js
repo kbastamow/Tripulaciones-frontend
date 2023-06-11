@@ -32,11 +32,10 @@ export const chatSlice = createSlice({
       })
       .addCase(findOrCreate.fulfilled, (state, action) => {
         console.log(action.payload, " in chatSlice")
-        state.chat = action.payload
+        state.chat = action.payload.newChat
         state.chatIsSuccess = true
       })
       .addCase(getChatById.fulfilled, (state, action) => {
-        console.log(action.payload, "in getBY ID")
         state.chat = action.payload
       })
   },
@@ -61,7 +60,6 @@ export const writeMsg = createAsyncThunk("chat/writeMsg", async (chat) => {
 
 export const findOrCreate = createAsyncThunk("chat/findOrCreate", async (otherId) => {
   try {
-    console.log(otherId)
     return await chatService.findOrCreate(otherId);
   } catch (error) {
     console.error(error);
