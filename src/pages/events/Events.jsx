@@ -43,11 +43,6 @@ return (
 
 
         <div>Home</div>
-        {/* <div>
-        <Button className='ant-button'>Primary Button</Button>
-        <Button className='ant-button'>Default Button</Button>
-        <Button className='ant-button'>Dashed Button</Button>
-    </div> */}
     <div className="event-menu">
         <span className="menu-btn">Recientes</span>
         <span  className="menu-btn">Eventos</span>
@@ -56,7 +51,6 @@ return (
 
 
         <EventCard></EventCard>
-        {/* <EventList />  */}
     </>
 );
 };
