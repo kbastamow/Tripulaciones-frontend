@@ -49,8 +49,6 @@ const Register = () => {
     }
 
     setErrorMessage(""); // Limpiar el mensaje de error si no hay error
-
-    console.log("formData", formData);
     dispatch(register(formData))
   };
   
