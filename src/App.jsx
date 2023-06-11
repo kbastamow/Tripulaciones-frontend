@@ -17,6 +17,7 @@ import UpdateProfile from './pages/updateProfile/UpdateProfile';
 import EventOne from './pages/eventOne/EventOne';
 import Chat from './pages/chat/Chat';
 import UserProfile from './pages/userProfile/UserProfile';
+import ChatKat from './pages/chat/ChatKat';
 
 
 
@@ -41,6 +42,9 @@ function App() {
           <Route path="/community" element={<Community />} />
           <Route path="/userDetails/:id" element={<UserDetails />} />
           <Route path="/chat/:id" element={<Chat />} />
+
+          <Route path="/chat/kat/:id" element={<ChatKat />} />
+
           <Route path="/userProfile/:id" element={<UserProfile />} />
           <Route path="/events" element={<Events />} /> 
           <Route path="/events/:id" element={<EventOne />} />

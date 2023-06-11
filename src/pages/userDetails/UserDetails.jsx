@@ -70,6 +70,9 @@ const UserDetails = () => {
           <Link to={`/chat/${user._id}`}>
             <button>Enviar mensaje</button>
           </Link>
+          <Link to={`/chat/kat/${user._id}`}>
+            <button>ABRIR PRUEBA KAT</button>
+          </Link>
         </div>
         <div className="bio">
           <p className="title">Bio:</p>
