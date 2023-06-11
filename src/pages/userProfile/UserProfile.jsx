@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { getById } from "../../features/users/userSlice";
 import { logout } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { FiLogOut, FiCalendar } from "react-icons/fi";
+import { FiLogOut, FiCalendar, FiPlusCircle } from "react-icons/fi";
 
 import Arrow from "../../components/arrow/Arrow";
 import Banner from "../../assets/edem-banner.png";
@@ -66,7 +66,7 @@ const UserProfile = () => {
                 <div className="info-container">
                     <div className="img-container">
                         <img
-                            src={`http://localhost:8080/images/user/${user.image}`}
+                            src={`http://localhost:8080/images/user/${user && user.image}`}
                             alt=""
                         />
                     </div>
@@ -84,7 +84,10 @@ const UserProfile = () => {
                 </div>
 
                 <div className="bio">
+                   <div className="bio-container-icon"> 
                     <p className="title">Bio:</p>
+                  <Link to='/updateProfile/'><FiPlusCircle className="plus-icon"/></Link>   
+                    </div>
                     <p className="content">{user.bio}</p>
                 </div>
                 <div className="bio">
@@ -92,7 +95,7 @@ const UserProfile = () => {
                     <div className="categories">
                         {user &&
                             user.categoryIds &&
-                            user.categoryIds.map((category) => <p>{category.name}</p>)}
+                            user.categoryIds.map((category) => <p key={category._id}>{category.name}</p>)}
                     </div>
                 </div>
                 <div className="bio">
@@ -100,7 +103,7 @@ const UserProfile = () => {
                     <div className="events">
                         {user &&
                             user.eventIds &&
-                            user.eventIds.map((event) => <p><FiCalendar/>{event.title}<span className="span-ver"> <Link className="link-event" to= {`/events/${event._id}`}>Ver</Link></span></p>)}
+                            user.eventIds.map((event) => <p key={event._id}><FiCalendar/>{event.title}<span className="span-ver"> <Link className="link-event" to= {`/events/${event._id}`}>Ver</Link></span></p>)}
                     </div>
                 </div>
             </div>

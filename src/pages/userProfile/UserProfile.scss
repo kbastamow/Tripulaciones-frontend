@@ -134,6 +134,13 @@
     all: unset;
 }
 
+.bio-container-icon{
+display: flex;
+justify-content: space-between;
+.plus-icon{
+  color: $accent ;
+}
+}
 .div-logout{
     display: flex;
     justify-content: center;
