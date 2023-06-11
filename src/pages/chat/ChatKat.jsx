@@ -9,10 +9,10 @@ import { receiveMessage, sendMessage } from '../../actions/messageActions';
 
 //SOCKET CLIENT
 import io from 'socket.io-client';
-const socket = io.connect('http://localhost:8080');
 
 const ChatKat = () => {
     const { id } = useParams();
+
 
   const dispatch = useDispatch();
 
@@ -28,7 +28,6 @@ const ChatKat = () => {
 
   const [message, setMessage] = useState("");
   const userId = JSON.parse(localStorage.getItem("user"));
-
 
   const handleInputChange = (event) => {
     setMessage(event.target.value);
@@ -55,24 +54,24 @@ const ChatKat = () => {
 // const messages = useSelector((state) => state.chat.messages);
 
 const [inputMessage, setInputMessage] = useState('');
+const [socket, setSocket] = useState(null);
 
 useEffect(() => {
-    socket.on("message", (data) => {
-        console.log("first data", data)
-        dispatch(addSocketMessage(data));
-      });
- 
-//   socket.on('message', (data) => {
-//     socket.emit('message', data);
-//     dispatch(receiveMessage(data));
-//   });
+   // Set up socket.io connection
+   const newSocket = io.connect('http://localhost:8080');
+   setSocket(newSocket);
 
-  return () => {
-    // Clean up the socket connection
-    socket.disconnect();
-  };
+   // Receive messages from the server
+   newSocket.on('message', (data) => {
+     dispatch(addSocketMessage(data));
+   });
 
-}, []);
+   return () => {
+     // Clean up the socket connection
+     newSocket.disconnect();
+   };
+ }, []);
+
 
 const socketSendMessage = () => {
   // Dispatch the send message action
