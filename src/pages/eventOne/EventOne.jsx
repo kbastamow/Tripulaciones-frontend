@@ -3,25 +3,47 @@ import React, { useEffect } from 'react'
 import Arrow from "../../components/arrow/Arrow";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getById } from "../../features/events/eventSlice";
+import { getById, joinEvent } from "../../features/events/eventSlice";
 import logo from "../../assets/logo.png"
-import { Button, Tag } from "antd";
+import { Button, Modal, Tag } from "antd";
 import {AiOutlineCalendar} from "react-icons/ai"
 import {BiGroup} from "react-icons/bi"
 import DateTimeConverter from "../../components/dateTimeConverter/DateTimeConverter";
 import {SlLocationPin} from "react-icons/sl"
+import EventModal from "../../components/modal/EventModal";
 
 const imagePath = "http://localhost:8080/images/event/"
 
 const EventOne = () => {
 const { id } = useParams();
-const {event} = useSelector(state => state.events)
-
+const {event, message, isError, isSuccess} = useSelector(state => state.events)
 
 const dispatch = useDispatch();
+
 useEffect(() => {
   dispatch(getById(id));
-}, []);
+}, [dispatch, id]);
+
+const attendEvent = (e) => {
+  e.preventDefault();
+  console.log(event._id)
+  dispatch(joinEvent(event._id))
+}
+
+// useEffect(() => {
+//   if (isSuccess) {
+//     notification.success({
+//       message: "Success",
+//       description: message,
+//     });
+//   }
+//   if (isError) {
+//     notification.error({ message: "Error", description: message });
+//   }
+//   dispatch(reset())
+// }, [isSuccess, isError, message]);
+
+
 
 
 if (!event) {
@@ -30,10 +52,13 @@ if (!event) {
 
   return (
     <>
-    <Arrow></Arrow>
-    <div className="flex-column-container">
-    
-    <div>eventOne</div>
+
+<div className="contacto-text">
+        <Arrow />
+        <h1>Evento</h1>
+      </div>
+
+    <div className="eventone-content">
     <div className="eventone-img">
     <img src={event ? (imagePath + event.image) : logo} alt="" />
 
@@ -46,23 +71,27 @@ if (!event) {
    
     <div><AiOutlineCalendar/><DateTimeConverter datetime={event.date}/></div>
 
-    <div><BiGroup/>{event.userids?.length || 0} asistentes</div>
+    <div><BiGroup/>{event.userIds?.length || 0} asistentes</div>
    
     <div><SlLocationPin/> Edem escuela de empresarios</div>
 
     </div>
+    <div className="categories">
+      
+      {event.categoryIds?.map(category => (
+        <p>{category.name}</p> 
+        
+     ))}
+     </div>
+    
     <div className="eventone-buttons">
-    <Button className="btn-eventone">Asistiré</Button>
-    <Button className="btn-eventone">Registrarse</Button>
+    <Button className="btn-eventone" onClick={attendEvent}>Asistiré</Button>
+    <Button className="btn-eventone" >Registrarse</Button>
     <span>...</span>
     </div>
     <div className="eventone-categories">
-      {event.categoryIds?.map(category => (
-        <Tag  className="grey-tag">{category.name}</Tag>
-     ))}
-    
 
-
+  
     </div>
     <div className="eventone-description">
       <div className="eventone-title">Descripción del evento:</div>
@@ -72,6 +101,9 @@ if (!event) {
 
 
     </div>
+
+  <EventModal></EventModal>
+   
   </>
   )
 }

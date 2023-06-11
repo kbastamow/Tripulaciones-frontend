@@ -29,10 +29,9 @@ return (
         <Card
         hoverable
         className="eventcard-general"
-        cover={<img alt="evento" src={imagePath + event.image} onError={(e) => e.target.src = logo}/>}
+        cover={event.image ? <img alt="evento" src={imagePath + event.image}/> : <></>}
           >
         <div>
-        {/* <img src="{imagePath + event.image}" alt="" /> */}
         <h2>{event.title}</h2>
         <p className="card-text-event">{event.description}</p>
         </div>

@@ -23,9 +23,21 @@ const getById = async(id) => {
     }
 }
 
+const joinEvent = async(eventId) => {
+    const token = JSON.parse(localStorage.getItem("token"));
+        const res = await axios.put(API_URL + "/events/joinEvent/" + eventId, {}, {
+            headers: {
+                'Authorization': token,
+              }
+            })
+            return res.data
+        };
+
+
 const eventService = {
    getAll,
-   getById
+   getById,
+   joinEvent
   };
   
   export default eventService;

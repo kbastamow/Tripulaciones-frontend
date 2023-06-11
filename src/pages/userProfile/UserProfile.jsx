@@ -38,27 +38,28 @@ const UserProfile = () => {
 
         return `${number}th`;
     }
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const onLogout = (e) => {
         e.preventDefault();
-        dispatch(logout())
+        dispatch(logout());
         setTimeout(() => {
-            navigate('/login')
-        }, 2000)
+            navigate("/login");
+        }, 2000);
+    };
 
+    function mostrarParrafo(parrafo, numCaracteres) {
+        if (parrafo.length <= numCaracteres) {
+            return parrafo;
+        } else {
+            return parrafo.substring(0, numCaracteres) + "...";
+        }
     }
-
-
-
-
-  
-
 
     return (
         <div>
             <div className="contacto-text">
                 <Arrow />
-                <h1>Perfil</h1>
+                <h1>Contacto</h1>
             </div>
 
             <div className="user-details">
@@ -66,7 +67,7 @@ const UserProfile = () => {
                 <div className="info-container">
                     <div className="img-container">
                         <img
-                            src={`http://localhost:8080/images/user/${user && user.image}`}
+                            src={`http://localhost:8080/images/user/${user.image}`}
                             alt=""
                         />
                     </div>
@@ -80,15 +81,13 @@ const UserProfile = () => {
                         )}
                         <p className="year">{getOrdinal(user.year)} curso</p>
                     </div>
-
                 </div>
 
                 <div className="bio">
-                   <div className="bio-container-icon"> 
-                    <p className="title">Bio:</p>
-                  <Link to='/updateProfile/'><FiPlusCircle className="plus-icon"/></Link>   
-                    </div>
-                    <p className="content">{user.bio}</p>
+                    <div className="bio-container-icon">
+                        <p className="title">Bio:</p>
+                        <Link to='/updateProfile/'><FiPlusCircle className="plus-icon" /></Link>
+                    </div>          <p className="content">{user.bio}</p>
                 </div>
                 <div className="bio">
                     <p className="title">Intereses:</p>
@@ -99,17 +98,31 @@ const UserProfile = () => {
                     </div>
                 </div>
                 <div className="bio">
-                    <p className="title">Eventos:</p>
+                    <p className="title">Próximos eventos:</p>
                     <div className="events">
                         {user &&
                             user.eventIds &&
-                            user.eventIds.map((event) => <p key={event._id}><FiCalendar/>{event.title}<span className="span-ver"> <Link className="link-event" to= {`/events/${event._id}`}>Ver</Link></span></p>)}
+                            user.eventIds.map((event) => (
+                                <div key={event._id}>
+                                    <p>
+                                        <span className="icon">
+                                            <FiCalendar />
+                                        </span>
+                                        {mostrarParrafo(event.title, 30)}
+                                        <span className="span-ver"><Link className="link-event" to={`/events/${event._id}`}>Ver</Link></span>
+                                    </p>
+                                </div>
+                            ))}
                     </div>
                 </div>
             </div>
             <div className="div-logout">
-               <span className="logout-icon"><FiLogOut /></span> 
-                <span className="logout" onClick={onLogout}>Logout</span>
+                <span className="logout-icon">
+                    <FiLogOut />
+                </span>
+                <span className="logout" onClick={onLogout}>
+                    Logout
+                </span>
             </div>
         </div>
     );

@@ -3,8 +3,9 @@ import "./Home.scss"
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAll } from "../../features/events/eventSlice"
-import EventCard from '../../components/eventCard/EventCard';
+
 import { Button, Menu  } from 'antd';
+import EventCard from "../../components/eventCard/eventCard";
 
 export const Home = () => {
       
