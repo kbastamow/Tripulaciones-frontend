@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
-import Home  from './pages/home/Home';
+import Home from './pages/home/Home';
 import Community from './pages/community/Community';
 import UserDetails from './pages/userDetails/UserDetails';
 import NavBar from './components/navBar/NavBar';
@@ -23,29 +23,31 @@ import Enterprises from './pages/enterprises/Enterprises';
 function App() {
   const { token } = useSelector((state) => state.auth)
 
-  
+
   return (
     <div className="App">
       <BrowserRouter>
-      <div>
+        {/* <div>
         {token ? <Header /> : <></>}  
-        </div>
+        </div> */}
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/userDetails/:id" element={<UserDetails />} />
-          <Route path="/chat/:id" element={<Chat />} />
-          <Route path="/userProfile/:id" element={<UserProfile />} />
-          <Route path="/events/:id" element={<EventOne />} />
-          <Route path="/navBar" element={<NavBar />} />
-          <Route path="/updateProfile" element={<UpdateProfile />} />
-          <Route path="/enterprises" element={<Enterprises />} />
+
+          <Route path="/" element={<PrivateZone><Home /></PrivateZone>}></Route>
+          <Route path="/community" element={<PrivateZone><Community /></PrivateZone>} />
+          <Route path="/userDetails/:id" element={<PrivateZone><UserDetails /></PrivateZone>} />
+          <Route path="/chat/:id" element={<PrivateZone><Chat /></PrivateZone>} />
+          <Route path="/userProfile/:id" element={<PrivateZone><UserProfile /></PrivateZone>} />
+          <Route path="/events/:id" element={<PrivateZone><EventOne /></PrivateZone>} />
+          <Route path="/navBar" element={<PrivateZone><NavBar /></PrivateZone>} />
+          <Route path="/updateProfile" element={<PrivateZone><UpdateProfile /></PrivateZone>} />
+          <Route path="/updateProfile" element={<PrivateZone><Enterprises /></PrivateZone>} />
+          <Route path="/*" element={<PageNotFound></PageNotFound>} />
 
 
         </Routes>
-        
+
       </BrowserRouter>
     </div>
   );
