@@ -16,6 +16,7 @@ import UpdateProfile from './pages/updateProfile/UpdateProfile';
 import EventOne from './pages/eventOne/EventOne';
 import Chat from './pages/chat/Chat';
 import UserProfile from './pages/userProfile/UserProfile';
+import Enterprises from './pages/enterprises/Enterprises';
 
 
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="/events/:id" element={<EventOne />} />
           <Route path="/navBar" element={<NavBar />} />
           <Route path="/updateProfile" element={<UpdateProfile />} />
+          <Route path="/enterprises" element={<Enterprises />} />
 
 
         </Routes>

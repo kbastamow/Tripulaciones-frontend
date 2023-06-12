@@ -1,0 +1,61 @@
+@import "../../colors.scss";
+
+.enterprises-list {
+    display: flex;
+    flex-direction: column;
+    margin: 18px;
+    border: 1px solid $secondary ;
+    padding: 6px;
+
+    .enterprise-text{
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-top: 1rem;
+        margin-left: 1rem;
+        margin-bottom: 0.5rem;
+        
+        h1{
+            font-weight: 800;
+          font-size: 19px;
+          line-height: 24px;
+            color: $secondary !important;
+          }
+    }
+
+    .enterprise-imag{
+        width: 100%;
+        height: 100%;
+
+        img{
+            width: 50%;
+        }
+    }
+
+    .enterprise-name{
+        font-weight: bold;
+        color:  $accent;
+    }
+
+    .enterprise-description{
+        border-bottom: 1px solid $accent;
+    }
+    
+    .topics{
+        margin-right: 12px;
+       margin-top: 6px;
+        
+    }
+  
+    .enterpise-phase{
+        border: 1px solid grey;
+        width: 24%;
+        margin-top: 6px;
+        padding-left: 12px;
+    }
+
+    p {
+      margin: 0;
+      padding: 5px 0;
+    }
+  }
