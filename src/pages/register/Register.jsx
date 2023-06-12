@@ -6,6 +6,8 @@ import "./Register.scss";
 import { Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { register, reset } from "../../features/auth/authSlice";
+import { FiAlertCircle } from "react-icons/fi";
+
 
 const Register = () => {
 
@@ -69,12 +71,24 @@ const Register = () => {
       return;
     }
 
-    
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    const passwordValid = passwordRegex.test(password)
     const emailRegex = /^[^\s@]+@edem\.es$/;
     const validEmail = emailRegex.test(email);
 
     if (!validEmail) {
       setErrorMessage("Tiene que ingresar un email que termine en @edem.es");
+      return;
+    }
+
+    if (!passwordValid) {
+      const errorList = [
+        'La contraseña debe tener:',
+        'Al menos una mayúscula y minúscula.',
+        'Mínimo una longitud de 8 caracteres.',
+        'Uso de caracteres alfanuméricos',
+      ]
+      setErrorMessage(errorList.join('\n'));
       return;
     }
 
@@ -160,7 +174,16 @@ const Register = () => {
           <Input.Password className="inputPassword" type="password" name="confirmPassword" value={confirmPassword}placeholder="Contraseña" onChange={onChange}/>
         </div>
 
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
+          {errorMessage && (
+          <div className="div-error">
+            {errorMessage.split('\n').map((error, index) => (
+              <div key={index} className="error">
+                <span><FiAlertCircle/></span>{error}
+              </div>
+            ))}
+          </div>
+        )}
+        {/* {errorMessage && <p className="error-message">{errorMessage}</p>} */}
         {successMessage && <p className="success-message">{successMessage}</p>}
         {isSuccess && <p className="success-message">Registro realizado con exito, entra en tu email para confirmar</p>}
         {isError && <p className="success-message">Este usuari@ ya existe</p>}
