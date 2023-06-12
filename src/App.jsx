@@ -15,6 +15,7 @@ import EventOne from './pages/eventOne/EventOne';
 import Chat from './pages/chat/Chat';
 import UserProfile from './pages/userProfile/UserProfile';
 import Enterprises from './pages/enterprises/Enterprises';
+import PrivateZone from './guards/PrivateZone';
 
 
 
@@ -28,7 +29,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         {/* <div>
-        {token ? <Header /> : <></>}  
+        {token ? <Header /> : <></>}
         </div> */}
         <Routes>
           <Route path="/register" element={<Register />} />
@@ -37,14 +38,14 @@ function App() {
           <Route path="/" element={<PrivateZone><Home /></PrivateZone>}></Route>
           <Route path="/community" element={<PrivateZone><Community /></PrivateZone>} />
           <Route path="/userDetails/:id" element={<PrivateZone><UserDetails /></PrivateZone>} />
-          <Route path="/chat/:id" element={<PrivateZone><Chat /></PrivateZone>} />
+          <Route path="/chat/:id" element={<PrivateZone><Chat /></PrivateZon>} />
           <Route path="/userProfile/:id" element={<PrivateZone><UserProfile /></PrivateZone>} />
           <Route path="/events/:id" element={<PrivateZone><EventOne /></PrivateZone>} />
           <Route path="/navBar" element={<PrivateZone><NavBar /></PrivateZone>} />
           <Route path="/updateProfile" element={<PrivateZone><UpdateProfile /></PrivateZone>} />
-          <Route path="/updateProfile" element={<PrivateZone><Enterprises /></PrivateZone>} />
-          <Route path="/*" element={<PageNotFound></PageNotFound>} />
+          <Route path="/enterprises" element={<PrivateZone><Enterprises /></PrivateZone>} />
 
+          <Route path="/*" element={<PageNotFound></PageNotFound>} />
 
         </Routes>
 
