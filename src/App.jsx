@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
-import { Home } from './pages/home/Home';
+import Home  from './pages/home/Home';
 import Community from './pages/community/Community';
 import UserDetails from './pages/userDetails/UserDetails';
 import NavBar from './components/navBar/NavBar';
@@ -15,8 +15,7 @@ import EventOne from './pages/eventOne/EventOne';
 import Chat from './pages/chat/Chat';
 import UserProfile from './pages/userProfile/UserProfile';
 import PrivateZone from "./guards/PrivateZone";
-
-
+import PageNotFound from './components/pageNotFound/PageNotFound';
 
 
 
@@ -34,7 +33,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
        
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element= {<PrivateZone><Home/></PrivateZone>}></Route>
           <Route path="/community" element={<PrivateZone><Community /></PrivateZone>} />
           <Route path="/userDetails/:id" element={<PrivateZone><UserDetails /></PrivateZone>} />
           <Route path="/chat/:id" element={<PrivateZone><Chat /></PrivateZone>} />
@@ -42,7 +41,8 @@ function App() {
           <Route path="/events/:id" element={<PrivateZone><EventOne /></PrivateZone>} />
           <Route path="/navBar" element={<PrivateZone><NavBar /></PrivateZone>} />
           <Route path="/updateProfile" element={<PrivateZone><UpdateProfile /></PrivateZone>} />
-    
+          <Route path="/*" element={<PageNotFound></PageNotFound>}/>
+
         </Routes>
         
       </BrowserRouter>
