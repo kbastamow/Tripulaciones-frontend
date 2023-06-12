@@ -37,9 +37,6 @@ function App() {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-
-          
-        
           <Route path="/chat/instant/:id" element={<ChatInstant />} />
           <Route path="/" element={<PrivateZone><Home /></PrivateZone>}></Route>
           <Route path="/community" element={<PrivateZone><Community /></PrivateZone>} />
