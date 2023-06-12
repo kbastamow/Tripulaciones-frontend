@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import {  addSocketMessage, getChatById } from "../../features/chat/chatSlice";
 import { receiveMessage, sendMessage } from '../../actions/messageActions';
 import "./ChatInstant.scss"
+import Header from "../../components/header/Header";
 
 //SOCKET CLIENT
 import io from 'socket.io-client';
@@ -63,7 +64,7 @@ if (!chat) {
 
   return (
     <>
-   
+   <Header></Header>
     {chat.userIds[0].name ? <>Chat entre {chat.userIds[1].name} y {chat.userIds[0].name}</> : <></>}
 <br />
 <div className="msgwindow-div">
