@@ -5,6 +5,7 @@ import user from "../features/users/userSlice"
 import program from "../features/program/programSlice"
 import enterprises from "../features/enterprises/enterprisesSlice"
 
+import chat from "../features/chat/chatSlice"
 
 export const store = configureStore({
   reducer: {
@@ -12,7 +13,7 @@ export const store = configureStore({
     events,
     user,
     program,
-    enterprises
-  
+    enterprises,
+    chat 
   },
 })

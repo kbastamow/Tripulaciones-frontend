@@ -9,9 +9,36 @@ const create = async (chatData) => {
   return res.data;
 };
 
+const findOrCreate = async (otherId) => {
+  console.log("findOrCreate", otherId)
+  const token = JSON.parse(localStorage.getItem("token"));
+  const res = await axios.post(API_URL + "/chats/findOrCreate", { otherId }, {
+    headers: {
+        'Authorization': token,
+      }
+    });
+    console.log("findOrCreate", res.data)
+  return res.data;
+};
+
+const getChatById = async (chatId) => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  console.log(chatId)
+  const res = await axios.get(API_URL + "/chats/getChatId/" + chatId, {
+    headers: {
+        'Authorization': token,
+      }
+    });
+    console.log("getChatById", res.data)
+  return res.data;
+};
+
+
+
 const chatService = {
     create,
-   
+    findOrCreate,
+    getChatById
   };
   
   export default chatService;
