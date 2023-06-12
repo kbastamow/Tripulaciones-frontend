@@ -30,11 +30,6 @@ export const eventSlice = createSlice({
           .addCase(joinEvent.fulfilled, (state, action) => {
             if (action.payload) {
             state.event = action.payload.event  //IMPORTANT! OTHERWISE STATE UPDATES
-            // } else {
-            //     state.event = state.event
-            //     state.isError = true;
-            //     console.log(action.payload)
-            //     // state.message = action.payload.msg;
             }
           })
           .addCase(joinEvent.rejected, (state, action) => {
@@ -42,13 +37,9 @@ export const eventSlice = createSlice({
             if (action.payload.status === 400) {
                 state.isError = true;
                 state.message = action.payload.data
-            } else //Not finished!
-            console.log("Event slice", action.payload)
-
+            } 
           })
-    
-      },
-    
+      },   
 })
 
 export const getAll = createAsyncThunk("event/getAll", async() => {
@@ -73,8 +64,6 @@ export const joinEvent = createAsyncThunk("event/joinEvent", async(eventId, thun
         return await eventService.joinEvent(eventId)
       
     } catch (error) {
-        console.log("In Slice,", error)
-        console.log("In Slice,", error.response.data)
         const { status, data } = error.response; //If I want to return more than one value
         const serializedPayload = { status, data };
 
