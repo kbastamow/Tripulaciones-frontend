@@ -38,6 +38,7 @@ const Enterprises = () => {
             <span className='topics' key={topic}>{topic}</span>
           ))}
         </p>
+       <div className='div-contactar'> <button className='contactar'>Contactar</button></div>
       </div>
     ))
     : [];

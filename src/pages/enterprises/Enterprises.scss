@@ -6,6 +6,7 @@
     margin: 18px;
     border: 1px solid $secondary ;
     padding: 6px;
+    background: $beige;
 
     .enterprise-text{
         display: flex;
@@ -31,6 +32,19 @@
             width: 50%;
         }
     }
+
+    .div-contactar{
+        display: flex;
+        justify-content: center;
+        .contactar{
+            all: unset;
+            border: 1px solid $accent;
+            color: $accent;
+            padding: 6px 12px 6px 12px;
+            width: 20%;
+        }
+    }
+   
 
     .enterprise-name{
         font-weight: bold;
