@@ -3,11 +3,9 @@ import './App.scss'
 import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
-import Events from './pages/events/Events';
-import { Home } from './pages/home/Home';
+import Home  from './pages/home/Home';
 import Community from './pages/community/Community';
 import UserDetails from './pages/userDetails/UserDetails';
 import NavBar from './components/navBar/NavBar';
@@ -16,7 +14,6 @@ import UpdateProfile from './pages/updateProfile/UpdateProfile';
 import EventOne from './pages/eventOne/EventOne';
 import Chat from './pages/chat/Chat';
 import UserProfile from './pages/userProfile/UserProfile';
-import Enterprises from './pages/enterprises/Enterprises';
 
 
 
@@ -29,9 +26,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <div>
+      {/* <div>
         {token ? <Header /> : <></>}
-        </div>
+        </div> */}
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
@@ -45,7 +42,6 @@ function App() {
           <Route path="/events/:id" element={<EventOne />} />
           <Route path="/navBar" element={<NavBar />} />
           <Route path="/updateProfile" element={<UpdateProfile />} />
-          <Route path="/enterprises" element={<Enterprises />} />
 
 
         </Routes>

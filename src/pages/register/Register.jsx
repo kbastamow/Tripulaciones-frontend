@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LogoHorizontal from "../../assets/logo-horizontal.png";
-import IconoFlecha from "../../assets/icono-flecha.png";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import Arrow from "../../components/arrow/Arrow";
 import "./Register.scss";
 import { Input } from "antd";
 import { useDispatch } from "react-redux";
@@ -11,6 +10,7 @@ import { register } from "../../features/auth/authSlice";
 const Register = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const [formData, setFormData] = useState({
 
@@ -33,8 +33,21 @@ const Register = () => {
     }))
   }
     
+  const navigate = useNavigate();
+
   const onSubmit = (e) => {
     e.preventDefault()
+
+    if (!name) {
+      setErrorMessage("Por favor, introduce tu nombre");
+      return;
+    }
+
+    if (!surname) {
+      setErrorMessage("Por favor, introduce tu apellido");
+      return;
+    }
+
     if (password !== confirmPassword) {
       setErrorMessage("Las contraseñas no coinciden");
       return;
@@ -50,10 +63,25 @@ const Register = () => {
 
     setErrorMessage(""); // Limpiar el mensaje de error si no hay error
     dispatch(register(formData))
+    
+    setSuccessMessage("Usuari@ creado con éxito");
+
+    setTimeout(() => {
+      navigate("/login");
+    }, 2000);
+    
   };
   
-
-    
+  useEffect(() => {
+    if (errorMessage) {
+      const timeout = setTimeout(() => {
+        setErrorMessage("");
+      }, 2000);
+      return () => clearTimeout(timeout);
+    }
+  }, [errorMessage]);
+  
+  
   return (
     <div className="main-register">
       <div className="img-logo">
@@ -62,7 +90,7 @@ const Register = () => {
 
       <div className="title-register">
         <div className="registro-text">
-          <img src={IconoFlecha} alt="" />
+          <Arrow/>
           <h1>Registro</h1>
         </div>
         <p>Rellena los datos para darte de alta.</p>
@@ -116,6 +144,7 @@ const Register = () => {
         </div>
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {successMessage && <p className="success-message">{successMessage}</p>}
 
         <button type="submit">Crear cuenta</button>
         <p>

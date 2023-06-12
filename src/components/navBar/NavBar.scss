@@ -1,10 +1,13 @@
 @import "../../colors.scss";
 
 .sticky-nav{
-    z-index: 2;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+  z-index: 2;
+  position: sticky;
+  top: auto;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: -1px;
+ 
   }
 
 .navbar-container {
@@ -13,7 +16,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
   
 
   .headers {
@@ -27,32 +29,44 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        font-size: 24px;
+        font-size: 25px;
         color: $accent;
         font-weight: bolder;
-        height: 90px;
+        height: 75px;
         width: 25%;
+        padding-top: 2px;
+        
+
+        a{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-decoration: none;
+          color: $accent;
+          margin-top: 1rem;
+        }
         
         p{
+          margin-top: 4px;
             font-size: 12px;
         }
     }
     .home{
-        border-top: 11px solid $secondary;
+        border-top: 13px solid $secondary;
     }
     .empresas{
-        border-top: 11px solid $secondary;
+        border-top: 13px solid $secondary;
     }
     .comunidad{
-        border-top: 11px solid $secondary;
+        border-top: 13px solid $secondary;
     }
     .chat{
-        border-top: 11px solid $secondary;
+        border-top: 13px solid $secondary;
     }
     
   }
 }
 
 .active {
-    border-top: 11px solid $accent !important;
+    border-top: 13px solid $accent !important;
   }
