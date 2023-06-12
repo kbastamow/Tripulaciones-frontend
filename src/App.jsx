@@ -42,6 +42,7 @@ function App() {
           <Route path="/events/:id" element={<EventOne />} />
           <Route path="/navBar" element={<NavBar />} />
           <Route path="/updateProfile" element={<UpdateProfile />} />
+          <Route path="/enterprises" element={<Enterprises />} />
 
 
         </Routes>
