@@ -21,12 +21,10 @@ export const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
       })
-
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
         state.token = null;
       })
-
   },
 });
 

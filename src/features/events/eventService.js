@@ -1,10 +1,14 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:8080";
+const token = JSON.parse(localStorage.getItem("token")) || "";
 
 const getAll = async() => {
     try {
-        const res = await axios.get(API_URL + "/events/getAll")
+        const res = await axios.get(API_URL + "/events/getAll", {
+            headers: {
+                'Authorization': token,
+              } })
         console.log(res.data)
         return(res.data) 
     } catch (error) {
@@ -15,7 +19,10 @@ const getAll = async() => {
 
 const getById = async(id) => {
     try {
-        const res = await axios.get(API_URL + "/events/getById/" + id)
+        const res = await axios.get(API_URL + "/events/getById/" + id, {
+            headers: {
+                'Authorization': token,
+              } })
         console.log(res.data)
         return res.data
     } catch(error) {
@@ -24,7 +31,7 @@ const getById = async(id) => {
 }
 
 const joinEvent = async(eventId) => {
-    const token = JSON.parse(localStorage.getItem("token"));
+    // const token = JSON.parse(localStorage.getItem("token"));
         const res = await axios.put(API_URL + "/events/joinEvent/" + eventId, {}, {
             headers: {
                 'Authorization': token,
