@@ -5,6 +5,7 @@ const initialState = {
   chat: null,
   chatMessages: [],
   socketMessages: [],
+  myChats: [],
   chatIsError: false,
   chatIsSuccess: false,
   message: "",
@@ -37,6 +38,10 @@ export const chatSlice = createSlice({
       })
       .addCase(getChatById.fulfilled, (state, action) => {
         state.chat = action.payload
+      })
+      .addCase(getChatsByUserId.fulfilled, (state, action) => {
+        console.log("action payload mychats", action.payload)
+        state.myChats = action.payload
       })
   },
 });
@@ -72,6 +77,14 @@ export const getChatById = createAsyncThunk("chat/getChatById", async (chatId) =
   } catch (error) {
     console.error(error);
   }
+});
+
+export const getChatsByUserId = createAsyncThunk("chat/getChatsByUserId", async() =>{
+try {
+  return await chatService.getChatsByUserId();
+} catch (error) {
+  console.error(error);
+}
 });
 
 
