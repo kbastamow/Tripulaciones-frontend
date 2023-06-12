@@ -30,6 +30,12 @@ const UpdateProfile = () => {
   }, [])
 
   const onFinish = (values) => {
+    console.log(values.age)
+
+    if (values.age === null){
+      console.log("edad tiene que ser un número")
+      return
+    }
     const myData = {...values, program: programId, year: yearInput
     };
       
@@ -38,7 +44,7 @@ const UpdateProfile = () => {
     && value !== "")
     );
     console.log(filteredValues); 
-    dispatch(updateProfile(filteredValues)); //Así no pasamos valores vaciós a la base de datos
+    // dispatch(updateProfile(filteredValues)); //Así no pasamos valores vaciós a la base de datos
   };
 
   return (
@@ -119,8 +125,8 @@ const UpdateProfile = () => {
 </div>
           <div>
           <p>Edad</p>
-            <Form.Item name="age" min={17} max={99}>
-            <InputNumber />
+            <Form.Item name="age" >
+            <InputNumber  min={17} max={99}/>
                     </Form.Item>
           </div>
 

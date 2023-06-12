@@ -22,7 +22,6 @@ export const programSlice = createSlice({
 
 export const getAll = createAsyncThunk("program/getAll", async() => {
     try {
-    console.log("hello")
     return await programService.getAll()
     } catch (error) {
     console.error(error)  

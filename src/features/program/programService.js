@@ -8,7 +8,6 @@ const getAll = async() => {
         headers: {
             'Authorization': token,
           } })
-    console.log("This is programData", res.data)
     return res.data
 }
 
