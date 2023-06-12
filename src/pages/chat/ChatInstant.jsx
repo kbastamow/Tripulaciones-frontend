@@ -10,8 +10,6 @@ import io from 'socket.io-client';
 import DateTimeConverter from "../../components/dateTimeConverter/DateTimeConverter";
 import { BiMicrophone, BiPlusCircle } from "react-icons/bi";
 
-
-
 const ChatInstant = () => {
   const dispatch = useDispatch();
   const you = (JSON.parse(localStorage.getItem("user")))
@@ -69,6 +67,21 @@ if (!chat) {
     {chat.userIds[0].name ? <>Chat entre {chat.userIds[1].name} y {chat.userIds[0].name}</> : <></>}
 <br />
 <div className="msgwindow-div">
+  {/* OLD MESSAGES */}
+  {(chat.length < 1) ? <></> : (
+         chat.messages.map((message) => (
+         <>
+           <div key={message._id}>
+           <div className="msg-time"><DateTimeConverter datetime = {message.timestamp}/> mensaje de {message.sender.name}</div>
+<div className="flex-div">
+      
+          <span className={message.sender._id === you._id ? "my-msg-container" : "msg-container"}>{message.content}</span>
+          </div>
+          </div>
+          </>
+        )))
+    }
+  {/* INSTANT MESSAGES */}
       <div>
         {(socketMessages.length < 1) ? <></> : (
          socketMessages.map((message, index) => (

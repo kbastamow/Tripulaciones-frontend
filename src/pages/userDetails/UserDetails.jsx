@@ -29,7 +29,8 @@ console.log("chat in userDetail", chat)
  useEffect(() => {
   console.log(chatIsSuccess)
   if (chatIsSuccess) {
-    console.log(chatIsSuccess)
+    chat._id
+    console.log("chat is success", chatIsSuccess)
     setTimeout(() => {
     navigate("/chat/instant/" + chat._id)
     }, 1000);

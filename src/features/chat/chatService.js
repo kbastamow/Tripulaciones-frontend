@@ -16,6 +16,7 @@ const findOrCreate = async (otherId) => {
         'Authorization': token,
       }
     });
+    console.log("findOrCreate", res.data)
   return res.data;
 };
 
@@ -27,6 +28,7 @@ const getChatById = async (chatId) => {
         'Authorization': token,
       }
     });
+    console.log("getChatById", res.data)
   return res.data;
 };
 

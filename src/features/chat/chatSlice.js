@@ -32,7 +32,7 @@ export const chatSlice = createSlice({
       })
       .addCase(findOrCreate.fulfilled, (state, action) => {
         console.log(action.payload, " in chatSlice")
-        state.chat = action.payload.newChat
+        state.chat = action.payload
         state.chatIsSuccess = true
       })
       .addCase(getChatById.fulfilled, (state, action) => {
