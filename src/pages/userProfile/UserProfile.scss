@@ -7,8 +7,8 @@
   margin-top: 1rem;
   margin-left: 1rem;
   h1{
-    font-weight: 800;
-  font-size: 19px;
+    font-weight: bolder !important;
+  font-size: 22px;
   line-height: 24px;
     color: $secondary !important;
   }
@@ -44,18 +44,21 @@
       color: $soft-brown;
     }
     .categories{
-      margin-top: 1rem;
       display: flex;
-      text-align: justify;
+      flex-direction: row;
       flex-wrap: wrap;
       gap: 0.5rem;
+      
+  
       p{
-        border: 1px solid $soft-brown;
         border-radius: 20px;
         padding-right: 0.5rem;
         padding-left: 0.5rem;
-        color: $soft-brown;
+        padding-top: 1.5px;
+        padding-bottom: 1px;
+        color: $background;
         font-size: 13px;
+        background-color: $soft-brown;
       }
     }
     p {
@@ -116,7 +119,7 @@
       z-index: 2 !important; 
       margin-top: -10px;
       border-radius: 50%;
-      border: 2px solid $beige;
+      border: 2px solid $background
 
   
       img {
@@ -145,14 +148,21 @@ justify-content: space-between;
 .div-logout{
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-top: 24px;
+    gap: 1rem;
+    margin-bottom: 1rem;
 
     .logout-icon
     {
+      display: flex;
+      align-items: center;
         color: $accent;
+        font-size: 30px !important;
     }
     .logout{
         color: $accent;
+        font-size: 18px;
         
 
     }

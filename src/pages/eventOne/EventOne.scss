@@ -4,7 +4,6 @@
 .eventone-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 2% 2%;
 
    img {
@@ -15,15 +14,18 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: start;   //DOESNT WORK
     gap: 0.5rem;
+    margin: 2% 5%;
+
     p{
-      border: 1px solid $soft-brown;
       border-radius: 20px;
       padding-right: 0.5rem;
       padding-left: 0.5rem;
-      color: $soft-brown;
+      padding-top: 1.5px;
+      padding-bottom: 1px;
+      color: $background;
       font-size: 13px;
+      background-color: $soft-brown;
     }
   }
 }
@@ -33,6 +35,8 @@
     font-size: 14px;
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-weight: 700;
+    margin-left: 5%;
+    margin-top: 1rem;
 }
 
 .eventone-details {
@@ -42,16 +46,42 @@
     row-gap: 10px;
     margin: 2% 5%;
 
+    div{
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+
+     .icon-event{
+        font-size: 22px !important ;
+      }
+    }
+
 }
 
 .eventone-buttons {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
+  align-items: center;
   color: $accent;
+  gap: 10%;
+  margin: 2% 5%;
+
+.points{
+  font-size: 12px;
+}
 
 }
 
-
+.eventone-img{
+  display: flex;
+  justify-content: center;
+}
+.card-text-event{
+  margin-right:5%;
+  margin-left:5%;
+  margin-top: 0.5rem;
+}
 //FROM ISMA - PUT IN INDEX!!!
+
 

@@ -62,7 +62,7 @@ const UserProfile = () => {
         <Header />
         <div className="contacto-text">
           <Arrow />
-          <h1>Contacto</h1>
+          <h1>Perfil</h1>
         </div>
       </div>
       <div className="user-details">
@@ -128,11 +128,11 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
-      <div className="div-logout">
+      <div className="div-logout" onClick={onLogout}>
         <span className="logout-icon">
           <FiLogOut />
         </span>
-        <span className="logout" onClick={onLogout}>
+        <span className="logout" >
           Logout
         </span>
       </div>

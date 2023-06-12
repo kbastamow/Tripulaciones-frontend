@@ -9,7 +9,7 @@
   margin-bottom: 0.5rem;
   h1{
     font-weight: 800;
-  font-size: 19px;
+  font-size: 22px !important;
   line-height: 24px;
     color: $secondary !important;
   }
@@ -63,18 +63,22 @@
       color: $soft-brown;
     }
     .categories{
-      margin-top: 1rem;
       display: flex;
-      text-align: justify;
+      flex-direction: row;
       flex-wrap: wrap;
       gap: 0.5rem;
+      margin-top: 10px;
+      
+  
       p{
-        border: 1px solid $soft-brown;
         border-radius: 20px;
         padding-right: 0.5rem;
         padding-left: 0.5rem;
-        color: $soft-brown;
+        padding-top: 1.5px;
+        padding-bottom: 1px;
+        color: $background;
         font-size: 13px;
+        background-color: $soft-brown;
       }
     }
     p {
@@ -130,7 +134,7 @@
       z-index: 2 !important; 
       margin-top: -10px;
       border-radius: 50%;
-      border: 2px solid $background;
+      border: 2px solid $background !important;
 
   
       img {
