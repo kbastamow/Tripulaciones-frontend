@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Arrow from "../../components/arrow/Arrow";
 import "./Register.scss";
 import { Input } from "antd";
-import { useDispatch } from "react-redux";
-import { register } from "../../features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { register, reset } from "../../features/auth/authSlice";
 
 const Register = () => {
 
@@ -25,6 +25,22 @@ const Register = () => {
   const {name,surname,email,password,confirmPassword} = formData
 
   const dispatch = useDispatch()
+
+  const { isSuccess, message, isError } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setTimeout(() => {
+        dispatch(reset())
+        navigate("/login")
+      }, 3000);
+    }   
+    if (isError) {
+      setTimeout(() => {
+        dispatch(reset())
+      }, 3000);
+    }
+  }, [isSuccess, isError, message]);
 
   const onChange = (e)=>{
     setFormData((prevState)=> ({
@@ -53,6 +69,7 @@ const Register = () => {
       return;
     }
 
+    
     const emailRegex = /^[^\s@]+@edem\.es$/;
     const validEmail = emailRegex.test(email);
 
@@ -64,11 +81,11 @@ const Register = () => {
     setErrorMessage(""); // Limpiar el mensaje de error si no hay error
     dispatch(register(formData))
     
-    setSuccessMessage("Usuari@ creado con éxito");
+    //setSuccessMessage("Usuari@ creado con éxito");
 
-    setTimeout(() => {
-      navigate("/login");
-    }, 2000);
+    // setTimeout(() => {
+    //   navigate("/login");
+    // }, 2000);
     
   };
   
@@ -145,7 +162,8 @@ const Register = () => {
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         {successMessage && <p className="success-message">{successMessage}</p>}
-
+        {isSuccess && <p className="success-message">Registro realizado con exito, entra en tu email para confirmar</p>}
+        {isError && <p className="success-message">Este usuari@ ya existe</p>}
         <button type="submit">Crear cuenta</button>
         <p>
           ¿Ya tienes cuenta?{" "}

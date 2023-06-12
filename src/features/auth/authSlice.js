@@ -7,14 +7,22 @@ const token = JSON.parse(localStorage.getItem("token"));
 
 const initialState = {
   user: user ? user : null,
-  token: token ? token : null
+  token: token ? token : null,
+  isError: false,
+  isSuccess: false,
+  message: "",
 
 };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    reset: (state) => {
+      state.isError = false;
+      state.isSuccess = false;
+      state.message = "";
+    },},
   extraReducers: (builder) => {
     builder
       .addCase(login.fulfilled, (state, action) => {
@@ -27,14 +35,24 @@ export const authSlice = createSlice({
         state.token = null;
       })
 
+      .addCase(register.fulfilled, (state, action) => {
+        state.isSuccess = true;       
+        state.message = action.payload.message;
+      })
+
+      .addCase(register.rejected, (state, action) => {
+        state.isError = true;
+        state.message = action.payload;
+      })
   },
 });
 
-export const register = createAsyncThunk("auth/register", async (user) => {
+export const register = createAsyncThunk("auth/register", async (user, thunkAPI) => {
   try {
     return await authService.register(user);
   } catch (error) {
-    console.error(error);
+    const message = error.response.data.errors[0].message;
+    return thunkAPI.rejectWithValue(message);
   }
 });
 
@@ -63,4 +81,5 @@ export const updateProfile = createAsyncThunk("auth/updateProfile", async (user)
   }
 });
 
-export default authSlice.reducer;
+export const {reset} = authSlice.actions;
+export default authSlice.reducer
