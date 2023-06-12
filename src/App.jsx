@@ -16,6 +16,8 @@ import Chat from './pages/chat/Chat';
 import UserProfile from './pages/userProfile/UserProfile';
 import Enterprises from './pages/enterprises/Enterprises';
 import PrivateZone from './guards/PrivateZone';
+import PageNotFound from './components/pageNotFound/PageNotFound';
+
 
 
 
