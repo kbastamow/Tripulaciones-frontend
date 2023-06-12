@@ -14,6 +14,7 @@ import UpdateProfile from './pages/updateProfile/UpdateProfile';
 import EventOne from './pages/eventOne/EventOne';
 import Chat from './pages/chat/Chat';
 import UserProfile from './pages/userProfile/UserProfile';
+import PrivateZone from "./guards/PrivateZone";
 
 
 
@@ -32,16 +33,16 @@ function App() {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/userDetails/:id" element={<UserDetails />} />
-          <Route path="/chat/:id" element={<Chat />} />
-          <Route path="/userProfile/:id" element={<UserProfile />} />
-          <Route path="/events/:id" element={<EventOne />} />
-          <Route path="/navBar" element={<NavBar />} />
-          <Route path="/updateProfile" element={<UpdateProfile />} />
-
-
+       
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/community" element={<PrivateZone><Community /></PrivateZone>} />
+          <Route path="/userDetails/:id" element={<PrivateZone><UserDetails /></PrivateZone>} />
+          <Route path="/chat/:id" element={<PrivateZone><Chat /></PrivateZone>} />
+          <Route path="/userProfile/:id" element={<PrivateZone><UserProfile /></PrivateZone>} />
+          <Route path="/events/:id" element={<PrivateZone><EventOne /></PrivateZone>} />
+          <Route path="/navBar" element={<PrivateZone><NavBar /></PrivateZone>} />
+          <Route path="/updateProfile" element={<PrivateZone><UpdateProfile /></PrivateZone>} />
+    
         </Routes>
         
       </BrowserRouter>
