@@ -3,7 +3,7 @@ import LogoHorizontal from "../../assets/logo-horizontal.png";
 import { Link, useNavigate } from "react-router-dom";
 import Arrow from "../../components/arrow/Arrow";
 import "./Register.scss";
-import { Input } from "antd";
+import { Checkbox, Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { register, reset } from "../../features/auth/authSlice";
 import { FiAlertCircle } from "react-icons/fi";
@@ -13,7 +13,7 @@ const Register = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-
+  const [isChecked, setIsChecked] = useState(false);
   const [formData, setFormData] = useState({
 
     name:'',
@@ -49,13 +49,12 @@ const Register = () => {
     ...prevState,
     [e.target.name]:e.target.value,
     }))
+    setIsChecked(e.target.checked);
   }
-    
   const navigate = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault()
-
     if (!name) {
       setErrorMessage("Por favor, introduce tu nombre");
       return;
@@ -63,11 +62,6 @@ const Register = () => {
 
     if (!surname) {
       setErrorMessage("Por favor, introduce tu apellido");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setErrorMessage("Las contraseñas no coinciden");
       return;
     }
 
@@ -81,6 +75,11 @@ const Register = () => {
       return;
     }
 
+    if (password !== confirmPassword) {
+      setErrorMessage("Las contraseñas no coinciden");
+      return;
+    }
+
     if (!passwordValid) {
       const errorList = [
         'La contraseña debe tener:',
@@ -89,6 +88,11 @@ const Register = () => {
         'Uso de caracteres alfanuméricos',
       ]
       setErrorMessage(errorList.join('\n'));
+      return;
+    }
+
+    if (!isChecked) {
+      setErrorMessage("Acepta los terminos y condiciones de privacidad")
       return;
     }
 
@@ -111,8 +115,7 @@ const Register = () => {
       return () => clearTimeout(timeout);
     }
   }, [errorMessage]);
-  
-  
+
   return (
     <div className="main-register">
       <div className="img-logo">
@@ -173,7 +176,7 @@ const Register = () => {
           <label>Repetir contraseña</label>
           <Input.Password className="inputPassword" type="password" name="confirmPassword" value={confirmPassword}placeholder="Contraseña" onChange={onChange}/>
         </div>
-
+        <Checkbox onChange={onChange}>Checkbox</Checkbox>
           {errorMessage && (
           <div className="div-error">
             {errorMessage.split('\n').map((error, index) => (
