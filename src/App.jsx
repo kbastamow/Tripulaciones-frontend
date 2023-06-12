@@ -14,6 +14,7 @@ import UpdateProfile from './pages/updateProfile/UpdateProfile';
 import EventOne from './pages/eventOne/EventOne';
 import Chat from './pages/chat/Chat';
 import UserProfile from './pages/userProfile/UserProfile';
+import Enterprises from './pages/enterprises/Enterprises';
 
 
 
@@ -26,19 +27,17 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      {/* <div>
-        {token ? <Header /> : <></>}
-        </div> */}
+      <div>
+        {token ? <Header /> : <></>}  
+        </div>
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/events" element={<Events />} />
           <Route path="/" element={<Home />} />
           <Route path="/community" element={<Community />} />
           <Route path="/userDetails/:id" element={<UserDetails />} />
           <Route path="/chat/:id" element={<Chat />} />
           <Route path="/userProfile/:id" element={<UserProfile />} />
-          <Route path="/events" element={<Events />} /> 
           <Route path="/events/:id" element={<EventOne />} />
           <Route path="/navBar" element={<NavBar />} />
           <Route path="/updateProfile" element={<UpdateProfile />} />
