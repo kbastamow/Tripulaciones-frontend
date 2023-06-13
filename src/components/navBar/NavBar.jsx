@@ -42,7 +42,7 @@ const NavBar = () => {
           <div
             className={`chat ${currentUrl.includes("/chat") ? "active" : ""}`}
           >
-            <Link to={`${baseUrl}/chat`}>
+            <Link to={`${API_URL}/chat`}>
               <BsChat />
               <p>Chat</p>
             </Link>
