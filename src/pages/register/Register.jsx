@@ -91,6 +91,11 @@ const Register = () => {
       return;
     }
 
+    if (formData.password.length > 16) {
+      setErrorMessage("La constraseña no puede exceder de 16 caracteres")
+      return;
+    }
+
     if (!isChecked) {
       setErrorMessage("Acepta los terminos y condiciones de privacidad")
       return;
@@ -98,7 +103,7 @@ const Register = () => {
 
     setErrorMessage(""); // Limpiar el mensaje de error si no hay error
     dispatch(register(formData))
-    
+
     //setSuccessMessage("Usuari@ creado con éxito");
 
     // setTimeout(() => {
@@ -193,7 +198,7 @@ const Register = () => {
         {/* {errorMessage && <p className="error-message">{errorMessage}</p>} */}
         {successMessage && <p className="success-message">{successMessage}</p>}
         {isSuccess && <p className="success-message">Registro realizado con exito, entra en tu email para confirmar</p>}
-        {isError && <p className="success-message">Este usuari@ ya existe</p>}
+        {isError && <p className="success-message"><FiAlertCircle/> Este usuari@ ya existe</p>}
         <button type="submit">Crear cuenta</button>
         <p>
           ¿Ya tienes cuenta?{" "}
