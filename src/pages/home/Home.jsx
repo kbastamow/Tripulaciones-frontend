@@ -28,6 +28,7 @@ const onChange = (checked) => {
 
 useEffect(() => {
   dispatch(getAll())
+  
 }, [])
 
 
