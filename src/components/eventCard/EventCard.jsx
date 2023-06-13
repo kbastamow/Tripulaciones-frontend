@@ -5,7 +5,12 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import "./EventCard.scss"
 import Spinner from '../spinner/Spinner';
-const imagePath = "http://localhost:8080/images/event/"
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+const imagePath = API_URL+"/images/event/"
+
+
+
+
 
 
 const EventCard = () => {

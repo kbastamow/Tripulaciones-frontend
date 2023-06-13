@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import DateTimeConverter from "../dateTimeConverter/DateTimeConverter";
 import { Link } from "react-router-dom";
 import "./ChatCard.scss";
-import { BsArrowUpRightCircle } from "react-icons/bs";
+
 
 const ChatCard = () => {
   const imagePath = "http://localhost:8080/images/user/";
