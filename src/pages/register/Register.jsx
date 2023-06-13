@@ -116,6 +116,10 @@ const Register = () => {
     }
   }, [errorMessage]);
 
+  const onPasswordPaste = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="main-register">
       <div className="img-logo">
@@ -169,12 +173,12 @@ const Register = () => {
         <div className="input-one">
           <label>Contraseña</label>
           <Input.Password className="inputPassword" type="password" name="password"
-          value={password} placeholder="Contraseña" onChange={onChange}/>
+          value={password} placeholder="Contraseña" onChange={onChange} onPaste={onPasswordPaste}/>
         </div>
 
         <div className="input-one">
           <label>Repetir contraseña</label>
-          <Input.Password className="inputPassword" type="password" name="confirmPassword" value={confirmPassword}placeholder="Contraseña" onChange={onChange}/>
+          <Input.Password className="inputPassword" type="password" name="confirmPassword" value={confirmPassword}placeholder="Contraseña" onChange={onChange} onPaste={onPasswordPaste}/>
         </div>
         <Checkbox onChange={onChange}>Términos de privacidad</Checkbox>
           {errorMessage && (
