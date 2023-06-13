@@ -5,11 +5,13 @@
     display: flex;
     justify-content:center;
     gap: 3%;
+    margin-bottom: 10% !important;
 
     input {
         border: 1px solid $accent;
         color: $accent;
         background-color: transparent;
+       
     
       input:focus, input:active {
         outline: none;
@@ -36,6 +38,7 @@
     border-radius: 10px;
     background-color: $yellow;
     margin-right: auto;
+    margin-left: 1%;
     padding: 1% 3%;
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 13px;
@@ -44,6 +47,7 @@
 .my-msg-container {
     border-radius: 10px;
     margin-left: auto;
+    margin-right: 1%;
     background-color: $beige;
     padding: 1% 3%;
     font-family: 'Atkinson Hyperlegible', sans-serif;
@@ -55,13 +59,15 @@
 .msgwindow-div {
     margin: 3%;
     padding: 2%;
+    height: 65vh;
+    overflow: auto;
 }
 
 
 .msg-time {
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 10px;
-    margin: 2% 2%;
+    margin: 0 2%;
     text-align: center;
 }
 

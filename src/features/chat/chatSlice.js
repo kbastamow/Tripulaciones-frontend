@@ -16,10 +16,10 @@ export const chatSlice = createSlice({
   initialState,
   reducers: {   //SOCKET MESSAGES!
     addSocketMessage: (state, action) => {
-      console.log("addSocket", action.payload)
       state.socketMessages.push(action.payload);
     },
     resetChat: (state) => {
+      console.log("Reset")
       state.chatIsError = false;
       state.chatIsSuccess = false;
       state.message = "";
@@ -32,36 +32,18 @@ export const chatSlice = createSlice({
         state.chatMessages = action.payload.chat.messages
       })
       .addCase(findOrCreate.fulfilled, (state, action) => {
-        console.log(action.payload, " in chatSlice")
-        state.chat = action.payload
+        console.log(action.payload.chat, "in ChatDetails")
+        state.chat = action.payload.chat
         state.chatIsSuccess = true
       })
       .addCase(getChatById.fulfilled, (state, action) => {
         state.chat = action.payload
       })
       .addCase(getChatsByUserId.fulfilled, (state, action) => {
-        console.log("action payload mychats", action.payload)
         state.myChats = action.payload
       })
   },
 });
-
-export const create = createAsyncThunk("chat/create", async (chat) => {
-  try {
-    return await chatService.create(chat);
-  } catch (error) {
-    console.error(error);
-  }
-});
-
-export const writeMsg = createAsyncThunk("chat/writeMsg", async (chat) => {
-  try {
-    return await chatService.writeMsg(chat);
-  } catch (error) {
-    console.error(error);
-  }
-});
-
 
 export const findOrCreate = createAsyncThunk("chat/findOrCreate", async (otherId) => {
   try {
@@ -86,6 +68,25 @@ try {
   console.error(error);
 }
 });
+
+
+//NOT CURRENTLY IN USE:
+export const create = createAsyncThunk("chat/create", async (chat) => {
+  try {
+    return await chatService.create(chat);
+  } catch (error) {
+    console.error(error);
+  }
+});
+//NOT CURRENTLY IN USE:
+export const writeMsg = createAsyncThunk("chat/writeMsg", async (chat) => {
+  try {
+    return await chatService.writeMsg(chat);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 
 
 export const { addSocketMessage, resetChat } = chatSlice.actions;
