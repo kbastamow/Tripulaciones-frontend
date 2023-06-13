@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { Card } from 'antd';
 import { Button, Space, Divider } from 'antd';
-import "./EventCard.scss"
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 

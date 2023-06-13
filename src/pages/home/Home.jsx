@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAll } from "../../features/events/eventSlice"
 
 import { Button, Menu  } from 'antd';
-import EventCard from "../../components/eventCard/eventCard";
+import EventCard from "../../components/eventCard/EventCard";
 import NavBar from "../../components/navBar/NavBar";
 import Header from "../../components/header/Header";
 import { Switch } from 'antd';
