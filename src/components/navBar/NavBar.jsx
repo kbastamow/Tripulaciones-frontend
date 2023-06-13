@@ -23,9 +23,9 @@ const NavBar = () => {
             </Link>
           </div>
           <div
-            className={`empresas ${currentUrl.includes("/empresas") ? "active" : ""}`}
+            className={`empresas ${currentUrl.includes("/enterprises") ? "active" : ""}`}
           >
-            <Link to={`${baseUrl}/empresas`}>
+            <Link to={`${baseUrl}/enterprises`}>
               <BsHandbag />
               <p>Empresas</p>
             </Link>
