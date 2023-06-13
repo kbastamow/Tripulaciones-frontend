@@ -35,17 +35,18 @@ useEffect(() => {
 
   return (
     <>
-    <div className="sticky">
-      <Header/>
-      <div className="event-menu">
-      <span className="blue-menu-btn">Recientes</span>
-      <span  className="blue-menu-btn blue-menu-active">Eventos</span>
-      <span className="blue-menu-btn">Noticias</span>
+    <div className="content-container-main">
+      <div className="sticky">
+        <Header/>
+        <div className="event-menu">
+        <span className="blue-menu-btn">Recientes</span>
+        <span  className="blue-menu-btn blue-menu-active">Eventos</span>
+        <span className="blue-menu-btn">Noticias</span>
+        </div>
+        <div className="event-toggle"><span>Por fecha</span><span><Switch defaultUnchecked onChange={onChange} /></span><span>Recomendados</span></div>
       </div>
-      <div className="event-toggle"><span>Por fecha</span><span><Switch defaultUnchecked onChange={onChange} /></span><span>Recomendados</span></div>
-
+      <EventCard></EventCard>
     </div>
-    <EventCard></EventCard>
     <NavBar/>
 </>
   )
