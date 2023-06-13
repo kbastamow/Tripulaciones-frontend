@@ -7,9 +7,10 @@ import Banner from "../../assets/edem-banner.png";
 import "./UserDetails.scss";
 import { Link } from "react-router-dom";
 import { FiCalendar } from "react-icons/fi";
-
 import {findOrCreate} from "../../features/chat/chatSlice"
 import {resetChat} from "../../features/chat/chatSlice"
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+
 
 const UserDetails = () => {
   const navigate = useNavigate()
@@ -77,7 +78,7 @@ dispatch(resetChat())
         <div className="info-container">
           <div className="img-container">
             <img
-              src={`http://localhost:8080/images/user/${user.image}`}
+              src={`${API_URL}/images/user/${user.image}`}
               alt=""
             />
           </div>
@@ -96,12 +97,7 @@ dispatch(resetChat())
           <Link to={`/chat/${user._id}`}>
             <button>Contactar</button>
           </Link>
-          {/* <Link to={`/chat/${user._id}`}> */}
             <button onClick={handleCreateChat}>Enviar mensaje</button>
-          {/* </Link> */}
-          {/* <Link to={`/chat/kat/${user._id}`}> */}
-            {/* <button onClick={handleCreateChat}>ABRIR PRUEBA KAT</button> */}
-          {/* </Link> */}
         </div>
         <div className="bio">
           <p className="title">Bio:</p>

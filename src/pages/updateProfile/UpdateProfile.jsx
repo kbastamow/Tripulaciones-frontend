@@ -44,7 +44,7 @@ const UpdateProfile = () => {
     && value !== "")
     );
     console.log(filteredValues); 
-    // dispatch(updateProfile(filteredValues)); //Así no pasamos valores vaciós a la base de datos
+    dispatch(updateProfile(filteredValues)); //Así no pasamos valores vaciós a la base de datos
   };
 
   return (

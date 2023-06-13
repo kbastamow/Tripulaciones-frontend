@@ -4,14 +4,18 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAll } from "../../features/events/eventSlice"
 
-import { Button, Menu  } from 'antd';
-import EventCard from "../../components/eventCard/eventCard";
+import EventCard from "../../components/eventCard/EventCard";
 import NavBar from "../../components/navBar/NavBar";
 import Header from "../../components/header/Header";
 import { Switch } from 'antd';
 export const Home = () => {
       
 const dispatch = useDispatch()
+
+const {events} = useSelector((state) => state.events)
+
+
+
 
 const onChange = (checked) => {
   console.log(`switch to ${checked}`);
@@ -43,7 +47,12 @@ useEffect(() => {
         </div>
         <div className="event-toggle"><span>Por fecha</span><span><Switch defaultUnchecked onChange={onChange} /></span><span>Recomendados</span></div>
       </div>
-      <EventCard></EventCard>
+      
+      {events ? 
+      <></> 
+      : 
+      <EventCard/>
+    }
     </div>
     <NavBar/>
 </>
