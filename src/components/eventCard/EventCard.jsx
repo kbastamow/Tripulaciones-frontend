@@ -3,7 +3,7 @@ import { Card } from 'antd';
 import { Button, Space, Divider } from 'antd';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import "./EventCard.scss"
 import Spinner from '../spinner/Spinner';
 const imagePath = "http://localhost:8080/images/event/"
 
