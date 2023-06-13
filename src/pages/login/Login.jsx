@@ -8,7 +8,6 @@ import "./Login.scss";
 import { FiAlertCircle } from "react-icons/fi";
 
 const sitekey = import.meta.env.VITE_REACT_APP_RECAPTCHA_SITE_KEY;
-console.log(sitekey)
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +20,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { email, password } = formData;
   const dispatch = useDispatch();
-  //const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY
+
 
   const onChange = (e) => {
     setFormData((prevState) => ({

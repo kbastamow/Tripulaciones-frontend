@@ -1,75 +1,117 @@
 @import "../../colors.scss";
 
-.enterprises-list {
+.enterprise-menu {
+    width: 90%;
     display: flex;
-    flex-direction: column;
-    margin: 18px;
-    border: 1px solid $secondary ;
-    padding: 6px;
-    background: $beige;
+    justify-content: space-around;
+    height: 29px;
+    margin: auto;
+    border: 2px solid $secondary;
+    align-items: center;
+    padding: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 
-    .enterprise-text{
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-        margin-top: 1rem;
-        margin-left: 1rem;
-        margin-bottom: 0.5rem;
-        
-        h1{
-            font-weight: 800;
-          font-size: 19px;
-          line-height: 24px;
-            color: $secondary !important;
-          }
-    }
+  
+}
 
-    .enterprise-imag{
-        width: 100%;
-        height: 100%;
 
-        img{
-            width: 50%;
-        }
-    }
-
-    .div-contactar{
-        display: flex;
-        justify-content: center;
-        .contactar{
-            all: unset;
-            border: 1px solid $accent;
-            color: $accent;
-            padding: 6px 12px 6px 12px;
-            width: 20%;
-        }
-    }
-   
-
-    .enterprise-name{
-        font-weight: bold;
-        color:  $accent;
-    }
-
-    .enterprise-description{
-        border-bottom: 1px solid $accent;
-    }
+.enterprise-h2 {
+    margin-left: 1rem;
     
-    .topics{
-        margin-right: 12px;
-       margin-top: 6px;
-        
+    h2{
+        font-size: 15px;
+        color: $soft-brown;
+        margin-bottom: 6px;
     }
   
-    .enterpise-phase{
-        border: 1px solid grey;
-        width: 24%;
-        margin-top: 6px;
-        padding-left: 12px;
+}
+.enterprise-general-container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    .enterprise-container {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
 
-    p {
-      margin: 0;
-      padding: 5px 0;
+
+    .enterprises-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 45%;
+        height: 240px;
+        background-color: $beige;
+        
+        .enterprise-imag {
+            width: 100%;
+            height: 90px;
+
+            img {
+                width: 100%;
+                height: 90px;
+                object-fit: cover;
+                border-bottom-left-radius: 100px;
+                border-bottom-right-radius: 100px;
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+                background: whitesmoke;
+
+            }
+        }
+
+        .enterprise-name {
+            font-weight: bold;
+            color: $accent;
+            font-size: 12px;
+        }
+
+        .enterprise-description {
+            display: flex;
+            text-align: center;
+            color: $soft-brown;
+            font-size: 12px;
+            height: 40px;
+        }
+
+        .topics-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 6px;
+        }
+
+        .div-contactar {
+            display: flex;
+            text-align: center;
+            margin-top: 6px;
+
+            .contactar {
+                all: unset;
+                border: 1px solid $accent;
+                color: $accent;
+                padding: 6px 18px 6px 18px;
+                width: 100%;
+            }
+        }
+
+        .topics {
+            margin-right: 12px;
+            margin-top: 6px;
+            border: 1px solid $soft-brown;
+            border-radius: 8px;
+            color: $background;
+            background: $soft-brown;
+            padding: 0 6px 0 6px;
+            font-size: 13px;
+        }
+
+
+        p {
+            margin: 0;
+            padding: 5px 0;
+        }
     }
-  }
+}
