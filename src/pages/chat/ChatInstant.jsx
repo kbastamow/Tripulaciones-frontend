@@ -73,7 +73,7 @@ if (!chat) {
 <div className="msgwindow-div">
   {/* OLD MESSAGES */}
   {(chat.length < 1) ? <></> : (
-         chat.messages.map((message) => (
+         chat.messages.slice(-50).map((message) => (
          <>
            <div key={message._id}>
            <div className="msg-time"><DateTimeConverter datetime = {message.timestamp}/> mensaje de {message.sender.name}</div>
