@@ -5,16 +5,18 @@
     
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: start;
+    align-items: center;
     padding: 2% 2%;
     background-color: $beige;
     margin-top: 1%;
     margin-bottom: 1%;
+    gap: 2rem;
 }
 
 .contact-img-container {
-    width: 75px;
-    height: 75px;
+    width: 60px;
+    height: 60px;
     
     img {
       width: 100%;
@@ -25,23 +27,27 @@
   }
 
   .contact-details {
-    width: 50%;
-    color: $soft-brown;
+    width: 70%;
+    color: $hard-brown;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 
     p {
         text-decoration: none;
         text-align: left;
-        font-family: "Spectral", serif;
+        font-family: "Atkinson Hyperlegible", serif;
         font-weight: 800;
         font-size: 14px;
         line-height: 19px;
+        margin: 0;
        
           
     }
 
     .last-msg {
       font-family:'Atkinson Hyperlegible', sans-serif;
-      font-size: 12px;
+      font-size: 14px;
       padding-bottom: 2px;
 
       span {
@@ -52,8 +58,8 @@
   }
 
   .last-msg-time {
-    font-size: 9px;
-
+    font-size: 12px;
+    color: $soft-brown !important;
   }
 
   .contact-right {
