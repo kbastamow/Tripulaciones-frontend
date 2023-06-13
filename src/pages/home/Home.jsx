@@ -14,7 +14,9 @@ const dispatch = useDispatch()
 
 const {events} = useSelector((state) => state.events)
 
-
+useEffect(() => {
+  dispatch(getAll())
+}, [])
 
 
 const onChange = (checked) => {
@@ -30,12 +32,15 @@ const onChange = (checked) => {
 };
 
 
+<<<<<<< HEAD
 useEffect(() => {
   dispatch(getAll())
   
 }, [])
 
 
+=======
+>>>>>>> develop
   return (
     <>
     <div className="content-container-main">
@@ -50,9 +55,9 @@ useEffect(() => {
       </div>
       
       {events ? 
-      <></> 
-      : 
       <EventCard/>
+      : 
+      <></> 
     }
     </div>
     <NavBar/>

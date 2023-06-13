@@ -31,6 +31,7 @@ dispatch(resetChat())
   if (chat && chatIsSuccess) {
     console.log(chat._id)
     setTimeout(() => {
+    
     navigate("/chat/instant/" + chat._id)
     }, 2000);
   }
