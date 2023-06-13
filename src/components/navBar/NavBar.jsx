@@ -18,7 +18,7 @@ const NavBar = () => {
           <div
             className={`home ${currentUrl === API_URL + "/" ? "active" : ""}`}
           >
-            <Link to={baseUrl}>
+            <Link to={API_URL}>
               <BiHomeAlt2 />
               <p>Home</p>
             </Link>
@@ -26,7 +26,7 @@ const NavBar = () => {
           <div
             className={`empresas ${currentUrl.includes("/enterprises") ? "active" : ""}`}
           >
-            <Link to={`${baseUrl}/enterprises`}>
+            <Link to={`${API_URL}/enterprises`}>
               <BsHandbag />
               <p>Empresas</p>
             </Link>
@@ -34,7 +34,7 @@ const NavBar = () => {
           <div
             className={`comunidad ${currentUrl.includes("/community") ? "active" : ""}`}
           >
-            <Link to={`${baseUrl}/community`}>
+            <Link to={`${API_URL}/community`}>
               <FiUsers />
               <p>Comunidad</p>
             </Link>
