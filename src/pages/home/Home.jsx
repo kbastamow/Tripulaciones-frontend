@@ -13,8 +13,6 @@ export const Home = () => {
       
 const dispatch = useDispatch()
 
-
-
 const onChange = (checked) => {
   console.log(`switch to ${checked}`);
 
