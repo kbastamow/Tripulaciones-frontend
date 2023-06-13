@@ -5,6 +5,7 @@ import "./EventCard.scss"
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import logo from "../../assets/logo.png"
+import Spinner from '../spinner/Spinner';
 const imagePath = "http://localhost:8080/images/event/"
 const { Meta } = Card;
 
@@ -13,13 +14,13 @@ const EventCard = () => {
 const {events} = useSelector((state) => state.events)
 
 useEffect(()=> {
-
+  
 }, [events])
 
 
+
 if(events?.length <= 0){
-    console.log("no events")
-    return "No hay contenido en este momento"
+    return <Spinner/>
   }
 
 return (

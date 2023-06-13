@@ -1,0 +1,23 @@
+@import "../../colors.scss";
+.chats-container {
+   margin: 2% 4%;
+
+
+   span {
+    background-color: inherit;
+    border-radius: none;
+   
+
+    input {
+        background-color: inherit;
+    }
+
+    button {
+        background-color: inherit;
+    }
+   }
+}
+
+.ant-btn-default:not(:disabled):hover {
+    border-color: $soft-brown;
+}

@@ -1,55 +1,48 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getById } from "../../features/users/userSlice";
-import { create } from "../../features/chat/chatSlice";
+import { getChatsByUserId} from "../../features/chat/chatSlice";
+import ChatCard from "../../components/chatCard/chatCard";
+import Header from "../../components/header/Header";
+import { Input } from 'antd';
+import "./Chat.scss"
+const { Search } = Input;
 
 
 const Chat = () => {
-    const { id } = useParams();
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  const {myChats} = useSelector(state => state.chat)
 
-  const { user } = useSelector((state) => state.user);
+  useEffect(()=> {
+    dispatch(getChatsByUserId())
+    console.log(myChats)
 
-  useEffect(() => {
-    dispatch(getById(id));
-  }, []);
-
-  const [message, setMessage] = useState("");
-  const userId = JSON.parse(localStorage.getItem("user"));
+  }, [])
 
 
-  const handleInputChange = (event) => {
-    setMessage(event.target.value);
-  };
+const onSearch = () => {
+  console.log("search on...")
+}
 
-  const handleSendMessage = () => {
-    const chatData = {
-      users: [user._id, userId._id],
-      messages: [
-        {
-          sender: user._id,
-          content: message,
-        },
-      ],
-    };
-  
-    dispatch(create(chatData));
-  };
-  
-  
 
 
   return (
-    <div>
-    {user.name}
-<br />
-<input type="text" value={message} onChange={handleInputChange} />
-    <button type="submit" onClick={handleSendMessage}>
-      Enviar
-    </button> 
-    </div>
+<>
+<div  className="flex-column-container">
+<Header></Header>
+<div className="chats-container">
+<Search
+      placeholder="Buscar personas"
+      allowClear
+      onSearch={onSearch}
+      style={{
+        width: 250,
+      }}
+    />
+<ChatCard></ChatCard>
+</div>
+</div>
+</>
     
   )
 }

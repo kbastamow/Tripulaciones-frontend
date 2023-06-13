@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAll } from "../../features/users/userSlice";
 import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
+import Header from "../../components/header/Header";
 
 const Community = () => {
   const dispatch = useDispatch();
@@ -18,9 +19,12 @@ const Community = () => {
   return (
     <>
       <div className="community-container">
-        <div className="btn-con">
-          <button>Mis contactos</button>
-          <button>Mis grupos</button>
+        <div className="sticky">
+          <Header />
+          <div className="btn-con">
+            <button>Mis contactos</button>
+            <button>Mis grupos</button>
+          </div>
         </div>
         <h2>Gente que podrías conocer:</h2>
 
