@@ -4,9 +4,9 @@ import { getChatsByUserId} from "../../features/chat/chatSlice";
 import ChatCard from "../../components/chatCard/chatCard";
 import Header from "../../components/header/Header";
 import NavBar from "../../components/navBar/NavBar";
-import { Input } from 'antd';
 import "./Chat.scss"
-const { Search } = Input;
+import { BiSearch } from "react-icons/bi";
+
 
 
 
@@ -33,15 +33,13 @@ const onSearch = () => {
 <div  className="flex-column-container">
 <Header></Header>
 <div className="chats-container">
-<Search
-      placeholder="Buscar personas"
-      allowClear
-      onSearch={onSearch}
-      style={{
-        width: 250,
-      }}
-    />
-<ChatCard></ChatCard>
+<div>
+  <div className="input-search"><span><BiSearch/></span> <input type="text" placeholder="Buscar mensajes" /> </div>
+  <p></p>
+</div>
+<div className="chats-container-cards">
+  <ChatCard></ChatCard>
+</div>
 </div>
 <NavBar></NavBar>
 </div>

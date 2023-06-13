@@ -21,3 +21,30 @@
 .ant-btn-default:not(:disabled):hover {
     border-color: $soft-brown;
 }
+.chats-container-cards{
+    margin-top: 1rem;
+}
+.input-search{
+    display: flex;
+    align-items: center;
+    border: 1px solid $soft-brown;
+    width: 270px;
+    padding: 0.2rem;
+    color: $soft-brown;
+
+    span{
+        display: flex;
+        align-items: center;
+        margin: 0;
+        font-size: 20px !important;
+    }
+    input{
+        background-color: transparent;
+        border: none;
+        width: 270px;  
+        color: $hard-brown;
+    }
+    input:focus{
+       outline: none;  
+    }
+}
