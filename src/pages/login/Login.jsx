@@ -8,7 +8,6 @@ import "./Login.scss";
 import { FiAlertCircle } from "react-icons/fi";
 
 const sitekey = import.meta.env.VITE_REACT_APP_RECAPTCHA_SITE_KEY;
-
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -20,7 +19,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { email, password } = formData;
   const dispatch = useDispatch();
-
+  // const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -38,6 +37,7 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    await dispatch(login(formData));
     if (captcha) {
       try {
         await dispatch(login(formData));
@@ -45,7 +45,6 @@ const Login = () => {
           email: "",
           password: "",
         });
-        console.log("formData", formData);
       } catch (error) {
         setError("Correo o contraseña inválido");
       }
@@ -73,6 +72,8 @@ const Login = () => {
     <div className="principal-container-login">
       <img src={Logo} alt="Marina de empresas" />
       <h1>Risky People.</h1>
+      {console.log("Hola" + sitekey)}
+
       <form onSubmit={onSubmit}>
         <div>
           <label className="email-label" htmlFor="email">
@@ -88,7 +89,6 @@ const Login = () => {
         </div>
         <div>
           <label htmlFor="password">Contraseña</label>
-          
           <input
             type="password"
             name="password"
@@ -103,9 +103,9 @@ const Login = () => {
           <div className="div-error">
             {error && (
               <div className="error">
-                  <span>
-                      <FiAlertCircle />
-                  </span>
+                <span>
+                  <FiAlertCircle />
+                </span>
                 {error}
               </div>
             )}
@@ -116,7 +116,7 @@ const Login = () => {
       </form>
       <div className="register-div-login">
         <span>¿Todavía no estás registrado? </span>
-        <Link className="link-register" to="/registerIsma">
+        <Link className="link-register" to="/register">
           Registrate
         </Link>
       </div>
