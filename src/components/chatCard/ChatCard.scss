@@ -28,7 +28,7 @@
 
   .contact-details {
     width: 70%;
-    color: $soft-brown;
+    color: $hard-brown;
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -36,7 +36,7 @@
     p {
         text-decoration: none;
         text-align: left;
-        font-family: "Spectral", serif;
+        font-family: "Atkinson Hyperlegible", serif;
         font-weight: 800;
         font-size: 14px;
         line-height: 19px;
@@ -59,7 +59,7 @@
 
   .last-msg-time {
     font-size: 12px;
-    color: $accent;
+    color: $soft-brown !important;
   }
 
   .contact-right {
