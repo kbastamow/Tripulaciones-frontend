@@ -32,15 +32,12 @@ const onChange = (checked) => {
 };
 
 
-<<<<<<< HEAD
 useEffect(() => {
   dispatch(getAll())
   
 }, [])
 
 
-=======
->>>>>>> develop
   return (
     <>
     <div className="content-container-main">
