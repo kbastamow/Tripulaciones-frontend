@@ -14,12 +14,15 @@ import { BiMicrophone, BiPlusCircle } from "react-icons/bi";
 const ChatInstant = () => {
   const dispatch = useDispatch();
   const you = (JSON.parse(localStorage.getItem("user")))
+  let otherPerson = {}
   const { id } = useParams()
   const {chat, socketMessages} = useSelector((state) => state.chat)
   const [inputMessage, setInputMessage] = useState('');
   const [socket, setSocket] = useState(null);
-  
   const bottom = useRef(null);
+  const imagePath = "http://localhost:8080/images/user/";
+
+
   
   useEffect(() => {
     bottom?.current?.scrollIntoView({ behavior: 'smooth' });
@@ -63,12 +66,15 @@ if (!chat) {
   return <></>
 }
 
+otherPerson = chat.userIds.filter(member => member._id !== you._id)
+console.log(otherPerson)
+
   return (
     <>
    <Header></Header>
    <div className="contacto-text blue-title">
    <Link> <Arrow></Arrow></Link>
-    {chat.userIds[0].name ? <>Chat entre {chat.userIds[1].name} y {chat.userIds[0].name}</> : <></>}</div>
+    {otherPerson[0].name ? <>       <div className="contact-img-container"><img src={imagePath + otherPerson[0].image} alt="usuario" /> </div>{otherPerson[0].name}</> : <></>}</div>
 <br />
 <div className="msgwindow-div">
   {/* OLD MESSAGES */}
