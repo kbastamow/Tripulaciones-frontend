@@ -3,20 +3,22 @@ import { useSelector, useDispatch } from "react-redux";
 import { getChatsByUserId} from "../../features/chat/chatSlice";
 import ChatCard from "../../components/chatCard/chatCard";
 import Header from "../../components/header/Header";
+import NavBar from "../../components/navBar/NavBar";
 import { Input } from 'antd';
 import "./Chat.scss"
 const { Search } = Input;
 
 
-const Chat = () => {
 
+const Chat = () => {
   const dispatch = useDispatch()
   const {myChats} = useSelector(state => state.chat)
-
+  
   useEffect(()=> {
+    if (!myChats || myChats.length < 1) {
     dispatch(getChatsByUserId())
-    console.log(myChats)
-
+    }
+ 
   }, [])
 
 
@@ -41,6 +43,7 @@ const onSearch = () => {
     />
 <ChatCard></ChatCard>
 </div>
+<NavBar></NavBar>
 </div>
 </>
     
