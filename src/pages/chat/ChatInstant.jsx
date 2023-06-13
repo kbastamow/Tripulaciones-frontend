@@ -20,7 +20,10 @@ const ChatInstant = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [socket, setSocket] = useState(null);
   const bottom = useRef(null);
-  const imagePath = "http://localhost:8080/images/user/";
+
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+
+  const imagePath = API_URL + "/images/user/";
 
 
   
@@ -31,7 +34,7 @@ const ChatInstant = () => {
 useEffect(() => {
   dispatch(getChatById(id));
    // Set up socket.io connection
-   const newSocket = io.connect('http://localhost:8080');
+   const newSocket = io.connect(API_URL);
    setSocket(newSocket);
 
    // Receive messages from the server

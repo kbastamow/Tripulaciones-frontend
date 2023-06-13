@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
-
 import { getAll } from "../../features/users/userSlice";
 import NavBar from "../../components/navBar/NavBar";
 import Header from "../../components/header/Header";
 import Arrow from "../../components/arrow/Arrow";
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+
 
 const RecommendedUsersAll = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const RecommendedUsersAll = () => {
                   {user.image ? (
                     <div className="img-container">
                       <img
-                        src={`http://localhost:8080/images/user/${user.image}`}
+                        src={`${API_URL}/images/user/${user.image}`}
                         alt=""
                       />
                     </div>
