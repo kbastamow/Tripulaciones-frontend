@@ -16,9 +16,9 @@ const NavBar = () => {
       <div className="navbar-container">
         <div className="headers">
           <div
-            className={`home ${currentUrl === API_URL + "/" ? "active" : ""}`}
+            className={`home ${currentUrl === "https://main.d9zcqu0pbiaos.amplifyapp.com" + "/" ? "active" : ""}`}
           >
-            <Link to={baseUrl}>
+            <Link to={"/"}>
               <BiHomeAlt2 />
               <p>Home</p>
             </Link>
@@ -26,7 +26,7 @@ const NavBar = () => {
           <div
             className={`empresas ${currentUrl.includes("/enterprises") ? "active" : ""}`}
           >
-            <Link to={`${baseUrl}/enterprises`}>
+            <Link to={`/enterprises`}>
               <BsHandbag />
               <p>Empresas</p>
             </Link>
@@ -34,7 +34,7 @@ const NavBar = () => {
           <div
             className={`comunidad ${currentUrl.includes("/community") ? "active" : ""}`}
           >
-            <Link to={`${baseUrl}/community`}>
+            <Link to={`/community`}>
               <FiUsers />
               <p>Comunidad</p>
             </Link>
@@ -42,7 +42,7 @@ const NavBar = () => {
           <div
             className={`chat ${currentUrl.includes("/chat") ? "active" : ""}`}
           >
-            <Link to={`${baseUrl}/chat`}>
+            <Link to={`/chat`}>
               <BsChat />
               <p>Chat</p>
             </Link>
