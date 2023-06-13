@@ -74,7 +74,6 @@ if (!chat) {
   {/* OLD MESSAGES */}
   {(chat.length < 1) ? <></> : (
          chat.messages.slice(-50).map((message) => (
-         <>
            <div key={message._id}>
            <div className="msg-time"><DateTimeConverter datetime = {message.timestamp}/> mensaje de {message.sender.name}</div>
 <div className="flex-div">
@@ -82,7 +81,6 @@ if (!chat) {
           <span className={message.sender._id === you._id ? "my-msg-container" : "msg-container"}>{message.content}</span>
           </div>
           </div>
-          </>
         )))
     }
   {/* INSTANT MESSAGES */}
