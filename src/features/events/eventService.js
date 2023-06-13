@@ -1,9 +1,13 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080";
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+
+console.log(API_URL)
+
 const token = JSON.parse(localStorage.getItem("token")) || "";
 
 const getAll = async() => {
+    console.log(API_URL, "Hola")
         const res = await axios.get(API_URL + "/events/getAll", {
             headers: {
                 'Authorization': token,
@@ -12,6 +16,7 @@ const getAll = async() => {
 }
 
 const getById = async(id) => {
+
         const res = await axios.get(API_URL + "/events/getById/" + id, {
             headers: {
                 'Authorization': token,

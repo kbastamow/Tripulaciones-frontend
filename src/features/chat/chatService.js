@@ -4,6 +4,7 @@ const API_URL = "http://localhost:8080";
 const token = JSON.parse(localStorage.getItem("token"));
 
 const create = async (chatData) => {
+
   const res = await axios.post(API_URL + "/chats/create", chatData);
   console.log(res.data);
   return res.data;
