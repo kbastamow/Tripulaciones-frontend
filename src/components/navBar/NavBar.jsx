@@ -7,7 +7,8 @@ import { BsChat } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  const baseUrl = "http://localhost:5173";
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+
   const currentUrl = window.location.href;
 
   return (
@@ -15,7 +16,7 @@ const NavBar = () => {
       <div className="navbar-container">
         <div className="headers">
           <div
-            className={`home ${currentUrl === baseUrl + "/" ? "active" : ""}`}
+            className={`home ${currentUrl === API_URL + "/" ? "active" : ""}`}
           >
             <Link to={baseUrl}>
               <BiHomeAlt2 />

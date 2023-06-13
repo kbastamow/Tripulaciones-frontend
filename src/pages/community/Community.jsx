@@ -7,6 +7,9 @@ import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import Header from "../../components/header/Header";
 
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+
+
 const Community = () => {
   const dispatch = useDispatch();
 
@@ -34,7 +37,7 @@ const Community = () => {
                 {user.image ? (
                   <div className="img-container">
                     <img
-                      src={`http://localhost:8080/images/user/${user.image}`}
+                      src={`${API_URL}/images/user/${user.image}`}
                       alt=""
                     />
                   </div>
