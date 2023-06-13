@@ -176,7 +176,7 @@ const Register = () => {
           <label>Repetir contraseña</label>
           <Input.Password className="inputPassword" type="password" name="confirmPassword" value={confirmPassword}placeholder="Contraseña" onChange={onChange}/>
         </div>
-        <Checkbox onChange={onChange}>Terminos de privacidad</Checkbox>
+        <Checkbox onChange={onChange}>Términos de privacidad</Checkbox>
           {errorMessage && (
           <div className="div-error">
             {errorMessage.split('\n').map((error, index) => (
