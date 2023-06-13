@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {  addSocketMessage, getChatById } from "../../features/chat/chatSlice";
 import { receiveMessage, sendMessage } from '../../actions/messageActions';
 import "./ChatInstant.scss"
 import Header from "../../components/header/Header";
-
+import Arrow from "../../components/arrow/Arrow";
 //SOCKET CLIENT
 import io from 'socket.io-client';
 import DateTimeConverter from "../../components/dateTimeConverter/DateTimeConverter";
@@ -16,13 +16,14 @@ const ChatInstant = () => {
   const you = (JSON.parse(localStorage.getItem("user")))
   const { id } = useParams()
   const {chat, socketMessages} = useSelector((state) => state.chat)
-  const [message, setMessage] = useState("");
   const [inputMessage, setInputMessage] = useState('');
   const [socket, setSocket] = useState(null);
   
-  const handleInputChange = (event) => {
-    setMessage(event.target.value);
-  };
+  const bottom = useRef(null);
+  
+  useEffect(() => {
+    bottom?.current?.scrollIntoView({ behavior: 'smooth' });
+  }, []);
 
 useEffect(() => {
   dispatch(getChatById(id));
@@ -65,7 +66,9 @@ if (!chat) {
   return (
     <>
    <Header></Header>
-    {chat.userIds[0].name ? <>Chat entre {chat.userIds[1].name} y {chat.userIds[0].name}</> : <></>}
+   <div className="contacto-text blue-title">
+   <Link> <Arrow></Arrow></Link>
+    {chat.userIds[0].name ? <>Chat entre {chat.userIds[1].name} y {chat.userIds[0].name}</> : <></>}</div>
 <br />
 <div className="msgwindow-div">
   {/* OLD MESSAGES */}
@@ -88,7 +91,7 @@ if (!chat) {
          socketMessages.map((message, index) => (
          <>
            <div key={index}>
-           <div className="msg-time"><DateTimeConverter datetime = {message.timestamp}/> mensaje de {message.senderName}</div>
+           <div className="msg-time"><DateTimeConverter datetime = {message.timestamp}/> {message.senderName}:</div>
 <div className="flex-div">
       
           <span className={message.sender === you._id ? "my-msg-container" : "msg-container"}>{message.content}</span>
@@ -98,9 +101,10 @@ if (!chat) {
         )))
     }
       </div>
+      <div ref={bottom}></div>
       </div>
       <hr />
-      <div className="chatinput-div">
+      <div className="chatinput-div sticky">
       
       <BiPlusCircle/>
       <input
