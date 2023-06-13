@@ -14,7 +14,9 @@ const dispatch = useDispatch()
 
 const {events} = useSelector((state) => state.events)
 
-
+useEffect(() => {
+  dispatch(getAll())
+}, [])
 
 
 const onChange = (checked) => {
@@ -28,11 +30,6 @@ const onChange = (checked) => {
     console.log("Filtra por recomendacion")
   }
 };
-
-
-useEffect(() => {
-  dispatch(getAll())
-}, [])
 
 
   return (
@@ -49,9 +46,9 @@ useEffect(() => {
       </div>
       
       {events ? 
-      <></> 
-      : 
       <EventCard/>
+      : 
+      <></> 
     }
     </div>
     <NavBar/>
