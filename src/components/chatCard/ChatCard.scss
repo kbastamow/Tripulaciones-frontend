@@ -6,9 +6,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 2% 5%;
+    padding: 2% 2%;
     background-color: $beige;
-    margin-top: 2%
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
 .contact-img-container {
@@ -25,6 +26,7 @@
 
   .contact-details {
     width: 50%;
+    color: $soft-brown;
 
     p {
         text-decoration: none;
@@ -33,9 +35,25 @@
         font-weight: 800;
         font-size: 14px;
         line-height: 19px;
-        color: $soft-brown;
+       
           
     }
+
+    .last-msg {
+      font-family:'Atkinson Hyperlegible', sans-serif;
+      font-size: 12px;
+      padding-bottom: 2px;
+
+      span {
+        font-weight: bold;
+
+      }
+    }
+  }
+
+  .last-msg-time {
+    font-size: 9px;
+
   }
 
   .contact-right {
@@ -44,3 +62,6 @@
     margin: auto 0;
 
   }
+
+
+ 
