@@ -39,15 +39,12 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (captcha) {
-      try {
         dispatch(login(formData));
         setFormData({
           email: "",
           password: "",
         });
-      } catch (error) {
         setError("Correo o contraseña inválido");
-      }
     } else {
       setError("Por favor, completa el captcha");
     }
