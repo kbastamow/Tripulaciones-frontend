@@ -55,12 +55,14 @@ export const eventSlice = createSlice({
           .addCase(joinEvent.fulfilled, (state, action) => {
             if (action.payload) {
             state.event = action.payload.event  //IMPORTANT! OTHERWISE STATE UPDATES
-            }
+            state.isSuccess = true
+            state.message = "Te has apuntado al evento"
+          }
           })
           .addCase(joinEvent.rejected, (state, action) => {
             if (action.payload.status === 400) {
                 state.isError = true;
-                state.message = action.payload.data
+                state.message = "Ya estás apuntad@ al evento"
             } 
           })
       },   
