@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Header from "../../components/header/Header"
 import NavBar from "../../components/navBar/NavBar"
 import "./Enterprises.scss"
+import Spinner from '../../components/spinner/Spinner';
 
 
 const Enterprises = () => {
@@ -24,13 +25,13 @@ const Enterprises = () => {
     }
   }
 
-  useEffect(() => {
-    dispatch(getAll(limit, filter, selectedDate));
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [limit, filter, selectedDate]);
+  // useEffect(() => {
+  
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [limit, filter, selectedDate]);
 
   const handleFilter = (category) => {
     setFilter(category);
@@ -43,7 +44,18 @@ const Enterprises = () => {
     setSelectedDate('');
   };
 
-  const enterprise = (enterprises.length > 0)
+
+useEffect(() => {
+  dispatch(getAll(limit, filter, selectedDate));
+
+}, [])
+
+if (enterprises?.length < 1) {
+  return <Spinner />;
+}
+
+
+const enterprise = (enterprises?.length > 0)
     ? enterprises
       .filter((enterprise) => {
         if (selectedTopic === '') {
@@ -74,7 +86,7 @@ const Enterprises = () => {
           </div>
         </div>
       ))
-    : [];
+    : <></>;
 
     const topics = [...new Set(enterprises.flatMap((enterprise) => enterprise.topics))];
 
@@ -94,7 +106,7 @@ const Enterprises = () => {
           </option>
         ))}
       </select>
-    ) : null;
+    ) : <></>;
 
   const dates = [
     ...new Set(enterprises.map((enterprise) => enterprise.updatedAt)),
@@ -116,7 +128,7 @@ const Enterprises = () => {
               </option>
         ))}
       </select>
-    ) : null;
+    ) : <></>;
     
 
   return (
@@ -130,19 +142,25 @@ const Enterprises = () => {
         </div>
         <div className="enterprise-h2"><h2>Empresas que coinciden con tus intereses :</h2></div>
         <div className="filter-div">
-        <div>
-          {topicFilter}
-        </div>
-        <div className="date-filter-div">
-          {dateFilter}
-        </div>
+          <div>
+            {(enterprises?.length > 0) ? topicFilter : <></>}
+          </div>
+          <div className="date-filter-div">
+            {(enterprises?.length > 0) ? dateFilter : <></>}
+          </div>
         </div>
       </div>
       <div className="enterprise-general-container">
         <div className="enterprise-container">
-          {enterprise}
-          {limit <= enterprises.length &&
-            <div className="load-more" onClick={() => setLimit(limit + 16)}>Load More</div>
+          {
+            enterprises?.length > 0 ? (
+              <>
+                {enterprise}
+                {limit <= enterprises.length && (
+                  <div className="load-more" onClick={() => setLimit(limit + 16)}>Load More</div>
+                )}
+              </>
+            ) : <></>
           }
         </div>
       </div>

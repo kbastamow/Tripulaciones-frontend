@@ -1,7 +1,7 @@
 import React, { useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getChatsByUserId} from "../../features/chat/chatSlice";
-import ChatCard from "../../components/chatCard/chatCard";
+import ChatCard from "../../components/chatCard/ChatCard";
 import Header from "../../components/header/Header";
 import NavBar from "../../components/navBar/NavBar";
 import "./Chat.scss"
