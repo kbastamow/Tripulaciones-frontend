@@ -133,52 +133,55 @@ const Enterprises = () => {
 
   return (
     <div>
-      <div className="sticky">
-        <Header />
-        <div className="enterprise-menu">
-          <span
-            className={`blue-menu-btn${
-              filter === "" ? " blue-menu-active" : ""
-            }`}
-            onClick={() => handleFilter("")}
-          >
-            Todas
-          </span>
-          <span
-            className={`blue-menu-btn${
-              filter === "Lanzadera" ? " blue-menu-active" : ""
-            }`}
-            onClick={() => handleFilter("Lanzadera")}
-          >
-            Lanzadera
-          </span>
-          <span
-            className={`blue-menu-btn${
-              filter === "Angels" ? " blue-menu-active" : ""
-            }`}
-            onClick={() => handleFilter("Angels")}
-          >
-            Angels
-          </span>
-        </div>
-        <div className="enterprise-h2">
-          <h2>Empresas que coinciden con tus intereses :</h2>
-        </div>
-        <div className="filter-div">
-          <div>
-            <div className="topic-filter-container">{topicFilter}</div>
+      <div className="content-container-main">
+        <div className="sticky">
+          <Header />
+          <div className="enterprise-menu">
+            <span
+              className={`blue-menu-btn${
+                filter === "" ? " blue-menu-active" : ""
+              }`}
+              onClick={() => handleFilter("")}
+            >
+              Todas
+            </span>
+            <span
+              className={`blue-menu-btn${
+                filter === "Lanzadera" ? " blue-menu-active" : ""
+              }`}
+              onClick={() => handleFilter("Lanzadera")}
+            >
+              Lanzadera
+            </span>
+            <span
+              className={`blue-menu-btn${
+                filter === "Angels" ? " blue-menu-active" : ""
+              }`}
+              onClick={() => handleFilter("Angels")}
+            >
+              Angels
+            </span>
           </div>
-          <div className="date-filter-div">{dateFilter}</div>
-        </div>
-      </div>
-      <div className="enterprise-general-container">
-        <div className="enterprise-container">
-          {enterprise}
-          {limit <= enterprises.length && (
-            <div className="load-more" onClick={() => setLimit(limit + 16)}>
-              Load More
+          <div className="enterprise-h2">
+            <h2>Empresas que coinciden con tus intereses :</h2>
+          </div>
+          <div className="filter-div">
+            <div>
+              <div className="topic-filter-container">{topicFilter}</div>
             </div>
-          )}
+            <div className="date-filter-div">{dateFilter}</div>
+          </div>
+        </div>
+        
+        <div className="enterprise-general-container">
+          <div className="enterprise-container">
+            {enterprise}
+            {limit <= enterprises.length && (
+              <div className="load-more" onClick={() => setLimit(limit + 16)}>
+                Load More
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <NavBar />
