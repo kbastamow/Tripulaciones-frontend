@@ -76,7 +76,7 @@ otherPerson = chat.userIds.filter(member => member._id !== you._id)
    <Header></Header>
    <div className="contacto-text blue-title">
    <Link> <Arrow></Arrow></Link>
-    {otherPerson[0].name ? <>       <div className="contact-img-container"><img src={imagePath + otherPerson[0].image} alt="usuario" /> </div>{otherPerson[0].name}</> : <></>}</div>
+    {otherPerson[0].name ? <>       <div className="contact-img-container"><img src={imagePath + otherPerson[0].image} /> </div>{otherPerson[0].name}</> : <></>}</div>
 <br />
 <div className="msgwindow-div">
   {/* OLD MESSAGES */}
