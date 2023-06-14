@@ -13,7 +13,6 @@ const ChatCard = () => {
   const { myChats } = useSelector((state) => state.chat);
 
   if (myChats.length < 1) return <>No hay chats</>;
-  console.log(myChats);
 
   return (
     <>

@@ -29,7 +29,6 @@ const EventOne = () => {
 
   const attendEvent = (e) => {
     e.preventDefault();
-    console.log(event._id);
     dispatch(joinEvent(event._id));
   };
 

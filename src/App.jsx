@@ -18,8 +18,8 @@ import Enterprises from './pages/enterprises/Enterprises';
 import PrivateZone from './guards/PrivateZone';
 import PageNotFound from './components/pageNotFound/PageNotFound';
 import RecommendedUsersAll from './pages/recommendedUsersAll/RecommendedUsersAll';
-
 import ChatInstant from './pages/chat/ChatInstant';
+import EnterpriseDetails from './pages/enterpriseDetails/EnterpriseDetails';
 
 
 
@@ -48,6 +48,7 @@ function App() {
           <Route path="/navBar" element={<PrivateZone><NavBar /></PrivateZone>} />
           <Route path="/updateProfile" element={<PrivateZone><UpdateProfile /></PrivateZone>} />
           <Route path="/enterprises" element={<PrivateZone><Enterprises /></PrivateZone>} />
+          <Route path="/enterpriseDetails/:id" element={<PrivateZone><EnterpriseDetails /></PrivateZone>} />
           <Route path="/recommendedUsers" element={<PrivateZone><RecommendedUsersAll/></PrivateZone>} />
 
 
