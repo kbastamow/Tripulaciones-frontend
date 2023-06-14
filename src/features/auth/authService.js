@@ -4,7 +4,6 @@ const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 
 const register = async (userData) => {
   const res = await axios.post(API_URL + "/users/register", userData);
-  console.log(res.data);
   return res.data;
 };
 
@@ -36,7 +35,6 @@ const updateProfile = async (data) => {
       authorization: JSON.parse(localStorage.getItem("token")),
     },
   });
-  console.log(res.data);
   return res.data;
 };
 

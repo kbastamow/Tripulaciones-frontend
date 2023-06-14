@@ -19,7 +19,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { email, password } = formData;
   const dispatch = useDispatch();
-  // const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY
+  
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -38,7 +38,8 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (captcha) {
-        dispatch(login(formData));
+      const lowercaseEmail = formData.email.toLowerCase()
+        dispatch(login({...formData, email: lowercaseEmail }));
         setFormData({
           email: "",
           password: "",
@@ -68,7 +69,6 @@ const Login = () => {
     <div className="principal-container-login">
       <img src={Logo} alt="Marina de empresas" />
       <h1>Risky People.</h1>
-      {console.log("Hola" + sitekey)}
 
       <form onSubmit={onSubmit}>
         <div>

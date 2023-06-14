@@ -16,11 +16,12 @@ const UserProfile = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    dispatch(getById(id));
-  }, []);
+  // useEffect(() => {
+  //   console.log(id)
+  //   dispatch(getById(id));
+  // }, []);
 
   function getOrdinal(number) {
     const words = [

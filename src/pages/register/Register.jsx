@@ -64,11 +64,12 @@ const Register = () => {
       setErrorMessage("Por favor, introduce tu apellido");
       return;
     }
-
+    
+    const lowercaseEmail = email.toLowerCase();
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     const passwordValid = passwordRegex.test(password)
     const emailRegex = /^[^\s@]+@edem\.es$/;
-    const validEmail = emailRegex.test(email);
+    const validEmail = emailRegex.test(lowercaseEmail);
 
     if (!validEmail) {
       setErrorMessage("Tiene que ingresar un email que termine en @edem.es");
@@ -102,7 +103,8 @@ const Register = () => {
     }
 
     setErrorMessage(""); // Limpiar el mensaje de error si no hay error
-    dispatch(register(formData))
+    
+    dispatch(register({...formData, email: lowercaseEmail }))
 
     //setSuccessMessage("Usuari@ creado con éxito");
 
