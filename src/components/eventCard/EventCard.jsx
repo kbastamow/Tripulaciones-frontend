@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
 import { Card } from 'antd';
 import { Button, Space, Divider } from 'antd';
-import "./EventCard.scss"
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import "./EventCard.scss"
 import Spinner from '../spinner/Spinner';
 const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 const imagePath = API_URL+"/images/event/"

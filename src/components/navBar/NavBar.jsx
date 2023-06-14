@@ -7,7 +7,6 @@ import { BsChat } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 
   const currentUrl = window.location.href;
 
