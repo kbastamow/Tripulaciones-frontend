@@ -1,10 +1,11 @@
 import axios from "axios";
 const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
-const token = JSON.parse(localStorage.getItem("token")) || "";
+
 
 
 const getAll = async () => {
     try {
+        const token = JSON.parse(localStorage.getItem("token")) || "";
         const res = await axios.get(API_URL + "/lanzadera/getAll",{
             headers: {
                 'Authorization': token,

@@ -4,6 +4,7 @@ import events from "../features/events/eventSlice"
 import user from "../features/users/userSlice"
 import program from "../features/program/programSlice"
 import enterprises from "../features/enterprises/enterprisesSlice"
+import group from "../features/group/groupSlice"
 
 import chat from "../features/chat/chatSlice"
 
@@ -14,6 +15,7 @@ export const store = configureStore({
     user,
     program,
     enterprises,
-    chat 
+    chat,
+    group,
   },
 })
