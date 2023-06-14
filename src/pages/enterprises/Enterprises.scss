@@ -23,13 +23,17 @@
 
 .topic-filter {
     margin-left: 1rem;
-    color: $soft-brown ;
+    color: $soft-brown;
     margin-bottom: 0.5rem;
     background: none;
-    height: 24px;
-    max-height: calc(10 * 2rem + 1.5rem);
+    height: 24px !important;
+    overflow-y: scroll !important;
+  }
+  
+  .topic-filter-container {
+    max-height: 120px; /* Ajusta esta altura máxima según tus necesidades */
     overflow-y: auto;
-}
+  }
 
 .date-filter-div{
     margin-right: 1rem;
@@ -63,7 +67,7 @@
 
     .enterprise-container {
         display: flex;
-        gap: 1rem;
+        gap: 0.2rem;
         flex-wrap: wrap;
         justify-content: space-around;
     }
@@ -73,23 +77,32 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 45%;
-        height: 240px;
+        width: 40%;
+        height: 100%;
+        padding-bottom: 1rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
         background-color: $beige;
+
+        button{
+            margin-top: 1rem !important;
+        }
 
         .enterprise-imag {
             width: 100%;
-            height: 90px;
+            height: 120px;
+            margin-top: 2rem;
+
 
             img {
                 width: 100%;
                 height: 90px;
                 object-fit: cover;
-                border-bottom-left-radius: 100px;
-                border-bottom-right-radius: 100px;
-                border-top-left-radius: 0px;
-                border-top-right-radius: 0px;
-                background: whitesmoke;
+                // border-bottom-left-radius: 100px;
+                // border-bottom-right-radius: 100px;
+                // border-top-left-radius: 0px;
+                // border-top-right-radius: 0px;
+                // background: whitesmoke;
 
             }
         }
