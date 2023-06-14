@@ -19,7 +19,6 @@ export const chatSlice = createSlice({
       state.socketMessages.push(action.payload);
     },
     resetChat: (state) => {
-      console.log("Reset")
       state.chatIsError = false;
       state.chatIsSuccess = false;
       state.message = "";
@@ -32,7 +31,6 @@ export const chatSlice = createSlice({
         state.chatMessages = action.payload.chat.messages
       })
       .addCase(findOrCreate.fulfilled, (state, action) => {
-        console.log(action.payload.chat, "in ChatDetails")
         state.chat = action.payload.chat
         state.chatIsSuccess = true
       })

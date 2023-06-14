@@ -8,7 +8,8 @@ const initialState = {
     isError: false,
     isSuccess: false,
     message: "",
-    recommendationsArray: []
+    idArray: [],
+    recommendedEvents: []
 }
 
 export const eventSlice = createSlice({
@@ -19,7 +20,27 @@ export const eventSlice = createSlice({
         state.isError = false;
         state.isSuccess = false;
         state.message = "";
-      },},
+      },
+      filterByRecommendation: (state) => {
+          if (state.events < 1 || state.idArray < 1) {
+            return
+          }
+          const sortedEvents = state.events.slice().sort((a, b) => {
+          const indexA = state.idArray.indexOf(a._id);
+          const indexB = state.idArray.indexOf(b._id);
+          return indexA - indexB;
+        });
+        state.events = sortedEvents
+        },
+       filterByDate: (state) => {
+        const sortedEvents = state.events.slice().sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateA - dateB;
+          });
+        state.events = sortedEvents  
+       }
+    },
     extraReducers: (builder) => {
         builder
           .addCase(getAll.fulfilled, (state, action) => {
@@ -29,8 +50,7 @@ export const eventSlice = createSlice({
             state.event = action.payload
           })
           .addCase(getRecommendations.fulfilled, (state, action) => {
-            console.log("payload recomm", action.payload)
-            state.recommendationsArray = action.payload
+            state.idArray  = action.payload
           })
           .addCase(joinEvent.fulfilled, (state, action) => {
             if (action.payload) {
@@ -38,7 +58,6 @@ export const eventSlice = createSlice({
             }
           })
           .addCase(joinEvent.rejected, (state, action) => {
-            console.log("Action.payload", action.payload)
             if (action.payload.status === 400) {
                 state.isError = true;
                 state.message = action.payload.data
@@ -66,7 +85,6 @@ export const getById = createAsyncThunk("event/getById", async(id) => {
 
 export const getRecommendations = createAsyncThunk("event/getRecommendations", async() => {
     try {
-        console.log("get Recommendations")
         return await eventService.getRecommendations()
     } catch (error) {
         console.error(error) 
@@ -87,5 +105,7 @@ export const joinEvent = createAsyncThunk("event/joinEvent", async(eventId, thun
 
 
 
-export const { resetEvent } = eventSlice.actions;
+
+
+export const { resetEvent,  filterByRecommendation, filterByDate } = eventSlice.actions;
 export default eventSlice.reducer

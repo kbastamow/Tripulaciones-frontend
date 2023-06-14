@@ -47,7 +47,7 @@ const eventService = {
    getAll,
    getById,
    joinEvent,
-   getRecommendations
+   getRecommendations,
   };
   
   export default eventService;

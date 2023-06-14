@@ -23,7 +23,6 @@ dispatch(resetChat())
  
  const handleCreateChat = (e) => {
   e.preventDefault()
-  console.log("Going to create chat")
   dispatch(findOrCreate(id))
  }
 
