@@ -2,8 +2,7 @@
 import "./Home.scss"
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAll } from "../../features/events/eventSlice"
-
+import { getAll, getRecommendations, filterByRecommendation, filterByDate } from "../../features/events/eventSlice"
 import EventCard from "../../components/eventCard/EventCard";
 import NavBar from "../../components/navBar/NavBar";
 import Header from "../../components/header/Header";
@@ -12,22 +11,24 @@ export const Home = () => {
       
 const dispatch = useDispatch()
 
-const {events} = useSelector((state) => state.events)
+const {events, recommendedEvents} = useSelector((state) => state.events)
 
 useEffect(() => {
   dispatch(getAll())
+  dispatch(getRecommendations())
 }, [])
 
 
 const onChange = (checked) => {
-  console.log(`switch to ${checked}`);
-
+ 
   if (!checked) {
-    console.log("Filtra por fecha")
+   
+    dispatch(filterByDate())
   }
 
   if (checked) {
     console.log("Filtra por recomendacion")
+    dispatch(filterByRecommendation());
   }
 };
 
