@@ -8,6 +8,7 @@ const initialState = {
     isError: false,
     isSuccess: false,
     message: "",
+    recommendationsArray: []
 }
 
 export const eventSlice = createSlice({
@@ -26,6 +27,10 @@ export const eventSlice = createSlice({
           })
           .addCase(getById.fulfilled, (state, action) => {
             state.event = action.payload
+          })
+          .addCase(getRecommendations.fulfilled, (state, action) => {
+            console.log("payload recomm", action.payload)
+            state.recommendationsArray = action.payload
           })
           .addCase(joinEvent.fulfilled, (state, action) => {
             if (action.payload) {
@@ -52,8 +57,17 @@ export const getAll = createAsyncThunk("event/getAll", async() => {
 
 export const getById = createAsyncThunk("event/getById", async(id) => {
     try {
-        console.log("getbyId")
+       
         return await eventService.getById(id)
+    } catch (error) {
+        console.error(error) 
+    }
+})
+
+export const getRecommendations = createAsyncThunk("event/getRecommendations", async() => {
+    try {
+        console.log("get Recommendations")
+        return await eventService.getRecommendations()
     } catch (error) {
         console.error(error) 
     }
@@ -70,6 +84,8 @@ export const joinEvent = createAsyncThunk("event/joinEvent", async(eventId, thun
         return thunkAPI.rejectWithValue(serializedPayload);
       }    
 })
+
+
 
 export const { resetEvent } = eventSlice.actions;
 export default eventSlice.reducer
