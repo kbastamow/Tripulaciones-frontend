@@ -3,10 +3,13 @@ import { useSelector } from "react-redux";
 import DateTimeConverter from "../dateTimeConverter/DateTimeConverter";
 import { Link } from "react-router-dom";
 import "./ChatCard.scss";
-import { BsArrowUpRightCircle } from "react-icons/bs";
+
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+
+
 
 const ChatCard = () => {
-  const imagePath = "http://localhost:8080/images/user/";
+  const imagePath = API_URL + "/images/user/";
   const { myChats } = useSelector((state) => state.chat);
 
   if (myChats.length < 1) return <>No hay chats</>;

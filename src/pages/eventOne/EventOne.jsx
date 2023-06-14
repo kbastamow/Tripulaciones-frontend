@@ -12,8 +12,8 @@ import DateTimeConverter from "../../components/dateTimeConverter/DateTimeConver
 import { SlLocationPin } from "react-icons/sl";
 import EventModal from "../../components/modal/EventModal";
 import Header from "../../components/header/Header";
-
-const imagePath = "http://localhost:8080/images/event/";
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+const imagePath = API_URL +"/images/event/";
 
 const EventOne = () => {
   const { id } = useParams();

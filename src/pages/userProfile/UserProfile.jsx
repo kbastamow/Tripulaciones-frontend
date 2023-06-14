@@ -5,15 +5,15 @@ import { getById } from "../../features/users/userSlice";
 import { logout } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { FiLogOut, FiCalendar, FiPlusCircle } from "react-icons/fi";
-
 import Arrow from "../../components/arrow/Arrow";
 import Banner from "../../assets/edem-banner.png";
 import "./UserProfile.scss";
 import Header from "../../components/header/Header";
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+
 
 const UserProfile = () => {
   const { id } = useParams();
-
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.user);
@@ -70,7 +70,7 @@ const UserProfile = () => {
         <div className="info-container">
           <div className="img-container">
             <img
-              src={`http://localhost:8080/images/user/${user.image}`}
+              src={`${API_URL}/images/user/${user.image}`}
               alt=""
             />
           </div>
