@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import {  addSocketMessage, getChatById } from "../../features/chat/chatSlice";
-import { receiveMessage, sendMessage } from '../../actions/messageActions';
+import {  addSocketMessage, getChatById, clearSocketMessages, resetChat } from "../../features/chat/chatSlice";
 import "./ChatInstant.scss"
 import Header from "../../components/header/Header";
 import Arrow from "../../components/arrow/Arrow";
@@ -20,28 +19,32 @@ const ChatInstant = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [socket, setSocket] = useState(null);
   const bottom = useRef(null);
-
   const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
-
   const imagePath = API_URL + "/images/user/";
-
-
   
   useEffect(() => {
     bottom?.current?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
+  dispatch(clearSocketMessages())
+  dispatch(resetChat())
   dispatch(getChatById(id));
+
+
    // Set up socket.io connection
    const newSocket = io.connect(API_URL);
    setSocket(newSocket);
 
-   // Receive messages from the server
+   // Join the chat room
+   newSocket.emit('joinChat', id); 
    newSocket.on('message', (data) => {
-     dispatch(addSocketMessage(data));
-   });
-
+    // Handle the received message
+    if (data._id === id) {
+      //add the socket message only if it belongs to the current chat
+      dispatch(addSocketMessage(data));
+    }
+  });
    return () => {
      // Clean up the socket connection
      newSocket.disconnect();
@@ -50,27 +53,24 @@ useEffect(() => {
 
 const socketSendMessage = () => {
   if (inputMessage === "") return
-  // Dispatch the send message action
+  
   const messageData = {
     _id: chat._id,
     content: inputMessage,
     sender: you._id,
     senderName: you.name,
-    timestamp: new Date().toISOString(), // Convert to ISO 8601 string or reducers doesn't accept
+    timestamp: new Date().toISOString(), // reducers don't accept otherwise
   };
-  socket.emit('message', messageData);
-  console.log("This is inputmessage:", inputMessage)
-  dispatch(sendMessage(messageData));
+  socket.emit("message", messageData);
   setInputMessage('');
 };
 
 if (!chat) {
-  console.log("no hay chat")
   return <></>
-}
+} 
 
 otherPerson = chat.userIds.filter(member => member._id !== you._id)
-console.log(otherPerson)
+
 
   return (
     <>

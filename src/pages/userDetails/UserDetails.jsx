@@ -19,7 +19,7 @@ const UserDetails = () => {
   const { user } = useSelector((state) => state.user);
   const { chat, chatIsSuccess } = useSelector((state => state.chat))
   
-dispatch(resetChat())
+
  
  const handleCreateChat = (e) => {
   e.preventDefault()
@@ -30,8 +30,8 @@ dispatch(resetChat())
  useEffect(() => {
   if (chat && chatIsSuccess) {
     console.log(chat._id)
+    console.log(chatIsSuccess)
     setTimeout(() => {
-    
     navigate("/chat/instant/" + chat._id)
     }, 2000);
   }

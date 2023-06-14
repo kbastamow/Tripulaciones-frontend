@@ -19,11 +19,14 @@ export const chatSlice = createSlice({
       state.socketMessages.push(action.payload);
     },
     resetChat: (state) => {
-      console.log("Reset")
+      console.log("resetSuccess")
       state.chatIsError = false;
       state.chatIsSuccess = false;
       state.message = "";
     },
+    clearSocketMessages: (state) => {
+      state.socketMessages = []
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -89,5 +92,5 @@ export const writeMsg = createAsyncThunk("chat/writeMsg", async (chat) => {
 
 
 
-export const { addSocketMessage, resetChat } = chatSlice.actions;
+export const { addSocketMessage, resetChat, clearSocketMessages } = chatSlice.actions;
 export default chatSlice.reducer;
