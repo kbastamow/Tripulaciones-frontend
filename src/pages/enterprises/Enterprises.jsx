@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAll } from "../../features/enterprises/enterprisesSlice";
-import Header from "../../components/header/Header";
-import NavBar from "../../components/navBar/NavBar";
-import "./Enterprises.scss";
+import Header from "../../components/header/Header"
+import NavBar from "../../components/navBar/NavBar"
+import "./Enterprises.scss"
+
 
 const Enterprises = () => {
   const { enterprises } = useSelector((state) => state.enterprises);
