@@ -112,7 +112,6 @@ const Enterprises = () => {
   const dates = [
     ...new Set(enterprises.map((enterprise) => enterprise.updatedAt)),
   ];
-  console.log(dates);
   const dateFilter =
     dates.length > 0 ? (
       <select
