@@ -17,12 +17,10 @@ const UpdateProfile = () => {
  
   const handleProgramChange = (value) => {
     setProgramId(value)
-    console.log(programId)
   };
 
   const handleYearChange = (value) => {
     setYearInput(value)
-    console.log(programId)
   };
 
   useEffect(() => {
@@ -30,8 +28,6 @@ const UpdateProfile = () => {
   }, [])
 
   const onFinish = (values) => {
-    console.log(values.age)
-
     if (values.age === null){
       console.log("edad tiene que ser un número")
       return
@@ -43,7 +39,6 @@ const UpdateProfile = () => {
     Object.entries(myData).filter(([key, value]) => value !== undefined 
     && value !== "")
     );
-    console.log(filteredValues); 
     dispatch(updateProfile(filteredValues)); //Así no pasamos valores vaciós a la base de datos
   };
 

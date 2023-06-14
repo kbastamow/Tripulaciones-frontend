@@ -85,7 +85,6 @@ export const getById = createAsyncThunk("event/getById", async(id) => {
 
 export const getRecommendations = createAsyncThunk("event/getRecommendations", async() => {
     try {
-        console.log("get Recommendations")
         return await eventService.getRecommendations()
     } catch (error) {
         console.error(error) 

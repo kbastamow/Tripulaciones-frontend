@@ -18,18 +18,15 @@ const getChatById = async (chatId) => {
       'Authorization': token,
     }
   });
-  console.log("getChatById", res.data)
   return res.data;
 };
 
 const getChatsByUserId = async () => {
-  console.log(token)
    const res = await axios.get(API_URL + "/chats/getChatsByUserId", {
     headers: {
       'Authorization': token,
     }
   })
-  console.log(res.data)
   return res.data;
 }
 

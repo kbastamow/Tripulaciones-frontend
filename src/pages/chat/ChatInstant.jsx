@@ -71,7 +71,6 @@ if (!chat) {
 
 otherPerson = chat.userIds.filter(member => member._id !== you._id)
 
-
   return (
     <>
    <Header></Header>
