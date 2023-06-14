@@ -12,20 +12,51 @@
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 
-  
+
 }
 
+.filter-div{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.topic-filter {
+    margin-left: 1rem;
+    color: $soft-brown ;
+    margin-bottom: 0.5rem;
+    background: none;
+    height: 24px;
+    max-height: calc(10 * 2rem + 1.5rem);
+    overflow-y: auto;
+}
+
+.date-filter-div{
+    margin-right: 1rem;
+
+}
+.date-filter{
+    margin-right: 1rem;
+    color: $soft-brown ;
+    margin-bottom: 0.5rem;
+    background: none;
+    height: 24px;
+    width: 100%;
+    max-height: calc(10 * 2rem + 1.5rem);
+    overflow-y: auto;
+}
 
 .enterprise-h2 {
     margin-left: 1rem;
-    
-    h2{
+
+    h2 {
         font-size: 15px;
         color: $soft-brown;
-        margin-bottom: 6px;
+
     }
-  
+
 }
+
 .enterprise-general-container {
     margin-left: 1rem;
     margin-right: 1rem;
@@ -45,7 +76,7 @@
         width: 45%;
         height: 240px;
         background-color: $beige;
-        
+
         .enterprise-imag {
             width: 100%;
             height: 90px;
