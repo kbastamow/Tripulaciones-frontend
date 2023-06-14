@@ -59,18 +59,15 @@ const socketSendMessage = () => {
     timestamp: new Date().toISOString(), // Convert to ISO 8601 string or reducers doesn't accept
   };
   socket.emit('message', messageData);
-  console.log("This is inputmessage:", inputMessage)
   dispatch(sendMessage(messageData));
   setInputMessage('');
 };
 
 if (!chat) {
-  console.log("no hay chat")
   return <></>
 }
 
 otherPerson = chat.userIds.filter(member => member._id !== you._id)
-console.log(otherPerson)
 
   return (
     <>

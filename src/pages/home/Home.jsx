@@ -27,7 +27,6 @@ const onChange = (checked) => {
   }
 
   if (checked) {
-    console.log("Filtra por recomendacion")
     dispatch(filterByRecommendation());
   }
 };
