@@ -4,10 +4,15 @@ import { Button, Space, Divider } from 'antd';
 import "./EventCard.scss"
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import logo from "../../assets/logo.png"
+
 import Spinner from '../spinner/Spinner';
-const imagePath = "http://localhost:8080/images/event/"
-const { Meta } = Card;
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+const imagePath = API_URL+"/images/event/"
+
+
+
+
+
 
 const EventCard = () => {
 
@@ -19,13 +24,13 @@ useEffect(()=> {
 
 
 
-if(events?.length <= 0){
+if(!events || events.length <= 0){
     return <Spinner/>
   }
 
 return (
 <>
-      {events.map(event => (
+      {events?.map(event => (
         <div key={event._id} className="eventcard-container">
         <Card
         hoverable

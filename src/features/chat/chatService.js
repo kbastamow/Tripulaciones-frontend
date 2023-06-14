@@ -1,9 +1,10 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080";
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 const token = JSON.parse(localStorage.getItem("token"));
 
 const create = async (chatData) => {
+
   const res = await axios.post(API_URL + "/chats/create", chatData);
   console.log(res.data);
   return res.data;

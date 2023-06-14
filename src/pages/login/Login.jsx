@@ -36,19 +36,15 @@ const Login = () => {
     }
   });
 
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (captcha) {
-      try {
-        await dispatch(login(formData));
+        dispatch(login(formData));
         setFormData({
           email: "",
           password: "",
         });
-        console.log("formData", formData);
-      } catch (error) {
         setError("Correo o contraseña inválido");
-      }
     } else {
       setError("Por favor, completa el captcha");
     }

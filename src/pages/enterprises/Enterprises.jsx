@@ -5,6 +5,7 @@ import Header from "../../components/header/Header"
 import NavBar from "../../components/navBar/NavBar"
 import "./Enterprises.scss"
 
+
 const Enterprises = () => {
 
   const { enterprises } = useSelector((state) => state.enterprises);

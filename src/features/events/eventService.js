@@ -1,9 +1,12 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080";
-const token = JSON.parse(localStorage.getItem("token")) || "";
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+
+
+
 
 const getAll = async() => {
+    const token = JSON.parse(localStorage.getItem("token")) || "";
         const res = await axios.get(API_URL + "/events/getAll", {
             headers: {
                 'Authorization': token,
@@ -12,6 +15,7 @@ const getAll = async() => {
 }
 
 const getById = async(id) => {
+    const token = JSON.parse(localStorage.getItem("token")) || "";
         const res = await axios.get(API_URL + "/events/getById/" + id, {
             headers: {
                 'Authorization': token,
@@ -19,8 +23,17 @@ const getById = async(id) => {
         return res.data
 }
 
+const getRecommendations = async() => {
+    const token = JSON.parse(localStorage.getItem("token")) || "";
+    const res = await axios.get(API_URL + "/events/getRecommendations/", {
+        headers: {
+            'Authorization': token,
+          } })
+    return res.data
+}
+
 const joinEvent = async(eventId) => {
-    // const token = JSON.parse(localStorage.getItem("token"));
+    const token = JSON.parse(localStorage.getItem("token")) || "";
         const res = await axios.put(API_URL + "/events/joinEvent/" + eventId, {}, {
             headers: {
                 'Authorization': token,
@@ -33,7 +46,8 @@ const joinEvent = async(eventId) => {
 const eventService = {
    getAll,
    getById,
-   joinEvent
+   joinEvent,
+   getRecommendations
   };
   
   export default eventService;
