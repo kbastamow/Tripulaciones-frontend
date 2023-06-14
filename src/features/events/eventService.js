@@ -23,6 +23,15 @@ const getById = async(id) => {
         return res.data
 }
 
+const getRecommendations = async() => {
+    const token = JSON.parse(localStorage.getItem("token")) || "";
+    const res = await axios.get(API_URL + "/events/getRecommendations/", {
+        headers: {
+            'Authorization': token,
+          } })
+    return res.data
+}
+
 const joinEvent = async(eventId) => {
     const token = JSON.parse(localStorage.getItem("token")) || "";
         const res = await axios.put(API_URL + "/events/joinEvent/" + eventId, {}, {
@@ -37,7 +46,8 @@ const joinEvent = async(eventId) => {
 const eventService = {
    getAll,
    getById,
-   joinEvent
+   joinEvent,
+   getRecommendations
   };
   
   export default eventService;
