@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { FiCalendar } from "react-icons/fi";
 import {findOrCreate} from "../../features/chat/chatSlice"
 import {resetChat} from "../../features/chat/chatSlice"
+import Header from "../../components/header/Header";
 const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 
 
@@ -66,72 +67,82 @@ dispatch(resetChat())
     }
 }
 
-  return (
-    <div>
-      <div className="contacto-text">
-        <Arrow />
-        <h1>Contacto</h1>
-      </div>
+return (
+  <div>
+    <div className="sticky">
+          <Header />
+          <div className="contacto-text">
+            <Arrow />
+            <h1>Contacto</h1>
+          </div>
+        </div>
 
-      <div className="user-details">
-        <img src={Banner} alt="" />
-        <div className="info-container">
-          <div className="img-container">
-            <img
-              src={`${API_URL}/images/user/${user.image}`}
-              alt=""
-            />
+    <div className="user-details">
+      <img src={Banner} alt="" />
+      <div className="info-container">
+        <div className="img-container">
+          <img src={`${API_URL}/images/user/${user.image}`} alt="" />
+        </div>
+        <div className="data">
+          <p className="name">
+            {user.name} {user.surname}
+          </p>
+          <p className="age">{user.age} años</p>
+          {user && user.program && (
+            <p className="grade">{user.program.translation}</p>
+          )}
+          <p className="year">{getOrdinal(user.year)} curso</p>
+        </div>
+      </div>
+      <div className="btns">
+        <Link to={`/chat/${user._id}`}>
+          <button>Contactar</button>
+        </Link>
+        <button onClick={handleCreateChat}>Enviar mensaje</button>
+      </div>
+      <div>
+        {user.bio && (
+          <div className="bio">
+            <p className="title">Bio:</p>
+            <p className="content">{user.bio}</p>
           </div>
-          <div className="data">
-            <p className="name">
-              {user.name} {user.surname}
-            </p>
-            <p className="age">{user.age} años</p>
-            {user && user.program && (
-              <p className="grade">{user.program.translation}</p>
-            )}
-            <p className="year">{getOrdinal(user.year)} curso</p>
+        )}
+        {user.categoryIds && user.categoryIds.length > 0 && (
+          <div className="bio">
+            <p className="title">Intereses:</p>
+            <div className="categories">
+              {user.categoryIds.map((category) => (
+                <p key={category._id}>{category.name}</p>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="btns">
-          <Link to={`/chat/${user._id}`}>
-            <button>Contactar</button>
-          </Link>
-            <button onClick={handleCreateChat}>Enviar mensaje</button>
-        </div>
-        <div className="bio">
-          <p className="title">Bio:</p>
-          <p className="content">{user.bio}</p>
-        </div>
-        <div className="bio">
-          <p className="title">Intereses:</p>
-          <div className="categories">
-            {user &&
-              user.categoryIds &&
-              user.categoryIds.map((category) => <p key={category._id}>{category.name}</p>)}
-          </div>
-        </div>
-        <div className="bio">
-          <p className="title">Próximos eventos:</p>
-          <div className="events">
-            {user &&
-              user.eventIds &&
-              user.eventIds.map((event) => (
+        )}
+        {user.eventIds && user.eventIds.length > 0 && (
+          <div className="bio">
+            <p className="title">Próximos eventos:</p>
+            <div className="events">
+              {user.eventIds.map((event) => (
                 <div key={event._id}>
                   <p>
                     <span className="icon">
                       <FiCalendar />
                     </span>
                     {mostrarParrafo(event.title, 30)}
-                    <span className="span-ver"><Link className="link-event" to={`/events/${event._id}`}>Ver</Link></span>
+                    <span className="span-ver">
+                      <Link className="link-event" to={`/events/${event._id}`}>
+                        Ver
+                      </Link>
+                    </span>
                   </p>
                 </div>
               ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default UserDetails;
