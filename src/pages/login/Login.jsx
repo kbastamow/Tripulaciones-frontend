@@ -19,7 +19,6 @@ const Login = () => {
   const navigate = useNavigate();
   const { email, password } = formData;
   const dispatch = useDispatch();
-  
 
   const onChange = (e) => {
     setFormData((prevState) => ({
