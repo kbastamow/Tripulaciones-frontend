@@ -12,16 +12,9 @@ const imagePath = API_URL+"/images/event/"
 
 
 
-
-
 const EventCard = () => {
 
 const {events} = useSelector((state) => state.events)
-
-useEffect(()=> {
-  
-}, [events])
-
 
 
 if(!events || events.length <= 0){

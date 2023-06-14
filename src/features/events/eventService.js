@@ -3,16 +3,20 @@ import axios from "axios";
 const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 
 
-
-
 const getAll = async() => {
-    const token = JSON.parse(localStorage.getItem("token")) || "";
+    try {
+        const token = await JSON.parse(localStorage.getItem("token")) || "";    
         const res = await axios.get(API_URL + "/events/getAll", {
-            headers: {
-                'Authorization': token,
-              } })
-        return(res.data) 
-}
+          headers: {
+            'Authorization': token,
+          }
+        });
+        return res.data;
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    };
 
 const getById = async(id) => {
     const token = JSON.parse(localStorage.getItem("token")) || "";

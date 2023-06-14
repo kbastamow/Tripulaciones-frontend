@@ -81,6 +81,7 @@
           text-decoration: none !important;
           padding-right: 1rem;
           padding-left: 1rem;
+          
           button{
             background-color: transparent;
             border: transparent;
@@ -111,4 +112,7 @@
     object-fit: cover;
     
   }
+}
+a{
+  text-decoration: none !important;
 }

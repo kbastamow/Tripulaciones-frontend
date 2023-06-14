@@ -9,14 +9,30 @@ const getAll = async () => {
             headers: {
                 'Authorization': token,
               } })
-        console.log(res.data)
         return(res.data) 
     } catch (error) {
         console.error(error)
         
     }
 };
+
+const getById = async(id) => {
+    try {
+        const token = JSON.parse(localStorage.getItem("token")) || "";
+        const res = await axios.get(API_URL + "/lanzadera/getById/" + id, {
+                headers: {
+                    'Authorization': token,
+                  } })
+            return (res.data)
+    } catch (error) {
+        console.error(error)
+    }
+ 
+}
+
 const enterprisesService = {
- getAll
+ getAll,
+ getById
 };
+
 export default enterprisesService;
