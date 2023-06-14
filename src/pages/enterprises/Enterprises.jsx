@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { getAll } from "../../features/enterprises/enterprisesSlice";
+import { Link } from "react-router-dom";
 import Header from "../../components/header/Header"
 import NavBar from "../../components/navBar/NavBar"
 import "./Enterprises.scss"
@@ -69,7 +70,7 @@ const Enterprises = () => {
             ))}
           </p>
           <div className='div-contactar'>
-            <button className="contactar" onClick={() => console.log('Contactar:', enterprise.name)}>Contactar</button>
+            <button className="contactar"><Link className="link-event" to={`/enterpriseDetails/${enterprise._id}`}> Contactar</Link></button>
           </div>
         </div>
       ))
