@@ -104,8 +104,6 @@ const Register = () => {
 
     setErrorMessage(""); // Limpiar el mensaje de error si no hay error
     
-    console.log('email',lowercaseEmail)
-    console.log({...formData, email: lowercaseEmail})
     dispatch(register({...formData, email: lowercaseEmail }))
 
     //setSuccessMessage("Usuari@ creado con éxito");

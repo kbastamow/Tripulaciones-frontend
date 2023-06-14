@@ -20,7 +20,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { email, password } = formData;
   const dispatch = useDispatch();
-
+  
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -39,7 +39,8 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (captcha) {
-        dispatch(login(formData));
+      const lowercaseEmail = formData.email.toLowerCase()
+        dispatch(login({...formData, email: lowercaseEmail }));
         setFormData({
           email: "",
           password: "",
