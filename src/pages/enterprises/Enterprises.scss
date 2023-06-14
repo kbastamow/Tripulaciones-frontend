@@ -15,12 +15,33 @@
 
 }
 
-select.topic-filter {
+.filter-div{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.topic-filter {
     margin-left: 1rem;
     color: $soft-brown ;
     margin-bottom: 0.5rem;
     background: none;
     height: 24px;
+    max-height: calc(10 * 2rem + 1.5rem);
+    overflow-y: auto;
+}
+
+.date-filter-div{
+    margin-right: 1rem;
+
+}
+.date-filter{
+    margin-right: 1rem;
+    color: $soft-brown ;
+    margin-bottom: 0.5rem;
+    background: none;
+    height: 24px;
+    width: 100%;
     max-height: calc(10 * 2rem + 1.5rem);
     overflow-y: auto;
 }
