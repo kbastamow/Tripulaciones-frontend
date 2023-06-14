@@ -8,7 +8,6 @@ import "./UserDetails.scss";
 import { Link } from "react-router-dom";
 import { FiCalendar } from "react-icons/fi";
 import {findOrCreate} from "../../features/chat/chatSlice"
-import {resetChat} from "../../features/chat/chatSlice"
 const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 
 
@@ -19,18 +18,14 @@ const UserDetails = () => {
   const { user } = useSelector((state) => state.user);
   const { chat, chatIsSuccess } = useSelector((state => state.chat))
   
-
  
  const handleCreateChat = (e) => {
   e.preventDefault()
-  console.log("Going to create chat")
   dispatch(findOrCreate(id))
  }
 
  useEffect(() => {
   if (chat && chatIsSuccess) {
-    console.log(chat._id)
-    console.log(chatIsSuccess)
     setTimeout(() => {
     navigate("/chat/instant/" + chat._id)
     }, 2000);
