@@ -1,6 +1,6 @@
-import { login } from "../../features/auth/authSlice";
+import { login, reset } from "../../features/auth/authSlice";
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -14,7 +14,8 @@ const Login = () => {
     email: "",
     password: "",
   });
-
+  
+  const { isError, message } = useSelector(state => state.auth)
   const [error, setError] = useState("");
   const [captcha, setCaptcha] = useState(false);
   const navigate = useNavigate();
@@ -36,6 +37,10 @@ const Login = () => {
     }
   });
 
+  useEffect(() => {
+    if (isError) setError(message)
+  }, [isError])
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (captcha) {
@@ -45,7 +50,7 @@ const Login = () => {
           email: "",
           password: "",
         });
-        setError("Correo o contraseña inválido");
+        // setError("Correo o contraseña inválido");
     } else {
       setError("Por favor, completa el captcha");
     }
@@ -60,8 +65,9 @@ const Login = () => {
   useEffect(() => {
     if (error) {
       const timeout = setTimeout(() => {
-        setError("");
-      }, 2000);
+        setError("")
+        dispatch(reset());
+      }, 3000);
       return () => clearTimeout(timeout);
     }
   }, [error]);

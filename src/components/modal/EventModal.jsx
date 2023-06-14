@@ -7,7 +7,7 @@ import logoH from "../../assets/logo-horizontal.png"
 const EventModal = () => {
 
   const dispatch = useDispatch()
-  const {message, isError} = useSelector(state => state.events)
+  const {message, isError, isSuccess } = useSelector(state => state.events)
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOk = () => {
@@ -25,8 +25,7 @@ useEffect(() => {
 
 }, [message])
 
-
- if (!isError) 
+ if (!isError && !isSuccess) 
  return <></>
  
   return (

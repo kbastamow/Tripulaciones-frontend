@@ -11,6 +11,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   message: "",
+  loginIsError: false
 
 };
 
@@ -29,6 +30,13 @@ export const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
       })
+      .addCase(login.rejected, (state, action) => {
+        console.log(action.payload)
+        if (action.payload === "Usuario o contraseña incorrecto") {
+        state.isError = true;
+        state.message = action.payload
+        }
+      })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
         state.token = null;
@@ -38,7 +46,6 @@ export const authSlice = createSlice({
         state.isSuccess = true;       
         state.message = action.payload.message;
       })
-
       .addCase(register.rejected, (state, action) => {
         state.isError = true;
         state.message = action.payload;
@@ -55,11 +62,14 @@ export const register = createAsyncThunk("auth/register", async (user, thunkAPI)
   }
 });
 
-export const login = createAsyncThunk("auth/login", async (user) => {
+export const login = createAsyncThunk("auth/login", async (user,thunkAPI) => {
   try {
     return await authService.login(user);
   } catch (error) {
     console.error(error);
+    console.log(error.response.data.msg[0])
+    const message = error.response.data.msg;
+    return thunkAPI.rejectWithValue(message);
   }
 });
 

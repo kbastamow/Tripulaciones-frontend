@@ -32,19 +32,6 @@ const EventOne = () => {
     dispatch(joinEvent(event._id));
   };
 
-  // useEffect(() => {
-  //   if (isSuccess) {
-  //     notification.success({
-  //       message: "Success",
-  //       description: message,
-  //     });
-  //   }
-  //   if (isError) {
-  //     notification.error({ message: "Error", description: message });
-  //   }
-  //   dispatch(reset())
-  // }, [isSuccess, isError, message]);
-
   if (!event) {
     return <></>;
   } else {
