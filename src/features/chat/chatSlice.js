@@ -23,14 +23,13 @@ export const chatSlice = createSlice({
       state.chatIsSuccess = false;
       state.message = "";
     },
+    clearSocketMessages: (state) => {
+      state.socketMessages = []
+    }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(create.fulfilled, (state, action) => {
-        state.chat = action.payload.chat
-        state.chatMessages = action.payload.chat.messages
-      })
-      .addCase(findOrCreate.fulfilled, (state, action) => {
+       .addCase(findOrCreate.fulfilled, (state, action) => {
         state.chat = action.payload.chat
         state.chatIsSuccess = true
       })
@@ -68,24 +67,6 @@ try {
 });
 
 
-//NOT CURRENTLY IN USE:
-export const create = createAsyncThunk("chat/create", async (chat) => {
-  try {
-    return await chatService.create(chat);
-  } catch (error) {
-    console.error(error);
-  }
-});
-//NOT CURRENTLY IN USE:
-export const writeMsg = createAsyncThunk("chat/writeMsg", async (chat) => {
-  try {
-    return await chatService.writeMsg(chat);
-  } catch (error) {
-    console.error(error);
-  }
-});
 
-
-
-export const { addSocketMessage, resetChat } = chatSlice.actions;
+export const { addSocketMessage, resetChat, clearSocketMessages } = chatSlice.actions;
 export default chatSlice.reducer;

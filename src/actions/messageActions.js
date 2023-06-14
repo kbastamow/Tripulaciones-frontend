@@ -4,7 +4,9 @@
 // Action Creators
 export const sendMessage = (message) => ({
   type: 'SEND_MESSAGE',
-  payload: message,
+  payload: {
+    message,
+  },
 });
 
 export const receiveMessage = (message) => ({

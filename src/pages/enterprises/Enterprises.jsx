@@ -96,9 +96,17 @@ const Enterprises = () => {
       </select>
     ) : null;
 
+<<<<<<< HEAD
     const dates = [...new Set(enterprises.map((enterprise) => enterprise.updatedAt))];
           console.log(dates)
     const dateFilter = dates.length > 0 ? (
+=======
+  const dates = [
+    ...new Set(enterprises.map((enterprise) => enterprise.updatedAt)),
+  ];
+  const dateFilter =
+    dates.length > 0 ? (
+>>>>>>> a51f067a68b94c0d616b0810850695d82f450fc4
       <select
         className="date-filter"
         value={selectedDate}
