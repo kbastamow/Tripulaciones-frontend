@@ -58,7 +58,7 @@ const Community = () => {
               </div>
             ))}
           </div>
-          <Link to={`/recommendedUsers`}>
+          <Link className="ver-todo" to={`/recommendedUsers`}>
             <p>Ver todo</p>
           </Link>
 
