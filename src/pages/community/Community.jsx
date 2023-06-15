@@ -86,7 +86,7 @@ const Community = () => {
               </div>
             ))}
           </div>
-
+            <p>Ver todo</p>
         </div>
       </div>
       <div>

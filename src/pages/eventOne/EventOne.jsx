@@ -14,7 +14,7 @@ import EventModal from "../../components/modal/EventModal";
 import Header from "../../components/header/Header";
 
 const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
-const imagePath = `${AP_URL}/images/event/`;
+const imagePath = `${API_URL}/images/event/`;
 
 const EventOne = () => {
   const { id } = useParams();
