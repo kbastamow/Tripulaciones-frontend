@@ -12,8 +12,9 @@ import DateTimeConverter from "../../components/dateTimeConverter/DateTimeConver
 import { SlLocationPin } from "react-icons/sl";
 import EventModal from "../../components/modal/EventModal";
 import Header from "../../components/header/Header";
+
 const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
-const imagePath = API_URL +"/images/event/";
+const imagePath = `${AP_URL}/images/event/`;
 
 const EventOne = () => {
   const { id } = useParams();
@@ -29,8 +30,22 @@ const EventOne = () => {
 
   const attendEvent = (e) => {
     e.preventDefault();
+    console.log(event._id);
     dispatch(joinEvent(event._id));
   };
+
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     notification.success({
+  //       message: "Success",
+  //       description: message,
+  //     });
+  //   }
+  //   if (isError) {
+  //     notification.error({ message: "Error", description: message });
+  //   }
+  //   dispatch(reset())
+  // }, [isSuccess, isError, message]);
 
   if (!event) {
     return <></>;

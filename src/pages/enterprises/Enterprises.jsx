@@ -19,11 +19,11 @@ const Enterprises = () => {
 
 
 
-  const handleScroll = () => {
-    if ((window.innerHeight + window.scrollY >= document.body.scrollHeight && window.innerWidth >= 768) || (window.innerHeight + window.scrollY >= document.body.scrollHeight && window.innerWidth < 768)) {
-      setLimit(limit + 16);
-    }
-  }
+  // const handleScroll = () => {
+  //   if ((window.innerHeight + window.scrollY >= document.body.scrollHeight && window.innerWidth >= 768) || (window.innerHeight + window.scrollY >= document.body.scrollHeight && window.innerWidth < 768)) {
+  //     setLimit(limit + 16);
+  //   }
+  // }
 
   // useEffect(() => {
   
@@ -150,18 +150,31 @@ const enterprise = (enterprises?.length > 0)
           </div>
         </div>
       </div>
-      <div className="enterprise-general-container">
-        <div className="enterprise-container">
-          {
-            enterprises?.length > 0 ? (
-              <>
-                {enterprise}
-                {limit <= enterprises.length && (
-                  <div className="load-more" onClick={() => setLimit(limit + 16)}>Load More</div>
-                )}
-              </>
-            ) : <></>
-          }
+      <div className='content-container-main'>
+        <div className="enterprise-general-container">
+          <div className="enterprise-container">
+            {
+              enterprises?.length > 0 ? (
+                <>
+                  {enterprise}
+                  
+                </>
+              ) : <></>
+            }
+          </div>
+
+          <div className='load-more-container'>
+            {
+                enterprises?.length > 0 ? (
+                  <>
+                    
+                    {limit <= enterprises.length && (
+                      <div className="load-more" onClick={() => setLimit(limit + 16)}>Ver mas</div>
+                    )}
+                  </>
+                ) : <></>
+              }
+          </div>
         </div>
       </div>
       <NavBar />

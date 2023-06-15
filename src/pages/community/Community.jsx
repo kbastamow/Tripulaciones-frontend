@@ -68,7 +68,7 @@ const Community = () => {
             {groups.slice(0, 4).map((group) => (
               <div className="card-users-c" key={group._id}>
                 {group.image ? (
-                  <div className="img-container3">
+                  <div className="img-container">
                     <img src={`${API_URL}/images/group/${group.image}`} alt="" />
                   </div>
                 ) : (
