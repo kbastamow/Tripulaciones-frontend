@@ -94,7 +94,7 @@ return (
         <Link to={`/chat/${user._id}`}>
           <button>Contactar</button>
         </Link>
-        <button onClick={handleCreateChat}>Enviar mensaje</button>
+        <button className="send" onClick={handleCreateChat}>Enviar mensaje</button>
       </div>
       <div>
         {user.bio && (

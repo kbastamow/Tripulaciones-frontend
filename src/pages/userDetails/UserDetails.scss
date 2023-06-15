@@ -37,6 +37,13 @@
         font-size: 14px;
       }
     }
+    .send{
+      border: 1px solid $accent;
+      padding: 0.2rem 1rem;
+      color: $accent;
+      text-decoration: none;
+      background-color: transparent;
+    }
   }
   img{
     z-index: 1;
