@@ -79,7 +79,7 @@ const Community = () => {
                 </h4>
                 <p>{group.description}</p>
                 <div className="link">
-                  <Link to={`/userDetails/${group._id}`}>
+                  <Link>
                     <button>Unirse</button>
                   </Link>
                 </div>
